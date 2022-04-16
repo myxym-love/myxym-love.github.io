@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://myxym-love.github.io/myxym-love.github.io/2022/04/16/Linux%E4%B8%8B%E5%AE%89%E8%A3%85Redis6.X/</loc>
+    
+    <lastmod>2022-04-16</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://myxym-love.github.io/myxym-love.github.io/2022/01/02/%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B9%8B%E9%97%B4%E5%85%8D%E5%AF%86%E7%99%BB%E5%BD%95/</loc>
     
     <lastmod>2022-01-02</lastmod>
@@ -32,15 +41,6 @@
     <loc>https://myxym-love.github.io/myxym-love.github.io/2022/01/02/hello-world/</loc>
     
     <lastmod>2022-01-02</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://myxym-love.github.io/myxym-love.github.io/2022/04/16/Linux%E4%B8%8B%E5%AE%89%E8%A3%85Redis6.X/</loc>
-    
-    <lastmod>2021-07-26</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
