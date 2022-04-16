@@ -6,21 +6,15 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://myxym-love.github.io/myxym-love.github.io">
-  <title>云服务器之间实现免密登录 | 毛宇的BLOG</title>
+  <title>Category: Git攻略 | 毛宇的BLOG</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="云服务器之间实现免密登录1. 安装ssh1yum install -y ssh  注：每台服务器都要安装ssh 2.在每台服务器上生成公钥1ssh-keygen  3.服务器ip映射使用命令 1vim &#x2F;etc&#x2F;hosts  添加ip映射,例如47.100.227.19 master 有几台服务器要实现互相免密就添加几个映射 4.公钥互相拷贝到其他服务器1.在master服务器上执行 123ssh">
-<meta property="og:type" content="article">
-<meta property="og:title" content="云服务器之间实现免密登录">
-<meta property="og:url" content="https://myxym-love.github.io/myxym-love.github.io/2022/01/02/%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B9%8B%E9%97%B4%E5%85%8D%E5%AF%86%E7%99%BB%E5%BD%95/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="毛宇的BLOG">
+<meta property="og:url" content="https://myxym-love.github.io/myxym-love.github.io/categories/Git%E6%94%BB%E7%95%A5/index.html">
 <meta property="og:site_name" content="毛宇的BLOG">
-<meta property="og:description" content="云服务器之间实现免密登录1. 安装ssh1yum install -y ssh  注：每台服务器都要安装ssh 2.在每台服务器上生成公钥1ssh-keygen  3.服务器ip映射使用命令 1vim &#x2F;etc&#x2F;hosts  添加ip映射,例如47.100.227.19 master 有几台服务器要实现互相免密就添加几个映射 4.公钥互相拷贝到其他服务器1.在master服务器上执行 123ssh">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="c:/Users/ASUS/Desktop/笔记/1.png">
-<meta property="article:published_time" content="2022-01-02T03:55:45.453Z">
-<meta property="article:modified_time" content="2022-04-16T10:45:20.646Z">
 <meta property="article:author" content="Mao Yu">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="c:/Users/ASUS/Desktop/笔记/1.png">
   
     <link rel="alternative" href="/atom.xml" title="毛宇的BLOG" type="application/atom+xml">
   
@@ -180,201 +174,60 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-服务器之间免密登录" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      云服务器之间实现免密登录
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2022" class="archive-year">2022</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2022/01/02/Git%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/" class="archive-article-date">
+  	<time datetime="2022-01-02T03:55:45.439Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-01-02</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2022/01/02/Git%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/">Git使用教程</a>
     </h1>
   
 
-        
-        <a href="/2022/01/02/%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B9%8B%E9%97%B4%E5%85%8D%E5%AF%86%E7%99%BB%E5%BD%95/" class="archive-article-date">
-  	<time datetime="2022-01-02T03:55:45.453Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-01-02</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="云服务器之间实现免密登录"><a href="#云服务器之间实现免密登录" class="headerlink" title="云服务器之间实现免密登录"></a>云服务器之间实现免密登录</h1><h4 id="1-安装ssh"><a href="#1-安装ssh" class="headerlink" title="1. 安装ssh"></a>1. 安装ssh</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install -y ssh</span><br></pre></td></tr></table></figure>
-
-<p>注：每台服务器都要安装ssh</p>
-<h4 id="2-在每台服务器上生成公钥"><a href="#2-在每台服务器上生成公钥" class="headerlink" title="2.在每台服务器上生成公钥"></a>2.在每台服务器上生成公钥</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen</span><br></pre></td></tr></table></figure>
-
-<h4 id="3-服务器ip映射"><a href="#3-服务器ip映射" class="headerlink" title="3.服务器ip映射"></a>3.服务器ip映射</h4><p>使用命令</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/hosts</span><br></pre></td></tr></table></figure>
-
-<p>添加ip映射,例如47.100.227.19 master 有几台服务器要实现互相免密就添加几个映射</p>
-<h4 id="4-公钥互相拷贝到其他服务器"><a href="#4-公钥互相拷贝到其他服务器" class="headerlink" title="4.公钥互相拷贝到其他服务器"></a>4.公钥互相拷贝到其他服务器</h4><p>1.在master服务器上执行</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ssh-copy-id master</span><br><span class="line">ssh-copy-id slave1</span><br><span class="line">ssh-copy-id slave2</span><br></pre></td></tr></table></figure>
-
-<p>2.在slave1上执行</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ssh-copy-id master</span><br><span class="line">ssh-copy-id slave1</span><br><span class="line">ssh-copy-id slave2</span><br></pre></td></tr></table></figure>
-
-<p>23.在slave上执行</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ssh-copy-id master</span><br><span class="line">ssh-copy-id slave1</span><br><span class="line">ssh-copy-id slave2</span><br></pre></td></tr></table></figure>
-
-<p>注：拷贝的时候是需要输入密码,这也是最后一次输入密码,之后就可以实现免密登录了</p>
-<h1 id="2-Windows与云服务器之间实现免密登录"><a href="#2-Windows与云服务器之间实现免密登录" class="headerlink" title="2.Windows与云服务器之间实现免密登录"></a>2.Windows与云服务器之间实现免密登录</h1><h4 id="1-在Windows主机安装openSSH"><a href="#1-在Windows主机安装openSSH" class="headerlink" title="1.在Windows主机安装openSSH"></a>1.在Windows主机安装openSSH</h4><p><img src="C:\Users\ASUS\Desktop\笔记\1.png"></p>
-<p>出现如图所以表示安装成功</p>
-<h4 id="2-生成公钥"><a href="#2-生成公钥" class="headerlink" title="2.生成公钥"></a>2.生成公钥</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen</span><br></pre></td></tr></table></figure>
-
-<p>生成的默认文件路径是C:\Users\ASUS.ssh</p>
-<p>把Windows中的id.rsa.pub的内容追加到云服务器下.ssh/authorized_keys中</p>
-<p>至此就可以实现免密登录了</p>
-
-      
-
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
+        <div class="article-info info-on-right">
+          
+          
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/hadoop//" class="article-tag-list-link color2">hadoop</a>
+        			<a href="/categories/Git攻略//" class="article-tag-list-link color1">Git攻略</a>
         		</li>
       		
 		</ul>
 	</div>
 
 
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=https://myxym-love.github.io/myxym-love.github.io/2022/01/02/%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B9%8B%E9%97%B4%E5%85%8D%E5%AF%86%E7%99%BB%E5%BD%95/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2022/04/16/Linux%E4%B8%8B%E5%AE%89%E8%A3%85Redis6.X/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Redis学习笔记
-        
-      </div>
-    </a>
   
   
-    <a href="/2022/01/02/Git%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Git使用教程</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
-  
+    </div></section>
   
 
-  
-
-  
-
-  
+    
 
 
           </div>
@@ -397,10 +250,10 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
+		isPost: false,
 		isArchive: false,
 		isTag: false,
-		isCategory: false,
+		isCategory: true,
 		open_in_new: false,
 		toc_hide_index: true,
 		root: "/",
