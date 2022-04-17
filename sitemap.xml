@@ -2,25 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://myxym-love.github.io/2022/01/02/Git%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/</loc>
-    
-    <lastmod>2022-04-17</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://myxym-love.github.io/2022/04/17/%E9%AB%98%E6%95%B0%E9%94%99%E9%A2%98%E6%97%A5%E8%AE%B0%E6%95%B4%E7%90%8601/</loc>
-    
-    <lastmod>2022-04-17</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://myxym-love.github.io/2022/04/16/Linux%E4%B8%8B%E5%AE%89%E8%A3%85Redis6.X/</loc>
+    <loc>https://myxym-love.github.io/2022/01/02/hello-world/</loc>
     
     <lastmod>2022-04-17</lastmod>
     
@@ -38,7 +20,7 @@
   </url>
   
   <url>
-    <loc>https://myxym-love.github.io/tags/index.html</loc>
+    <loc>https://myxym-love.github.io/2022/04/16/Linux%E4%B8%8B%E5%AE%89%E8%A3%85Redis6.X/</loc>
     
     <lastmod>2022-04-17</lastmod>
     
@@ -47,9 +29,27 @@
   </url>
   
   <url>
-    <loc>https://myxym-love.github.io/2022/01/02/hello-world/</loc>
+    <loc>https://myxym-love.github.io/2022/04/17/%E9%AB%98%E6%95%B0%E9%94%99%E9%A2%98%E6%97%A5%E8%AE%B0%E6%95%B4%E7%90%8601/</loc>
     
-    <lastmod>2022-04-16</lastmod>
+    <lastmod>2022-04-17</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://myxym-love.github.io/2022/01/02/Git%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/</loc>
+    
+    <lastmod>2022-04-17</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://myxym-love.github.io/tags/index.html</loc>
+    
+    <lastmod>2022-04-17</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -88,20 +88,6 @@
   </url>
   
   <url>
-    <loc>https://myxym-love.github.io/tags/%E9%AB%98%E6%95%B0/</loc>
-    <lastmod>2022-04-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://myxym-love.github.io/tags/%E9%94%99%E9%A2%98/</loc>
-    <lastmod>2022-04-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://myxym-love.github.io/tags/redis/</loc>
     <lastmod>2022-04-17</lastmod>
     <changefreq>weekly</changefreq>
@@ -115,13 +101,20 @@
     <priority>0.2</priority>
   </url>
   
-
-  
   <url>
-    <loc>https://myxym-love.github.io/categories/%E6%8A%80%E6%9C%AF%E7%BB%8F%E9%AA%8C/</loc>
+    <loc>https://myxym-love.github.io/tags/%E9%AB%98%E6%95%B0/</loc>
     <lastmod>2022-04-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
+  
+  <url>
+    <loc>https://myxym-love.github.io/tags/%E9%94%99%E9%A2%98/</loc>
+    <lastmod>2022-04-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+
   
 </urlset>
