@@ -1,73 +1,130 @@
 <?xml version="1.0" encoding="utf-8"?>
-<search> 
-  
-  
-    
-    <entry>
-      <title>Redis学习笔记</title>
-      <link href="/2022/04/16/Linux%E4%B8%8B%E5%AE%89%E8%A3%85Redis6.X/"/>
-      <url>/2022/04/16/Linux%E4%B8%8B%E5%AE%89%E8%A3%85Redis6.X/</url>
-      
-        <content type="html"><![CDATA[<h2 id="Linux下安装Redis6-X"><a href="#Linux下安装Redis6-X" class="headerlink" title="Linux下安装Redis6.X"></a>Linux下安装Redis6.X</h2><p>注意：安装Redis6.X版本需要gcc9.X以上版本</p><p>1.安装gcc安装包的镜像源</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install centos-release-scl</span><br></pre></td></tr></table></figure><p>2.安装gcc9和g++9</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install devtoolset-9</span><br></pre></td></tr></table></figure><p>3.上传redis6.x到Centos7服务器上，使用RailDrive连接服务器进行上传</p><p>cd /usr/local目录下新建一个software文件夹,之后把所有得软件上传到software文件夹下，方便管理</p><p>4.解压redis</p><p>tar -zxvf redis-6.2.5.tar.gz</p><p>5.进入redis-6.2.5目录下，执行以下命令</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make</span><br></pre></td></tr></table></figure><p>6.redis的默认安装路径 /usr/local/bin</p><p>7.在/usr/local/bin目录下新建一个mconfig目录,把redis配置文件redis.conf拷贝一份到此目录下，以后就使用mconfig下的配置文件启动</p><p>8.redis默认不是后台启动的</p><p>9.vim redis.conf进行编辑，修改配置 </p><p>damonize no no改为yes</p><p>10.启动redis服务，通过指定的配置文件启动，在/usr/local/bin目录下执行</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">redis-server mconfig/redis.conf</span><br></pre></td></tr></table></figure><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">reids-cli -p 6379</span><br></pre></td></tr></table></figure><p>11.关闭redis服务shutdown</p><h2 id="Redis基础知识"><a href="#Redis基础知识" class="headerlink" title="Redis基础知识"></a>Redis基础知识</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; select 1 <span class="comment">#切换数据库</span></span><br><span class="line">OK</span><br><span class="line">127.0.0.1:6379[1]&gt; DBSIZE <span class="comment">#查看数据库的大小</span></span><br><span class="line">(<span class="built_in">integer</span>) 0</span><br><span class="line">127.0.0.1:6379[1]&gt; <span class="built_in">set</span> name myxym</span><br><span class="line">OK</span><br><span class="line">127.0.0.1:6379[1]&gt; DBSIZE</span><br><span class="line">(<span class="built_in">integer</span>) 1</span><br><span class="line">127.0.0.1:6379[1]&gt; </span><br></pre></td></tr></table></figure><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; select 1</span><br><span class="line">OK</span><br><span class="line">127.0.0.1:6379[1]&gt; DBSIZE</span><br><span class="line">(<span class="built_in">integer</span>) 0</span><br><span class="line">127.0.0.1:6379[1]&gt; <span class="built_in">set</span> name myxym</span><br><span class="line">OK</span><br><span class="line">127.0.0.1:6379[1]&gt; DBSIZE</span><br><span class="line">(<span class="built_in">integer</span>) 1</span><br><span class="line">127.0.0.1:6379[1]&gt; FLUSHDB  <span class="comment">#清除当前数据库</span></span><br><span class="line">OK</span><br><span class="line">127.0.0.1:6379[1]&gt; DBSIZE</span><br><span class="line">(<span class="built_in">integer</span>) 0</span><br><span class="line">127.0.0.1:6379[1]&gt; </span><br></pre></td></tr></table></figure><p>FLUSHALL 清楚所有数据库数据</p><h2 id="五大数据类型"><a href="#五大数据类型" class="headerlink" title="五大数据类型"></a>五大数据类型</h2><h3 id="1-Redis-key"><a href="#1-Redis-key" class="headerlink" title="1.Redis-key"></a>1.Redis-key</h3><p>​    </p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; <span class="built_in">set</span> name myxym</span><br><span class="line">OK</span><br><span class="line">127.0.0.1:6379&gt; get name</span><br><span class="line"><span class="string">&quot;myxym&quot;</span></span><br><span class="line">127.0.0.1:6379&gt; EXPIRE name 60 <span class="comment">#设置过期时间</span></span><br><span class="line">(<span class="built_in">integer</span>) 1</span><br><span class="line">127.0.0.1:6379&gt; ttl name  <span class="comment">#查看过期倒计时</span></span><br><span class="line">(<span class="built_in">integer</span>) 58</span><br><span class="line">127.0.0.1:6379&gt; ttl name</span><br><span class="line">(<span class="built_in">integer</span>) 57</span><br><span class="line">127.0.0.1:6379&gt; ttl name</span><br><span class="line">(<span class="built_in">integer</span>) 54</span><br><span class="line">127.0.0.1:6379&gt; ttl anem</span><br><span class="line">(<span class="built_in">integer</span>) -2</span><br><span class="line">127.0.0.1:6379&gt; ttl name</span><br><span class="line">(<span class="built_in">integer</span>) 35</span><br><span class="line">127.0.0.1:6379&gt; get name</span><br><span class="line"><span class="string">&quot;myxym&quot;</span></span><br><span class="line">127.0.0.1:6379&gt; move name 1 <span class="comment">#从当前数据库移除key</span></span><br><span class="line">(<span class="built_in">integer</span>) 0</span><br><span class="line">127.0.0.1:6379&gt; get name</span><br><span class="line"><span class="string">&quot;myxym&quot;</span></span><br><span class="line">127.0.0.1:6379&gt; keys *</span><br><span class="line">1) <span class="string">&quot;name&quot;</span></span><br><span class="line">127.0.0.1:6379&gt; tt lname</span><br><span class="line">(error) ERR unknown <span class="built_in">command</span> `tt`, with args beginning with: `lname`, </span><br><span class="line">127.0.0.1:6379&gt; ttl name</span><br><span class="line">(<span class="built_in">integer</span>) 2</span><br><span class="line">127.0.0.1:6379&gt; ttl name</span><br><span class="line">(<span class="built_in">integer</span>) -2</span><br><span class="line">127.0.0.1:6379&gt; get name</span><br><span class="line">(nil)</span><br><span class="line">127.0.0.1:6379&gt; <span class="built_in">set</span> name myxym</span><br><span class="line">OK</span><br><span class="line">127.0.0.1:6379&gt; ttl name</span><br><span class="line">(<span class="built_in">integer</span>) -1</span><br><span class="line">127.0.0.1:6379&gt; ttl name</span><br><span class="line">(<span class="built_in">integer</span>) -1</span><br><span class="line">127.0.0.1:6379&gt; get name</span><br><span class="line"><span class="string">&quot;myxym&quot;</span></span><br><span class="line">127.0.0.1:6379&gt; move name 1</span><br><span class="line">(<span class="built_in">integer</span>) 0</span><br><span class="line">127.0.0.1:6379&gt; <span class="built_in">type</span> name <span class="comment">#查看当前key的类型</span></span><br><span class="line">string</span><br><span class="line">127.0.0.1:6379&gt; </span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure><h3 id="2-String"><a href="#2-String" class="headerlink" title="2.String"></a>2.String</h3>]]></content>
-      
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>Git使用教程</title>
-      <link href="/2022/01/02/Git%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/"/>
-      <url>/2022/01/02/Git%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/</url>
-      
-        <content type="html"><![CDATA[<h1 id="Git使用教程"><a href="#Git使用教程" class="headerlink" title="Git使用教程"></a>Git使用教程</h1><h2 id="1-如何把本地的项目上传到GitHub上"><a href="#1-如何把本地的项目上传到GitHub上" class="headerlink" title="1.如何把本地的项目上传到GitHub上"></a>1.如何把本地的项目上传到GitHub上</h2><p>1.打开Git Bash进入到要上传的项目的目录下</p><p>2.配置用户名和邮箱</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name &quot;Your username&quot;</span><br><span class="line">git config --global user.email &quot;Your email&quot;</span><br></pre></td></tr></table></figure><p>3.在GitHub上设置本地的ssh公钥</p><p>（1）在本地生成ssh公钥私钥</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen</span><br></pre></td></tr></table></figure><p>生成的.ssh文件默认在C:\Users\ASUS\.ssh (ASUS是我电脑的名字)</p><p>在.ssh文件下有id_rsa.pub文件,把里面的内容添加到你的GigHub的设置里</p><p>4.在你的GitHub上新建一个仓库,复制仓库的ssh地址</p><p>5.把你创建好的仓库克隆到你的项目文件夹下</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone git@github.com:myxym-love/javaweb.git</span><br></pre></td></tr></table></figure><p> (<a href="mailto:&#103;&#105;&#x74;&#64;&#103;&#105;&#116;&#x68;&#x75;&#x62;&#x2e;&#x63;&#x6f;&#x6d;">&#103;&#105;&#x74;&#64;&#103;&#105;&#116;&#x68;&#x75;&#x62;&#x2e;&#x63;&#x6f;&#x6d;</a>:myxym-love/javaweb.git)换成你自己仓库地址</p><p>6.把你项目的下的所有文件以及文件夹(除了你拉取的仓库文件夹)复制到你拉取的仓库文件夹里</p><p>7.进去到你拉取的仓库文件夹里</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git add . (.表示所有文件)</span><br><span class="line">git commit -m &quot;描述&quot;</span><br><span class="line">git push -u origin master (第一次psuh要加-u)</span><br></pre></td></tr></table></figure>]]></content>
-      
-      
-      
-        <tags>
-            
-            <tag> Git </tag>
-            
-            <tag> 攻略 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>云服务器之间实现免密登录</title>
-      <link href="/2022/01/02/%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B9%8B%E9%97%B4%E5%85%8D%E5%AF%86%E7%99%BB%E5%BD%95/"/>
-      <url>/2022/01/02/%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B9%8B%E9%97%B4%E5%85%8D%E5%AF%86%E7%99%BB%E5%BD%95/</url>
-      
-        <content type="html"><![CDATA[<h1 id="云服务器之间实现免密登录"><a href="#云服务器之间实现免密登录" class="headerlink" title="云服务器之间实现免密登录"></a>云服务器之间实现免密登录</h1><h4 id="1-安装ssh"><a href="#1-安装ssh" class="headerlink" title="1. 安装ssh"></a>1. 安装ssh</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install -y ssh</span><br></pre></td></tr></table></figure><p>注：每台服务器都要安装ssh</p><h4 id="2-在每台服务器上生成公钥"><a href="#2-在每台服务器上生成公钥" class="headerlink" title="2.在每台服务器上生成公钥"></a>2.在每台服务器上生成公钥</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen</span><br></pre></td></tr></table></figure><h4 id="3-服务器ip映射"><a href="#3-服务器ip映射" class="headerlink" title="3.服务器ip映射"></a>3.服务器ip映射</h4><p>使用命令</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/hosts</span><br></pre></td></tr></table></figure><p>添加ip映射,例如47.100.227.19 master 有几台服务器要实现互相免密就添加几个映射</p><h4 id="4-公钥互相拷贝到其他服务器"><a href="#4-公钥互相拷贝到其他服务器" class="headerlink" title="4.公钥互相拷贝到其他服务器"></a>4.公钥互相拷贝到其他服务器</h4><p>1.在master服务器上执行</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ssh-copy-id master</span><br><span class="line">ssh-copy-id slave1</span><br><span class="line">ssh-copy-id slave2</span><br></pre></td></tr></table></figure><p>2.在slave1上执行</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ssh-copy-id master</span><br><span class="line">ssh-copy-id slave1</span><br><span class="line">ssh-copy-id slave2</span><br></pre></td></tr></table></figure><p>23.在slave上执行</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ssh-copy-id master</span><br><span class="line">ssh-copy-id slave1</span><br><span class="line">ssh-copy-id slave2</span><br></pre></td></tr></table></figure><p>注：拷贝的时候是需要输入密码,这也是最后一次输入密码,之后就可以实现免密登录了</p><h1 id="2-Windows与云服务器之间实现免密登录"><a href="#2-Windows与云服务器之间实现免密登录" class="headerlink" title="2.Windows与云服务器之间实现免密登录"></a>2.Windows与云服务器之间实现免密登录</h1><h4 id="1-在Windows主机安装openSSH"><a href="#1-在Windows主机安装openSSH" class="headerlink" title="1.在Windows主机安装openSSH"></a>1.在Windows主机安装openSSH</h4><p><img src="https://clouddisk11.oss-cn-shanghai.aliyuncs.com/%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B9%8B%E9%97%B4%E5%AF%86%E7%A0%81%E7%99%BB%E5%BD%95/1.png"><br><img src="/images/pasted-1.png" alt="upload successful"><br>出现如图所以表示安装成功</p><h4 id="2-生成公钥"><a href="#2-生成公钥" class="headerlink" title="2.生成公钥"></a>2.生成公钥</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen</span><br></pre></td></tr></table></figure><p>生成的默认文件路径是C:\Users\ASUS.ssh</p><p>把Windows中的id.rsa.pub的内容追加到云服务器下.ssh/authorized_keys中</p><p>至此就可以实现免密登录了</p>]]></content>
-      
-      
-      
-        <tags>
-            
-            <tag> 服务器 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>Hello World</title>
-      <link href="/2022/01/02/hello-world/"/>
-      <url>/2022/01/02/hello-world/</url>
-      
-        <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
-      
-      
-      
-    </entry>
-    
-    
-  
-  
+<search>
+  <entry>
+    <title>Redis学习笔记</title>
+    <url>/2022/04/16/Linux%E4%B8%8B%E5%AE%89%E8%A3%85Redis6.X/</url>
+    <content><![CDATA[<h2 id="Linux下安装Redis6-X"><a href="#Linux下安装Redis6-X" class="headerlink" title="Linux下安装Redis6.X"></a>Linux下安装Redis6.X</h2><p>注意：安装Redis6.X版本需要gcc9.X以上版本</p>
+<p>1.安装gcc安装包的镜像源</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum install centos-release-scl</span><br></pre></td></tr></table></figure>
+
+
+
+<p>2.安装gcc9和g++9</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum install devtoolset-9</span><br></pre></td></tr></table></figure>
+
+
+
+<p>3.上传redis6.x到Centos7服务器上，使用RailDrive连接服务器进行上传</p>
+<p>cd /usr/local目录下新建一个software文件夹,之后把所有得软件上传到software文件夹下，方便管理</p>
+<p>4.解压redis</p>
+<p>tar -zxvf redis-6.2.5.tar.gz</p>
+<p>5.进入redis-6.2.5目录下，执行以下命令</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">make</span><br></pre></td></tr></table></figure>
+
+<p>6.redis的默认安装路径 /usr/local/bin</p>
+<p>7.在/usr/local/bin目录下新建一个mconfig目录,把redis配置文件redis.conf拷贝一份到此目录下，以后就使用mconfig下的配置文件启动</p>
+<p>8.redis默认不是后台启动的</p>
+<p>9.vim redis.conf进行编辑，修改配置 </p>
+<p>damonize no no改为yes</p>
+<p>10.启动redis服务，通过指定的配置文件启动，在/usr/local/bin目录下执行</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">redis-server mconfig/redis.conf</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">reids-cli -p 6379</span><br></pre></td></tr></table></figure>
+
+<p>11.关闭redis服务shutdown</p>
+<h2 id="Redis基础知识"><a href="#Redis基础知识" class="headerlink" title="Redis基础知识"></a>Redis基础知识</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">127.0.0.1:6379&gt; select 1 <span class="comment">#切换数据库</span></span><br><span class="line">OK</span><br><span class="line">127.0.0.1:6379[1]&gt; DBSIZE <span class="comment">#查看数据库的大小</span></span><br><span class="line">(<span class="built_in">integer</span>) 0</span><br><span class="line">127.0.0.1:6379[1]&gt; <span class="built_in">set</span> name myxym</span><br><span class="line">OK</span><br><span class="line">127.0.0.1:6379[1]&gt; DBSIZE</span><br><span class="line">(<span class="built_in">integer</span>) 1</span><br><span class="line">127.0.0.1:6379[1]&gt; </span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">127.0.0.1:6379&gt; select 1</span><br><span class="line">OK</span><br><span class="line">127.0.0.1:6379[1]&gt; DBSIZE</span><br><span class="line">(<span class="built_in">integer</span>) 0</span><br><span class="line">127.0.0.1:6379[1]&gt; <span class="built_in">set</span> name myxym</span><br><span class="line">OK</span><br><span class="line">127.0.0.1:6379[1]&gt; DBSIZE</span><br><span class="line">(<span class="built_in">integer</span>) 1</span><br><span class="line">127.0.0.1:6379[1]&gt; FLUSHDB  <span class="comment">#清除当前数据库</span></span><br><span class="line">OK</span><br><span class="line">127.0.0.1:6379[1]&gt; DBSIZE</span><br><span class="line">(<span class="built_in">integer</span>) 0</span><br><span class="line">127.0.0.1:6379[1]&gt; </span><br></pre></td></tr></table></figure>
+
+<p>FLUSHALL 清楚所有数据库数据</p>
+<h2 id="五大数据类型"><a href="#五大数据类型" class="headerlink" title="五大数据类型"></a>五大数据类型</h2><h3 id="1-Redis-key"><a href="#1-Redis-key" class="headerlink" title="1.Redis-key"></a>1.Redis-key</h3><p>​    </p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">127.0.0.1:6379&gt; <span class="built_in">set</span> name myxym</span><br><span class="line">OK</span><br><span class="line">127.0.0.1:6379&gt; get name</span><br><span class="line"><span class="string">&quot;myxym&quot;</span></span><br><span class="line">127.0.0.1:6379&gt; EXPIRE name 60 <span class="comment">#设置过期时间</span></span><br><span class="line">(<span class="built_in">integer</span>) 1</span><br><span class="line">127.0.0.1:6379&gt; ttl name  <span class="comment">#查看过期倒计时</span></span><br><span class="line">(<span class="built_in">integer</span>) 58</span><br><span class="line">127.0.0.1:6379&gt; ttl name</span><br><span class="line">(<span class="built_in">integer</span>) 57</span><br><span class="line">127.0.0.1:6379&gt; ttl name</span><br><span class="line">(<span class="built_in">integer</span>) 54</span><br><span class="line">127.0.0.1:6379&gt; ttl anem</span><br><span class="line">(<span class="built_in">integer</span>) -2</span><br><span class="line">127.0.0.1:6379&gt; ttl name</span><br><span class="line">(<span class="built_in">integer</span>) 35</span><br><span class="line">127.0.0.1:6379&gt; get name</span><br><span class="line"><span class="string">&quot;myxym&quot;</span></span><br><span class="line">127.0.0.1:6379&gt; move name 1 <span class="comment">#从当前数据库移除key</span></span><br><span class="line">(<span class="built_in">integer</span>) 0</span><br><span class="line">127.0.0.1:6379&gt; get name</span><br><span class="line"><span class="string">&quot;myxym&quot;</span></span><br><span class="line">127.0.0.1:6379&gt; keys *</span><br><span class="line">1) <span class="string">&quot;name&quot;</span></span><br><span class="line">127.0.0.1:6379&gt; tt lname</span><br><span class="line">(error) ERR unknown <span class="built_in">command</span> `tt`, with args beginning with: `lname`, </span><br><span class="line">127.0.0.1:6379&gt; ttl name</span><br><span class="line">(<span class="built_in">integer</span>) 2</span><br><span class="line">127.0.0.1:6379&gt; ttl name</span><br><span class="line">(<span class="built_in">integer</span>) -2</span><br><span class="line">127.0.0.1:6379&gt; get name</span><br><span class="line">(nil)</span><br><span class="line">127.0.0.1:6379&gt; <span class="built_in">set</span> name myxym</span><br><span class="line">OK</span><br><span class="line">127.0.0.1:6379&gt; ttl name</span><br><span class="line">(<span class="built_in">integer</span>) -1</span><br><span class="line">127.0.0.1:6379&gt; ttl name</span><br><span class="line">(<span class="built_in">integer</span>) -1</span><br><span class="line">127.0.0.1:6379&gt; get name</span><br><span class="line"><span class="string">&quot;myxym&quot;</span></span><br><span class="line">127.0.0.1:6379&gt; move name 1</span><br><span class="line">(<span class="built_in">integer</span>) 0</span><br><span class="line">127.0.0.1:6379&gt; <span class="built_in">type</span> name <span class="comment">#查看当前key的类型</span></span><br><span class="line">string</span><br><span class="line">127.0.0.1:6379&gt; </span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h3 id="2-String"><a href="#2-String" class="headerlink" title="2.String"></a>2.String</h3>]]></content>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/2022/01/02/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>Git使用教程</title>
+    <url>/2022/01/02/Git%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/</url>
+    <content><![CDATA[<h1 id="Git使用教程"><a href="#Git使用教程" class="headerlink" title="Git使用教程"></a>Git使用教程</h1><h2 id="1-如何把本地的项目上传到GitHub上"><a href="#1-如何把本地的项目上传到GitHub上" class="headerlink" title="1.如何把本地的项目上传到GitHub上"></a>1.如何把本地的项目上传到GitHub上</h2><p>1.打开Git Bash进入到要上传的项目的目录下</p>
+<p>2.配置用户名和邮箱</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git config --global user.name &quot;Your username&quot;</span><br><span class="line">git config --global user.email &quot;Your email&quot;</span><br></pre></td></tr></table></figure>
+
+<p>3.在GitHub上设置本地的ssh公钥</p>
+<p>（1）在本地生成ssh公钥私钥</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssh-keygen</span><br></pre></td></tr></table></figure>
+
+<p>生成的.ssh文件默认在C:\Users\ASUS\.ssh (ASUS是我电脑的名字)</p>
+<p>在.ssh文件下有id_rsa.pub文件,把里面的内容添加到你的GigHub的设置里</p>
+<p>4.在你的GitHub上新建一个仓库,复制仓库的ssh地址</p>
+<p>5.把你创建好的仓库克隆到你的项目文件夹下</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone git@github.com:myxym-love/javaweb.git</span><br></pre></td></tr></table></figure>
+
+<p> (<a href="mailto:&#x67;&#x69;&#x74;&#64;&#x67;&#x69;&#116;&#x68;&#117;&#98;&#x2e;&#x63;&#111;&#109;">&#x67;&#x69;&#x74;&#64;&#x67;&#x69;&#116;&#x68;&#117;&#98;&#x2e;&#x63;&#111;&#109;</a>:myxym-love/javaweb.git)换成你自己仓库地址</p>
+<p>6.把你项目的下的所有文件以及文件夹(除了你拉取的仓库文件夹)复制到你拉取的仓库文件夹里</p>
+<p>7.进去到你拉取的仓库文件夹里</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git add . (.表示所有文件)</span><br><span class="line">git commit -m &quot;描述&quot;</span><br><span class="line">git push -u origin master (第一次psuh要加-u)</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <tags>
+        <tag>Git</tag>
+        <tag>攻略</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>云服务器之间实现免密登录</title>
+    <url>/2022/01/02/%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B9%8B%E9%97%B4%E5%85%8D%E5%AF%86%E7%99%BB%E5%BD%95/</url>
+    <content><![CDATA[<h1 id="云服务器之间实现免密登录"><a href="#云服务器之间实现免密登录" class="headerlink" title="云服务器之间实现免密登录"></a>云服务器之间实现免密登录</h1><h4 id="1-安装ssh"><a href="#1-安装ssh" class="headerlink" title="1. 安装ssh"></a>1. 安装ssh</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum install -y ssh</span><br></pre></td></tr></table></figure>
+
+<p>注：每台服务器都要安装ssh</p>
+<h4 id="2-在每台服务器上生成公钥"><a href="#2-在每台服务器上生成公钥" class="headerlink" title="2.在每台服务器上生成公钥"></a>2.在每台服务器上生成公钥</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh-keygen</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-服务器ip映射"><a href="#3-服务器ip映射" class="headerlink" title="3.服务器ip映射"></a>3.服务器ip映射</h4><p>使用命令</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">vim /etc/hosts</span><br></pre></td></tr></table></figure>
+
+<p>添加ip映射,例如47.100.227.19 master 有几台服务器要实现互相免密就添加几个映射</p>
+<h4 id="4-公钥互相拷贝到其他服务器"><a href="#4-公钥互相拷贝到其他服务器" class="headerlink" title="4.公钥互相拷贝到其他服务器"></a>4.公钥互相拷贝到其他服务器</h4><p>1.在master服务器上执行</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssh-copy-id master</span><br><span class="line">ssh-copy-id slave1</span><br><span class="line">ssh-copy-id slave2</span><br></pre></td></tr></table></figure>
+
+<p>2.在slave1上执行</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssh-copy-id master</span><br><span class="line">ssh-copy-id slave1</span><br><span class="line">ssh-copy-id slave2</span><br></pre></td></tr></table></figure>
+
+<p>23.在slave上执行</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssh-copy-id master</span><br><span class="line">ssh-copy-id slave1</span><br><span class="line">ssh-copy-id slave2</span><br></pre></td></tr></table></figure>
+
+<p>注：拷贝的时候是需要输入密码,这也是最后一次输入密码,之后就可以实现免密登录了</p>
+<h1 id="2-Windows与云服务器之间实现免密登录"><a href="#2-Windows与云服务器之间实现免密登录" class="headerlink" title="2.Windows与云服务器之间实现免密登录"></a>2.Windows与云服务器之间实现免密登录</h1><h4 id="1-在Windows主机安装openSSH"><a href="#1-在Windows主机安装openSSH" class="headerlink" title="1.在Windows主机安装openSSH"></a>1.在Windows主机安装openSSH</h4><p><img src="https://clouddisk11.oss-cn-shanghai.aliyuncs.com/%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B9%8B%E9%97%B4%E5%AF%86%E7%A0%81%E7%99%BB%E5%BD%95/1.png"><br><img src="/images/pasted-1.png" alt="upload successful"><br>出现如图所以表示安装成功</p>
+<h4 id="2-生成公钥"><a href="#2-生成公钥" class="headerlink" title="2.生成公钥"></a>2.生成公钥</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssh-keygen</span><br></pre></td></tr></table></figure>
+
+<p>生成的默认文件路径是C:\Users\ASUS.ssh</p>
+<p>把Windows中的id.rsa.pub的内容追加到云服务器下.ssh/authorized_keys中</p>
+<p>至此就可以实现免密登录了</p>
+]]></content>
+      <tags>
+        <tag>服务器</tag>
+      </tags>
+  </entry>
 </search>
