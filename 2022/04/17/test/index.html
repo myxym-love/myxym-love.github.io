@@ -6,17 +6,15 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://myxym-love.github.io">
-  <title>Redis学习笔记 | 毛宇的BLOG</title>
+  <title>test | 毛宇的BLOG</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Linux下安装Redis6.X注意：安装Redis6.X版本需要gcc9.X以上版本 1.安装gcc安装包的镜像源 1yum install centos-release-scl    2.安装gcc9和g++9 1yum install devtoolset-9    3.上传redis6.x到Centos7服务器上，使用RailDrive连接服务器进行上传 cd &#x2F;usr&#x2F;local目录下新">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Redis学习笔记">
-<meta property="og:url" content="https://myxym-love.github.io/2022/04/16/Linux%E4%B8%8B%E5%AE%89%E8%A3%85Redis6.X/index.html">
+  <meta property="og:type" content="article">
+<meta property="og:title" content="test">
+<meta property="og:url" content="https://myxym-love.github.io/2022/04/17/test/index.html">
 <meta property="og:site_name" content="毛宇的BLOG">
-<meta property="og:description" content="Linux下安装Redis6.X注意：安装Redis6.X版本需要gcc9.X以上版本 1.安装gcc安装包的镜像源 1yum install centos-release-scl    2.安装gcc9和g++9 1yum install devtoolset-9    3.上传redis6.x到Centos7服务器上，使用RailDrive连接服务器进行上传 cd &#x2F;usr&#x2F;local目录下新">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-04-16T10:11:09.120Z">
-<meta property="article:modified_time" content="2022-04-16T13:41:02.174Z">
+<meta property="article:published_time" content="2022-04-17T07:37:45.638Z">
+<meta property="article:modified_time" content="2022-04-17T07:41:12.120Z">
 <meta property="article:author" content="Mao Yu">
 <meta name="twitter:card" content="summary">
   
@@ -178,70 +176,27 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Linux下安装Redis6.X" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-test" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Redis学习笔记
+      test
     </h1>
   
 
         
-        <a href="/2022/04/16/Linux%E4%B8%8B%E5%AE%89%E8%A3%85Redis6.X/" class="archive-article-date">
-  	<time datetime="2022-04-16T10:11:09.120Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-04-16</time>
+        <a href="/2022/04/17/test/" class="archive-article-date">
+  	<time datetime="2022-04-17T07:37:45.638Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-04-17</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="Linux下安装Redis6-X"><a href="#Linux下安装Redis6-X" class="headerlink" title="Linux下安装Redis6.X"></a>Linux下安装Redis6.X</h2><p>注意：安装Redis6.X版本需要gcc9.X以上版本</p>
-<p>1.安装gcc安装包的镜像源</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install centos-release-scl</span><br></pre></td></tr></table></figure>
-
-
-
-<p>2.安装gcc9和g++9</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install devtoolset-9</span><br></pre></td></tr></table></figure>
-
-
-
-<p>3.上传redis6.x到Centos7服务器上，使用RailDrive连接服务器进行上传</p>
-<p>cd /usr/local目录下新建一个software文件夹,之后把所有得软件上传到software文件夹下，方便管理</p>
-<p>4.解压redis</p>
-<p>tar -zxvf redis-6.2.5.tar.gz</p>
-<p>5.进入redis-6.2.5目录下，执行以下命令</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make</span><br></pre></td></tr></table></figure>
-
-<p>6.redis的默认安装路径 /usr/local/bin</p>
-<p>7.在/usr/local/bin目录下新建一个mconfig目录,把redis配置文件redis.conf拷贝一份到此目录下，以后就使用mconfig下的配置文件启动</p>
-<p>8.redis默认不是后台启动的</p>
-<p>9.vim redis.conf进行编辑，修改配置 </p>
-<p>damonize no no改为yes</p>
-<p>10.启动redis服务，通过指定的配置文件启动，在/usr/local/bin目录下执行</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">redis-server mconfig/redis.conf</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">reids-cli -p 6379</span><br></pre></td></tr></table></figure>
-
-<p>11.关闭redis服务shutdown</p>
-<h2 id="Redis基础知识"><a href="#Redis基础知识" class="headerlink" title="Redis基础知识"></a>Redis基础知识</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; select 1 <span class="comment">#切换数据库</span></span><br><span class="line">OK</span><br><span class="line">127.0.0.1:6379[1]&gt; DBSIZE <span class="comment">#查看数据库的大小</span></span><br><span class="line">(<span class="built_in">integer</span>) 0</span><br><span class="line">127.0.0.1:6379[1]&gt; <span class="built_in">set</span> name myxym</span><br><span class="line">OK</span><br><span class="line">127.0.0.1:6379[1]&gt; DBSIZE</span><br><span class="line">(<span class="built_in">integer</span>) 1</span><br><span class="line">127.0.0.1:6379[1]&gt; </span><br></pre></td></tr></table></figure>
-
-
-
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; select 1</span><br><span class="line">OK</span><br><span class="line">127.0.0.1:6379[1]&gt; DBSIZE</span><br><span class="line">(<span class="built_in">integer</span>) 0</span><br><span class="line">127.0.0.1:6379[1]&gt; <span class="built_in">set</span> name myxym</span><br><span class="line">OK</span><br><span class="line">127.0.0.1:6379[1]&gt; DBSIZE</span><br><span class="line">(<span class="built_in">integer</span>) 1</span><br><span class="line">127.0.0.1:6379[1]&gt; FLUSHDB  <span class="comment">#清除当前数据库</span></span><br><span class="line">OK</span><br><span class="line">127.0.0.1:6379[1]&gt; DBSIZE</span><br><span class="line">(<span class="built_in">integer</span>) 0</span><br><span class="line">127.0.0.1:6379[1]&gt; </span><br></pre></td></tr></table></figure>
-
-<p>FLUSHALL 清楚所有数据库数据</p>
-<h2 id="五大数据类型"><a href="#五大数据类型" class="headerlink" title="五大数据类型"></a>五大数据类型</h2><h3 id="1-Redis-key"><a href="#1-Redis-key" class="headerlink" title="1.Redis-key"></a>1.Redis-key</h3><p>​    </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; <span class="built_in">set</span> name myxym</span><br><span class="line">OK</span><br><span class="line">127.0.0.1:6379&gt; get name</span><br><span class="line"><span class="string">&quot;myxym&quot;</span></span><br><span class="line">127.0.0.1:6379&gt; EXPIRE name 60 <span class="comment">#设置过期时间</span></span><br><span class="line">(<span class="built_in">integer</span>) 1</span><br><span class="line">127.0.0.1:6379&gt; ttl name  <span class="comment">#查看过期倒计时</span></span><br><span class="line">(<span class="built_in">integer</span>) 58</span><br><span class="line">127.0.0.1:6379&gt; ttl name</span><br><span class="line">(<span class="built_in">integer</span>) 57</span><br><span class="line">127.0.0.1:6379&gt; ttl name</span><br><span class="line">(<span class="built_in">integer</span>) 54</span><br><span class="line">127.0.0.1:6379&gt; ttl anem</span><br><span class="line">(<span class="built_in">integer</span>) -2</span><br><span class="line">127.0.0.1:6379&gt; ttl name</span><br><span class="line">(<span class="built_in">integer</span>) 35</span><br><span class="line">127.0.0.1:6379&gt; get name</span><br><span class="line"><span class="string">&quot;myxym&quot;</span></span><br><span class="line">127.0.0.1:6379&gt; move name 1 <span class="comment">#从当前数据库移除key</span></span><br><span class="line">(<span class="built_in">integer</span>) 0</span><br><span class="line">127.0.0.1:6379&gt; get name</span><br><span class="line"><span class="string">&quot;myxym&quot;</span></span><br><span class="line">127.0.0.1:6379&gt; keys *</span><br><span class="line">1) <span class="string">&quot;name&quot;</span></span><br><span class="line">127.0.0.1:6379&gt; tt lname</span><br><span class="line">(error) ERR unknown <span class="built_in">command</span> `tt`, with args beginning with: `lname`, </span><br><span class="line">127.0.0.1:6379&gt; ttl name</span><br><span class="line">(<span class="built_in">integer</span>) 2</span><br><span class="line">127.0.0.1:6379&gt; ttl name</span><br><span class="line">(<span class="built_in">integer</span>) -2</span><br><span class="line">127.0.0.1:6379&gt; get name</span><br><span class="line">(nil)</span><br><span class="line">127.0.0.1:6379&gt; <span class="built_in">set</span> name myxym</span><br><span class="line">OK</span><br><span class="line">127.0.0.1:6379&gt; ttl name</span><br><span class="line">(<span class="built_in">integer</span>) -1</span><br><span class="line">127.0.0.1:6379&gt; ttl name</span><br><span class="line">(<span class="built_in">integer</span>) -1</span><br><span class="line">127.0.0.1:6379&gt; get name</span><br><span class="line"><span class="string">&quot;myxym&quot;</span></span><br><span class="line">127.0.0.1:6379&gt; move name 1</span><br><span class="line">(<span class="built_in">integer</span>) 0</span><br><span class="line">127.0.0.1:6379&gt; <span class="built_in">type</span> name <span class="comment">#查看当前key的类型</span></span><br><span class="line">string</span><br><span class="line">127.0.0.1:6379&gt; </span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-
-
-
-<h3 id="2-String"><a href="#2-String" class="headerlink" title="2.String"></a>2.String</h3>
+        
       
 
       
@@ -276,6 +231,17 @@
       
       
       
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/life//" class="article-tag-list-link color5">life</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
 
       
 
@@ -325,7 +291,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=https://myxym-love.github.io/2022/04/16/Linux%E4%B8%8B%E5%AE%89%E8%A3%85Redis6.X/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=https://myxym-love.github.io/2022/04/17/test/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -339,18 +305,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2022/04/17/test/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          test
-        
-      </div>
-    </a>
   
-  
-    <a href="/2022/01/02/Git%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Git使用教程</div>
+    <a href="/2022/04/16/Linux%E4%B8%8B%E5%AE%89%E8%A3%85Redis6.X/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Redis学习笔记</div>
       <i class="icon-circle-right"></i>
     </a>
   
