@@ -1087,9 +1087,16 @@ string
     <div id="vcomments" class="card-content" style="display: grid">
     </div>
 </div>
-
+<!--
 <script src="/libs/valine/av-min.js"></script>
 <script src="https://unpkg.com/valine/dist/Valine.min.js"></script>
+-->
+ <!--载入js，在</body>之前插入即可-->
+    <!--Leancloud 操作库:-->
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <!--Valine 的核心代码库-->
+    <script src="../../source/libs/valine/Valine.min.js"></script>
+
 <script>
     new Valine({
         el: '#vcomments',
