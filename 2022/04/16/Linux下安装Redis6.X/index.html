@@ -7,12 +7,12 @@
     <meta name="keywords" content="Redis学习笔记, 毛宇的BLOG">
     <meta name="description" content="Linux下安装Redis6.X注意：安装Redis6.X版本需要gcc9.X以上版本
 1.安装gcc安装包的镜像源
-1yum install centos-release-scl
+yum install centos-release-scl
 
 
 
 2.安装gcc9和g++9
-1yum install">
+yum install d">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -39,7 +39,7 @@
 
     <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
 
-<meta name="generator" content="Hexo 6.0.0"></head>
+<meta name="generator" content="Hexo 6.1.0"></head>
 
 
 <body>
@@ -476,7 +476,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    652
+                    688
                 </div>
                 
 
@@ -498,6 +498,9 @@
         <hr class="clearfix">
 
         
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
 
         
 
@@ -505,12 +508,12 @@
             <div id="articleContent">
                 <h2 id="Linux下安装Redis6-X"><a href="#Linux下安装Redis6-X" class="headerlink" title="Linux下安装Redis6.X"></a>Linux下安装Redis6.X</h2><p>注意：安装Redis6.X版本需要gcc9.X以上版本</p>
 <p>1.安装gcc安装包的镜像源</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install centos-release-scl</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">yum install centos-release-scl<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 
 
 <p>2.安装gcc9和g++9</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install devtoolset-9</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">yum install devtoolset-9<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 
 
@@ -519,7 +522,7 @@
 <p>4.解压redis</p>
 <p>tar -zxvf redis-6.2.5.tar.gz</p>
 <p>5.进入redis-6.2.5目录下，执行以下命令</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">make<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>6.redis的默认安装路径 /usr/local/bin</p>
 <p>7.在/usr/local/bin目录下新建一个mconfig目录,把redis配置文件redis.conf拷贝一份到此目录下，以后就使用mconfig下的配置文件启动</p>
@@ -527,20 +530,86 @@
 <p>9.vim redis.conf进行编辑，修改配置 </p>
 <p>damonize no no改为yes</p>
 <p>10.启动redis服务，通过指定的配置文件启动，在/usr/local/bin目录下执行</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">redis-server mconfig/redis.conf</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">redis-server mconfig&#x2F;redis.conf<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">reids-cli -p 6379</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">reids-cli -p 6379<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>11.关闭redis服务shutdown</p>
-<h2 id="Redis基础知识"><a href="#Redis基础知识" class="headerlink" title="Redis基础知识"></a>Redis基础知识</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; select 1 <span class="comment">#切换数据库</span></span><br><span class="line">OK</span><br><span class="line">127.0.0.1:6379[1]&gt; DBSIZE <span class="comment">#查看数据库的大小</span></span><br><span class="line">(<span class="built_in">integer</span>) 0</span><br><span class="line">127.0.0.1:6379[1]&gt; <span class="built_in">set</span> name myxym</span><br><span class="line">OK</span><br><span class="line">127.0.0.1:6379[1]&gt; DBSIZE</span><br><span class="line">(<span class="built_in">integer</span>) 1</span><br><span class="line">127.0.0.1:6379[1]&gt; </span><br></pre></td></tr></table></figure>
+<h2 id="Redis基础知识"><a href="#Redis基础知识" class="headerlink" title="Redis基础知识"></a>Redis基础知识</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">127.0.0.1:6379&gt; select 1 #切换数据库
+OK
+127.0.0.1:6379[1]&gt; DBSIZE #查看数据库的大小
+(integer) 0
+127.0.0.1:6379[1]&gt; set name myxym
+OK
+127.0.0.1:6379[1]&gt; DBSIZE
+(integer) 1
+127.0.0.1:6379[1]&gt; <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
 
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; select 1</span><br><span class="line">OK</span><br><span class="line">127.0.0.1:6379[1]&gt; DBSIZE</span><br><span class="line">(<span class="built_in">integer</span>) 0</span><br><span class="line">127.0.0.1:6379[1]&gt; <span class="built_in">set</span> name myxym</span><br><span class="line">OK</span><br><span class="line">127.0.0.1:6379[1]&gt; DBSIZE</span><br><span class="line">(<span class="built_in">integer</span>) 1</span><br><span class="line">127.0.0.1:6379[1]&gt; FLUSHDB  <span class="comment">#清除当前数据库</span></span><br><span class="line">OK</span><br><span class="line">127.0.0.1:6379[1]&gt; DBSIZE</span><br><span class="line">(<span class="built_in">integer</span>) 0</span><br><span class="line">127.0.0.1:6379[1]&gt; </span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">127.0.0.1:6379&gt; select 1
+OK
+127.0.0.1:6379[1]&gt; DBSIZE
+(integer) 0
+127.0.0.1:6379[1]&gt; set name myxym
+OK
+127.0.0.1:6379[1]&gt; DBSIZE
+(integer) 1
+127.0.0.1:6379[1]&gt; FLUSHDB  #清除当前数据库
+OK
+127.0.0.1:6379[1]&gt; DBSIZE
+(integer) 0
+127.0.0.1:6379[1]&gt; <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>FLUSHALL 清楚所有数据库数据</p>
 <h2 id="五大数据类型"><a href="#五大数据类型" class="headerlink" title="五大数据类型"></a>五大数据类型</h2><h3 id="1-Redis-key"><a href="#1-Redis-key" class="headerlink" title="1.Redis-key"></a>1.Redis-key</h3><p>​    </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; <span class="built_in">set</span> name myxym</span><br><span class="line">OK</span><br><span class="line">127.0.0.1:6379&gt; get name</span><br><span class="line"><span class="string">&quot;myxym&quot;</span></span><br><span class="line">127.0.0.1:6379&gt; EXPIRE name 60 <span class="comment">#设置过期时间</span></span><br><span class="line">(<span class="built_in">integer</span>) 1</span><br><span class="line">127.0.0.1:6379&gt; ttl name  <span class="comment">#查看过期倒计时</span></span><br><span class="line">(<span class="built_in">integer</span>) 58</span><br><span class="line">127.0.0.1:6379&gt; ttl name</span><br><span class="line">(<span class="built_in">integer</span>) 57</span><br><span class="line">127.0.0.1:6379&gt; ttl name</span><br><span class="line">(<span class="built_in">integer</span>) 54</span><br><span class="line">127.0.0.1:6379&gt; ttl anem</span><br><span class="line">(<span class="built_in">integer</span>) -2</span><br><span class="line">127.0.0.1:6379&gt; ttl name</span><br><span class="line">(<span class="built_in">integer</span>) 35</span><br><span class="line">127.0.0.1:6379&gt; get name</span><br><span class="line"><span class="string">&quot;myxym&quot;</span></span><br><span class="line">127.0.0.1:6379&gt; move name 1 <span class="comment">#从当前数据库移除key</span></span><br><span class="line">(<span class="built_in">integer</span>) 0</span><br><span class="line">127.0.0.1:6379&gt; get name</span><br><span class="line"><span class="string">&quot;myxym&quot;</span></span><br><span class="line">127.0.0.1:6379&gt; keys *</span><br><span class="line">1) <span class="string">&quot;name&quot;</span></span><br><span class="line">127.0.0.1:6379&gt; tt lname</span><br><span class="line">(error) ERR unknown <span class="built_in">command</span> `tt`, with args beginning with: `lname`, </span><br><span class="line">127.0.0.1:6379&gt; ttl name</span><br><span class="line">(<span class="built_in">integer</span>) 2</span><br><span class="line">127.0.0.1:6379&gt; ttl name</span><br><span class="line">(<span class="built_in">integer</span>) -2</span><br><span class="line">127.0.0.1:6379&gt; get name</span><br><span class="line">(nil)</span><br><span class="line">127.0.0.1:6379&gt; <span class="built_in">set</span> name myxym</span><br><span class="line">OK</span><br><span class="line">127.0.0.1:6379&gt; ttl name</span><br><span class="line">(<span class="built_in">integer</span>) -1</span><br><span class="line">127.0.0.1:6379&gt; ttl name</span><br><span class="line">(<span class="built_in">integer</span>) -1</span><br><span class="line">127.0.0.1:6379&gt; get name</span><br><span class="line"><span class="string">&quot;myxym&quot;</span></span><br><span class="line">127.0.0.1:6379&gt; move name 1</span><br><span class="line">(<span class="built_in">integer</span>) 0</span><br><span class="line">127.0.0.1:6379&gt; <span class="built_in">type</span> name <span class="comment">#查看当前key的类型</span></span><br><span class="line">string</span><br><span class="line">127.0.0.1:6379&gt; </span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">127.0.0.1:6379&gt; set name myxym
+OK
+127.0.0.1:6379&gt; get name
+&quot;myxym&quot;
+127.0.0.1:6379&gt; EXPIRE name 60 #设置过期时间
+(integer) 1
+127.0.0.1:6379&gt; ttl name  #查看过期倒计时
+(integer) 58
+127.0.0.1:6379&gt; ttl name
+(integer) 57
+127.0.0.1:6379&gt; ttl name
+(integer) 54
+127.0.0.1:6379&gt; ttl anem
+(integer) -2
+127.0.0.1:6379&gt; ttl name
+(integer) 35
+127.0.0.1:6379&gt; get name
+&quot;myxym&quot;
+127.0.0.1:6379&gt; move name 1 #从当前数据库移除key
+(integer) 0
+127.0.0.1:6379&gt; get name
+&quot;myxym&quot;
+127.0.0.1:6379&gt; keys *
+1) &quot;name&quot;
+127.0.0.1:6379&gt; tt lname
+(error) ERR unknown command &#96;tt&#96;, with args beginning with: &#96;lname&#96;, 
+127.0.0.1:6379&gt; ttl name
+(integer) 2
+127.0.0.1:6379&gt; ttl name
+(integer) -2
+127.0.0.1:6379&gt; get name
+(nil)
+127.0.0.1:6379&gt; set name myxym
+OK
+127.0.0.1:6379&gt; ttl name
+(integer) -1
+127.0.0.1:6379&gt; ttl name
+(integer) -1
+127.0.0.1:6379&gt; get name
+&quot;myxym&quot;
+127.0.0.1:6379&gt; move name 1
+(integer) 0
+127.0.0.1:6379&gt; type name #查看当前key的类型
+string
+127.0.0.1:6379&gt; 
+
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
 
@@ -1069,7 +1138,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">1.3k</span>
+                        class="white-color">1.4k</span>
             
             
             
