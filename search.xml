@@ -18,7 +18,7 @@ git config --global user.email &quot;Your email&quot;<span aria-hidden="true" cl
 <p>5.把你创建好的仓库克隆到你的项目文件夹下</p>
 <pre class="line-numbers language-bas" data-language="bas"><code class="language-bas">git clone git@github.com:myxym-love&#x2F;javaweb.git<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p> (<a href="mailto:&#x67;&#x69;&#x74;&#64;&#103;&#x69;&#x74;&#104;&#117;&#x62;&#x2e;&#x63;&#111;&#109;">&#x67;&#x69;&#x74;&#64;&#103;&#x69;&#x74;&#104;&#117;&#x62;&#x2e;&#x63;&#111;&#109;</a>:myxym-love/javaweb.git)换成你自己仓库地址</p>
+<p> (<a href="mailto:&#103;&#x69;&#116;&#x40;&#x67;&#105;&#x74;&#x68;&#x75;&#98;&#x2e;&#x63;&#111;&#x6d;">&#103;&#x69;&#116;&#x40;&#x67;&#105;&#x74;&#x68;&#x75;&#98;&#x2e;&#x63;&#111;&#x6d;</a>:myxym-love/javaweb.git)换成你自己仓库地址</p>
 <p>6.把你项目的下的所有文件以及文件夹(除了你拉取的仓库文件夹)复制到你拉取的仓库文件夹里</p>
 <p>7.进去到你拉取的仓库文件夹里</p>
 <pre class="line-numbers language-bas" data-language="bas"><code class="language-bas">git add . (.表示所有文件)
@@ -35,34 +35,16 @@ git push -u origin master (第一次psuh要加-u)<span aria-hidden="true" class=
       </tags>
   </entry>
   <entry>
-    <title>Hello World</title>
-    <url>/2022/01/02/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo new <span class="token string">"My New Post"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo server<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo generate<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo deploy<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-]]></content>
-  </entry>
-  <entry>
     <title>Redis学习笔记</title>
     <url>/2022/04/16/Linux%E4%B8%8B%E5%AE%89%E8%A3%85Redis6.X/</url>
     <content><![CDATA[<h2 id="Linux下安装Redis6-X"><a href="#Linux下安装Redis6-X" class="headerlink" title="Linux下安装Redis6.X"></a>Linux下安装Redis6.X</h2><p>注意：安装Redis6.X版本需要gcc9.X以上版本</p>
 <p>1.安装gcc安装包的镜像源</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">yum <span class="token function">install</span> centos-release-scl<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">yum install centos-release-scl<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 
 
 <p>2.安装gcc9和g++9</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">yum <span class="token function">install</span> devtoolset-9<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">yum install devtoolset-9<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 
 
@@ -71,7 +53,7 @@ git push -u origin master (第一次psuh要加-u)<span aria-hidden="true" class=
 <p>4.解压redis</p>
 <p>tar -zxvf redis-6.2.5.tar.gz</p>
 <p>5.进入redis-6.2.5目录下，执行以下命令</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">make</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">make<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>6.redis的默认安装路径 /usr/local/bin</p>
 <p>7.在/usr/local/bin目录下新建一个mconfig目录,把redis配置文件redis.conf拷贝一份到此目录下，以后就使用mconfig下的配置文件启动</p>
@@ -84,79 +66,79 @@ git push -u origin master (第一次psuh要加-u)<span aria-hidden="true" class=
 <pre class="line-numbers language-none"><code class="language-none">reids-cli -p 6379<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>11.关闭redis服务shutdown</p>
-<h2 id="Redis基础知识"><a href="#Redis基础知识" class="headerlink" title="Redis基础知识"></a>Redis基础知识</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token number">127.0</span>.0.1:637<span class="token operator"><span class="token file-descriptor important">9</span>></span> <span class="token keyword">select</span> <span class="token number">1</span> <span class="token comment">#切换数据库</span>
+<h2 id="Redis基础知识"><a href="#Redis基础知识" class="headerlink" title="Redis基础知识"></a>Redis基础知识</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">127.0.0.1:6379&gt; select 1 #切换数据库
 OK
-<span class="token number">127.0</span>.0.1:6379<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">></span> DBSIZE <span class="token comment">#查看数据库的大小</span>
-<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">0</span>
-<span class="token number">127.0</span>.0.1:6379<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">></span> <span class="token builtin class-name">set</span> name myxym
+127.0.0.1:6379[1]&gt; DBSIZE #查看数据库的大小
+(integer) 0
+127.0.0.1:6379[1]&gt; set name myxym
 OK
-<span class="token number">127.0</span>.0.1:6379<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">></span> DBSIZE
-<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">1</span>
-<span class="token number">127.0</span>.0.1:6379<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">></span> <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+127.0.0.1:6379[1]&gt; DBSIZE
+(integer) 1
+127.0.0.1:6379[1]&gt; <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
 
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token number">127.0</span>.0.1:637<span class="token operator"><span class="token file-descriptor important">9</span>></span> <span class="token keyword">select</span> <span class="token number">1</span>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">127.0.0.1:6379&gt; select 1
 OK
-<span class="token number">127.0</span>.0.1:6379<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">></span> DBSIZE
-<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">0</span>
-<span class="token number">127.0</span>.0.1:6379<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">></span> <span class="token builtin class-name">set</span> name myxym
+127.0.0.1:6379[1]&gt; DBSIZE
+(integer) 0
+127.0.0.1:6379[1]&gt; set name myxym
 OK
-<span class="token number">127.0</span>.0.1:6379<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">></span> DBSIZE
-<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">1</span>
-<span class="token number">127.0</span>.0.1:6379<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">></span> FLUSHDB  <span class="token comment">#清除当前数据库</span>
+127.0.0.1:6379[1]&gt; DBSIZE
+(integer) 1
+127.0.0.1:6379[1]&gt; FLUSHDB  #清除当前数据库
 OK
-<span class="token number">127.0</span>.0.1:6379<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">></span> DBSIZE
-<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">0</span>
-<span class="token number">127.0</span>.0.1:6379<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">></span> <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+127.0.0.1:6379[1]&gt; DBSIZE
+(integer) 0
+127.0.0.1:6379[1]&gt; <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>FLUSHALL 清楚所有数据库数据</p>
 <h2 id="五大数据类型"><a href="#五大数据类型" class="headerlink" title="五大数据类型"></a>五大数据类型</h2><h3 id="1-Redis-key"><a href="#1-Redis-key" class="headerlink" title="1.Redis-key"></a>1.Redis-key</h3><p>​    </p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token number">127.0</span>.0.1:637<span class="token operator"><span class="token file-descriptor important">9</span>></span> <span class="token builtin class-name">set</span> name myxym
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">127.0.0.1:6379&gt; set name myxym
 OK
-<span class="token number">127.0</span>.0.1:637<span class="token operator"><span class="token file-descriptor important">9</span>></span> get name
-<span class="token string">"myxym"</span>
-<span class="token number">127.0</span>.0.1:637<span class="token operator"><span class="token file-descriptor important">9</span>></span> EXPIRE name <span class="token number">60</span> <span class="token comment">#设置过期时间</span>
-<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">1</span>
-<span class="token number">127.0</span>.0.1:637<span class="token operator"><span class="token file-descriptor important">9</span>></span> ttl name  <span class="token comment">#查看过期倒计时</span>
-<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">58</span>
-<span class="token number">127.0</span>.0.1:637<span class="token operator"><span class="token file-descriptor important">9</span>></span> ttl name
-<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">57</span>
-<span class="token number">127.0</span>.0.1:637<span class="token operator"><span class="token file-descriptor important">9</span>></span> ttl name
-<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">54</span>
-<span class="token number">127.0</span>.0.1:637<span class="token operator"><span class="token file-descriptor important">9</span>></span> ttl anem
-<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> -2
-<span class="token number">127.0</span>.0.1:637<span class="token operator"><span class="token file-descriptor important">9</span>></span> ttl name
-<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">35</span>
-<span class="token number">127.0</span>.0.1:637<span class="token operator"><span class="token file-descriptor important">9</span>></span> get name
-<span class="token string">"myxym"</span>
-<span class="token number">127.0</span>.0.1:637<span class="token operator"><span class="token file-descriptor important">9</span>></span> move name <span class="token number">1</span> <span class="token comment">#从当前数据库移除key</span>
-<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">0</span>
-<span class="token number">127.0</span>.0.1:637<span class="token operator"><span class="token file-descriptor important">9</span>></span> get name
-<span class="token string">"myxym"</span>
-<span class="token number">127.0</span>.0.1:637<span class="token operator"><span class="token file-descriptor important">9</span>></span> keys *
-<span class="token number">1</span><span class="token punctuation">)</span> <span class="token string">"name"</span>
-<span class="token number">127.0</span>.0.1:637<span class="token operator"><span class="token file-descriptor important">9</span>></span> tt lname
-<span class="token punctuation">(</span>error<span class="token punctuation">)</span> ERR unknown <span class="token builtin class-name">command</span> <span class="token variable"><span class="token variable">`</span>tt<span class="token variable">`</span></span>, with args beginning with: <span class="token variable"><span class="token variable">`</span>lname<span class="token variable">`</span></span>, 
-<span class="token number">127.0</span>.0.1:637<span class="token operator"><span class="token file-descriptor important">9</span>></span> ttl name
-<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">2</span>
-<span class="token number">127.0</span>.0.1:637<span class="token operator"><span class="token file-descriptor important">9</span>></span> ttl name
-<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> -2
-<span class="token number">127.0</span>.0.1:637<span class="token operator"><span class="token file-descriptor important">9</span>></span> get name
-<span class="token punctuation">(</span>nil<span class="token punctuation">)</span>
-<span class="token number">127.0</span>.0.1:637<span class="token operator"><span class="token file-descriptor important">9</span>></span> <span class="token builtin class-name">set</span> name myxym
+127.0.0.1:6379&gt; get name
+&quot;myxym&quot;
+127.0.0.1:6379&gt; EXPIRE name 60 #设置过期时间
+(integer) 1
+127.0.0.1:6379&gt; ttl name  #查看过期倒计时
+(integer) 58
+127.0.0.1:6379&gt; ttl name
+(integer) 57
+127.0.0.1:6379&gt; ttl name
+(integer) 54
+127.0.0.1:6379&gt; ttl anem
+(integer) -2
+127.0.0.1:6379&gt; ttl name
+(integer) 35
+127.0.0.1:6379&gt; get name
+&quot;myxym&quot;
+127.0.0.1:6379&gt; move name 1 #从当前数据库移除key
+(integer) 0
+127.0.0.1:6379&gt; get name
+&quot;myxym&quot;
+127.0.0.1:6379&gt; keys *
+1) &quot;name&quot;
+127.0.0.1:6379&gt; tt lname
+(error) ERR unknown command &#96;tt&#96;, with args beginning with: &#96;lname&#96;, 
+127.0.0.1:6379&gt; ttl name
+(integer) 2
+127.0.0.1:6379&gt; ttl name
+(integer) -2
+127.0.0.1:6379&gt; get name
+(nil)
+127.0.0.1:6379&gt; set name myxym
 OK
-<span class="token number">127.0</span>.0.1:637<span class="token operator"><span class="token file-descriptor important">9</span>></span> ttl name
-<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> -1
-<span class="token number">127.0</span>.0.1:637<span class="token operator"><span class="token file-descriptor important">9</span>></span> ttl name
-<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> -1
-<span class="token number">127.0</span>.0.1:637<span class="token operator"><span class="token file-descriptor important">9</span>></span> get name
-<span class="token string">"myxym"</span>
-<span class="token number">127.0</span>.0.1:637<span class="token operator"><span class="token file-descriptor important">9</span>></span> move name <span class="token number">1</span>
-<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">0</span>
-<span class="token number">127.0</span>.0.1:637<span class="token operator"><span class="token file-descriptor important">9</span>></span> <span class="token builtin class-name">type</span> name <span class="token comment">#查看当前key的类型</span>
+127.0.0.1:6379&gt; ttl name
+(integer) -1
+127.0.0.1:6379&gt; ttl name
+(integer) -1
+127.0.0.1:6379&gt; get name
+&quot;myxym&quot;
+127.0.0.1:6379&gt; move name 1
+(integer) 0
+127.0.0.1:6379&gt; type name #查看当前key的类型
 string
-<span class="token number">127.0</span>.0.1:637<span class="token operator"><span class="token file-descriptor important">9</span>></span> 
+127.0.0.1:6379&gt; 
 
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
@@ -173,9 +155,23 @@ string
       </tags>
   </entry>
   <entry>
+    <title>高数错题日记整理01</title>
+    <url>/2022/04/17/%E9%AB%98%E6%95%B0%E9%94%99%E9%A2%98%E6%97%A5%E8%AE%B0%E6%95%B4%E7%90%8601/</url>
+    <content><![CDATA[<p>$$<br>\lim_{n\rightarrow\infty}{\frac{(\sqrt1+\sqrt2+\dot\ \dot\ \dot\ +\sqrt{n})(1+\frac{1}{\sqrt{2}}+ \dot\ \dot\ \dot\ \frac{1}{\sqrt{n}})}{(n+1)(n+2)}}<br>$$</p>
+<p>$$<br>x^{y^z}=(1+{\rm e}^x)^{-2xy^w}<br>$$</p>
+]]></content>
+      <categories>
+        <category>高数错题</category>
+      </categories>
+      <tags>
+        <tag>高数</tag>
+        <tag>错题</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>云服务器之间实现免密登录</title>
     <url>/2022/01/02/%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B9%8B%E9%97%B4%E5%85%8D%E5%AF%86%E7%99%BB%E5%BD%95/</url>
-    <content><![CDATA[<h1 id="云服务器之间实现免密登录"><a href="#云服务器之间实现免密登录" class="headerlink" title="云服务器之间实现免密登录"></a>云服务器之间实现免密登录</h1><h4 id="1-安装ssh"><a href="#1-安装ssh" class="headerlink" title="1. 安装ssh"></a>1. 安装ssh</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">yum <span class="token function">install</span> -y <span class="token function">ssh</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+    <content><![CDATA[<h1 id="云服务器之间实现免密登录"><a href="#云服务器之间实现免密登录" class="headerlink" title="云服务器之间实现免密登录"></a>云服务器之间实现免密登录</h1><h4 id="1-安装ssh"><a href="#1-安装ssh" class="headerlink" title="1. 安装ssh"></a>1. 安装ssh</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">yum install -y ssh<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>注：每台服务器都要安装ssh</p>
 <h4 id="2-在每台服务器上生成公钥"><a href="#2-在每台服务器上生成公钥" class="headerlink" title="2.在每台服务器上生成公钥"></a>2.在每台服务器上生成公钥</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">ssh-keygen<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
@@ -215,17 +211,21 @@ ssh-copy-id slave2<span aria-hidden="true" class="line-numbers-rows"><span></spa
       </tags>
   </entry>
   <entry>
-    <title>高数错题日记整理01</title>
-    <url>/2022/04/17/%E9%AB%98%E6%95%B0%E9%94%99%E9%A2%98%E6%97%A5%E8%AE%B0%E6%95%B4%E7%90%8601/</url>
-    <content><![CDATA[<p>$$<br>\lim_{n\rightarrow\infty}{\frac{(\sqrt1+\sqrt2+\dot\ \dot\ \dot\ +\sqrt{n})(1+\frac{1}{\sqrt{2}}+ \dot\ \dot\ \dot\ \frac{1}{\sqrt{n}})}{(n+1)(n+2)}}<br>$$</p>
-<p>$$<br>x^{y^z}=(1+{\rm e}^x)^{-2xy^w}<br>$$</p>
+    <title>Hello World</title>
+    <url>/2022/01/02/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo new &quot;My New Post&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo server<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo generate<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo deploy<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
 ]]></content>
-      <categories>
-        <category>高数错题</category>
-      </categories>
-      <tags>
-        <tag>高数</tag>
-        <tag>错题</tag>
-      </tags>
   </entry>
 </search>
