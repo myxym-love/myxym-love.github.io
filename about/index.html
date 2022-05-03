@@ -37,6 +37,21 @@
 
 
 <body>
+    <script>
+        if (localStorage.getItem('dark') === '1') {
+        document.body.classList.add('dark');
+        }
+        else if (new Date().getHours() >= 22 || new Date().getHours() < 7) {
+        document.body.classList.add('dark');
+        } 
+        else if (matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+        }
+    </script>
+    <a onclick="switchNightMode()" id="sma">
+        <i class="fa fa-moon-o" id="nightMode" aria-hidden="true"></i>
+    </a>
+
     <header class="navbar-fixed">
     <nav id="headNav" class="bg-color nav-transparent">
         <div id="navContainer" class="nav-wrapper container">
@@ -728,7 +743,7 @@
         xAxis: [
             {
                 type: 'category',
-                data: ["Git","攻略","redis","服务器","springboot","高数","错题"]
+                data: ["Git","攻略","redis","springboot","服务器","高数","错题"]
             }
         ],
         yAxis: [
@@ -929,14 +944,14 @@
             
             
             
-            <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/">
-                <span class="chip center-align waves-effect waves-light chip-default">服务器</span>
+            <a href="/tags/springboot/">
+                <span class="chip center-align waves-effect waves-light chip-default">springboot</span>
             </a>
             
             
             
-            <a href="/tags/springboot/">
-                <span class="chip center-align waves-effect waves-light chip-default">springboot</span>
+            <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/">
+                <span class="chip center-align waves-effect waves-light chip-default">服务器</span>
             </a>
             
             
