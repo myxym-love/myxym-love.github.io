@@ -2213,13 +2213,11 @@ p.search-result-summary{
     body.dark h4,
     body.dark h5,
     body.dark h6,
-    body.dark li,
     body.dark p,
     body.dark header .side-nav .mobile-head .logo-name,
     body.dark header .side-nav .mobile-head .logo-desc,
     body.dark header .side-nav .menu-list a,
     body.dark .bg-cover .post-title,
-    body.dark a
     {
         color: rgba(255, 255, 255, 0.6);
     }
