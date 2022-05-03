@@ -1,149 +1,441 @@
 <?xml version="1.0" encoding="utf-8"?>
-<search> 
-  
-  
-    
-    <entry>
-      <title>springboot聚合数据</title>
-      <link href="/2022/050323444.html"/>
-      <url>/2022/050323444.html</url>
-      
-        <content type="html"><![CDATA[<div align='center'><font size='70'>springboot聚合接口数据</font></div><p>1.<strong>背景</strong></p><p>最近在写<code>Android</code> 大作业,做一个教育类的<code>APP</code>,后端是用的<code>springboot</code>来开发的，由<code>springboot</code>返回<code>json</code>数据接口,<code>Android</code>使用<code>OKHttpUtils</code>来请求后端的数据接口,在开发首页的时候,一共有四组不同的数据,也就意味着我要请求四个不同的接口来获取数据。这显然是有点多余,并且有很多重复的代码，这时候我就在想,后端能不能把这四组数据一起返回给我呢?果不其然,找到了<code>spring-boot-data-aggregator-starter</code>可以实现我的需求。</p><p>2.<strong>实现</strong></p><p><code>spring-boot-data-aggregator-starter</code>已经发布到了<code>maven</code>中央仓库,所以只需要在<code>pom.xml</code>文件引入该依赖即可。</p><pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>io.github.lvyahui8<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>spring-boot-data-aggregator-starter<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>1.1.3<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>在<code> application.properties</code>文件中声明注解的扫描路径</p><pre class="line-numbers language-properties" data-language="properties"><code class="language-properties"><span class="token attr-name">io.github.lvyahui8.spring.base-packages</span><span class="token punctuation">=</span><span class="token attr-value">com.example.shoppingmall_end</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>上述的包名只需要换成你项目的包名即可</p><p>我所用到的三个类分别是</p><ul><li><code>Video</code></li><li><code>VideoBanner</code></li><li><code>Channel</code></li></ul><p>然后定了一<code>ResultBeana</code>类,属性分别是上面三个类的List集合</p><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ResultBean</span> <span class="token punctuation">&#123;</span>    <span class="token keyword">private</span> <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Video</span><span class="token punctuation">></span></span> video<span class="token punctuation">;</span>    <span class="token keyword">private</span> <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">VideoBanner</span><span class="token punctuation">></span></span> videoBanner<span class="token punctuation">;</span>    <span class="token keyword">public</span> <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Channel</span><span class="token punctuation">></span></span> <span class="token function">getListChannel</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token keyword">return</span> listChannel<span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span>    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setListChannel</span><span class="token punctuation">(</span><span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Channel</span><span class="token punctuation">></span></span> listChannel<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token keyword">this</span><span class="token punctuation">.</span>listChannel <span class="token operator">=</span> listChannel<span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span>    <span class="token keyword">private</span> <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Channel</span><span class="token punctuation">></span></span> channelList<span class="token punctuation">;</span>    <span class="token keyword">private</span> <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">VideoBanner</span><span class="token punctuation">></span></span> actList<span class="token punctuation">;</span>    <span class="token keyword">private</span> <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Channel</span><span class="token punctuation">></span></span> listChannel<span class="token punctuation">;</span>    <span class="token keyword">public</span> <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Video</span><span class="token punctuation">></span></span> <span class="token function">getVideo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token keyword">return</span> video<span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span>    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setVideo</span><span class="token punctuation">(</span><span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Video</span><span class="token punctuation">></span></span> video<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token keyword">this</span><span class="token punctuation">.</span>video <span class="token operator">=</span> video<span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span>    <span class="token keyword">public</span> <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">VideoBanner</span><span class="token punctuation">></span></span> <span class="token function">getVideoBanner</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token keyword">return</span> videoBanner<span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span>    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setVideoBanner</span><span class="token punctuation">(</span><span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">VideoBanner</span><span class="token punctuation">></span></span> videoBanner<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token keyword">this</span><span class="token punctuation">.</span>videoBanner <span class="token operator">=</span> videoBanner<span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span>    <span class="token keyword">public</span> <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Channel</span><span class="token punctuation">></span></span> <span class="token function">getChannelList</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token keyword">return</span> channelList<span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span>    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setChannelList</span><span class="token punctuation">(</span><span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Channel</span><span class="token punctuation">></span></span> channelList<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token keyword">this</span><span class="token punctuation">.</span>channelList <span class="token operator">=</span> channelList<span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span>    <span class="token keyword">public</span> <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">VideoBanner</span><span class="token punctuation">></span></span> <span class="token function">getActList</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token keyword">return</span> actList<span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span>    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setActList</span><span class="token punctuation">(</span><span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">VideoBanner</span><span class="token punctuation">></span></span> actList<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token keyword">this</span><span class="token punctuation">.</span>actList <span class="token operator">=</span> actList<span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>接着我们需要在<code>ServiceImpl</code>需要聚合的方法上加上注解<code>@DataProvider(id = &quot;name&quot;)</code>,比如:</p><p>在<code>VideoServiceImpl</code> 里的方法中</p><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@DataProvider</span><span class="token punctuation">(</span>id <span class="token operator">=</span> <span class="token string">"videoList"</span><span class="token punctuation">)</span>    <span class="token annotation punctuation">@Override</span>    <span class="token keyword">public</span> <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Video</span><span class="token punctuation">></span></span> <span class="token function">listVideo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token keyword">try</span> <span class="token punctuation">&#123;</span>            <span class="token class-name">Object</span> cacheVideoList <span class="token operator">=</span> baseCache<span class="token punctuation">.</span><span class="token function">getTenMinutesCache</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token class-name">CacheKeyManager</span><span class="token punctuation">.</span>INDEX_VIDEO_LIST<span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-></span> <span class="token punctuation">&#123;</span>                <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Video</span><span class="token punctuation">></span></span> videoList <span class="token operator">=</span> videoMapper<span class="token punctuation">.</span><span class="token function">listVideo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"从数据库拿视频列表数据"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                <span class="token keyword">return</span> videoList<span class="token punctuation">;</span>            <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>            <span class="token keyword">if</span> <span class="token punctuation">(</span>cacheVideoList <span class="token keyword">instanceof</span> <span class="token class-name">List</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>                <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Video</span><span class="token punctuation">></span></span> videoList <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Video</span><span class="token punctuation">></span></span><span class="token punctuation">)</span> cacheVideoList<span class="token punctuation">;</span>                <span class="token keyword">return</span> videoList<span class="token punctuation">;</span>            <span class="token punctuation">&#125;</span>        <span class="token punctuation">&#125;</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">Exception</span> e<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            e<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token punctuation">&#125;</span>        <span class="token keyword">return</span> <span class="token keyword">null</span><span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span><span class="token annotation punctuation">@DataProvider</span><span class="token punctuation">(</span>id <span class="token operator">=</span> <span class="token string">"banner"</span><span class="token punctuation">)</span>    <span class="token annotation punctuation">@Override</span>    <span class="token keyword">public</span> <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">VideoBanner</span><span class="token punctuation">></span></span> <span class="token function">listBanner</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token keyword">try</span> <span class="token punctuation">&#123;</span>            <span class="token class-name">Object</span> cacheBanner <span class="token operator">=</span> baseCache<span class="token punctuation">.</span><span class="token function">getTenMinutesCache</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token class-name">CacheKeyManager</span><span class="token punctuation">.</span>INDEX_BANNER_KEY<span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-></span> <span class="token punctuation">&#123;</span>                <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">VideoBanner</span><span class="token punctuation">></span></span> bannerList <span class="token operator">=</span> videoMapper<span class="token punctuation">.</span><span class="token function">listBanner</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"从数据库里拿轮播图数据"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                <span class="token keyword">return</span> bannerList<span class="token punctuation">;</span>            <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>            <span class="token keyword">if</span> <span class="token punctuation">(</span>cacheBanner <span class="token keyword">instanceof</span> <span class="token class-name">List</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>                <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">VideoBanner</span><span class="token punctuation">></span></span> bannerList <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">VideoBanner</span><span class="token punctuation">></span></span><span class="token punctuation">)</span> cacheBanner<span class="token punctuation">;</span>                <span class="token keyword">return</span> bannerList<span class="token punctuation">;</span>            <span class="token punctuation">&#125;</span>        <span class="token punctuation">&#125;</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">Exception</span> e<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            e<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token punctuation">&#125;</span>        <span class="token keyword">return</span> <span class="token keyword">null</span><span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span><span class="token annotation punctuation">@DataProvider</span><span class="token punctuation">(</span>id <span class="token operator">=</span> <span class="token string">"actList"</span><span class="token punctuation">)</span>    <span class="token annotation punctuation">@Override</span>    <span class="token keyword">public</span> <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">VideoBanner</span><span class="token punctuation">></span></span> <span class="token function">getActList</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token keyword">return</span> videoMapper<span class="token punctuation">.</span><span class="token function">getActList</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>以及在<code>ChannelServiceImpl</code>的中方法中</p><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@DataProvider</span><span class="token punctuation">(</span>id <span class="token operator">=</span> <span class="token string">"channelList"</span><span class="token punctuation">)</span>   <span class="token annotation punctuation">@Override</span>   <span class="token keyword">public</span> <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Channel</span><span class="token punctuation">></span></span> <span class="token function">getChannelList</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>       <span class="token keyword">return</span> channelMapper<span class="token punctuation">.</span><span class="token function">getChannelList</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token punctuation">&#125;</span>   <span class="token annotation punctuation">@DataProvider</span><span class="token punctuation">(</span>id <span class="token operator">=</span> <span class="token string">"listChannel"</span><span class="token punctuation">)</span>   <span class="token annotation punctuation">@Override</span>   <span class="token keyword">public</span> <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Channel</span><span class="token punctuation">></span></span> <span class="token function">listChannel</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>       <span class="token keyword">return</span> channelMapper<span class="token punctuation">.</span><span class="token function">listChannel</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p><code>@DataProvider(id = &quot;name&quot;)表示是数据提供者</code></p><p>接着我们需要定义一个<code>HomeAggregate</code>类,类名随便取</p><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Component</span><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">HomeAggregate</span> <span class="token punctuation">&#123;</span>    <span class="token annotation punctuation">@DataProvider</span><span class="token punctuation">(</span>id <span class="token operator">=</span> <span class="token string">"HomeData"</span><span class="token punctuation">)</span>    <span class="token keyword">public</span> <span class="token class-name">ResultBean</span> <span class="token function">homeData</span><span class="token punctuation">(</span><span class="token annotation punctuation">@DataConsumer</span><span class="token punctuation">(</span>id <span class="token operator">=</span> <span class="token string">"banner"</span><span class="token punctuation">)</span> <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">VideoBanner</span><span class="token punctuation">></span></span> videoBanner<span class="token punctuation">,</span>                               <span class="token annotation punctuation">@DataConsumer</span><span class="token punctuation">(</span>id <span class="token operator">=</span> <span class="token string">"videoList"</span><span class="token punctuation">)</span> <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Video</span><span class="token punctuation">></span></span> videoList<span class="token punctuation">,</span>                               <span class="token annotation punctuation">@DataConsumer</span><span class="token punctuation">(</span>id <span class="token operator">=</span> <span class="token string">"channelList"</span><span class="token punctuation">)</span> <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Channel</span><span class="token punctuation">></span></span> channelList<span class="token punctuation">,</span>                               <span class="token annotation punctuation">@DataConsumer</span><span class="token punctuation">(</span>id <span class="token operator">=</span> <span class="token string">"actList"</span><span class="token punctuation">)</span> <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">VideoBanner</span><span class="token punctuation">></span></span> actList<span class="token punctuation">,</span>                               <span class="token annotation punctuation">@DataConsumer</span><span class="token punctuation">(</span>id <span class="token operator">=</span> <span class="token string">"listChannel"</span><span class="token punctuation">)</span> <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Channel</span><span class="token punctuation">></span></span> listChannel<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token class-name">ResultBean</span> resultBean <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ResultBean</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        resultBean<span class="token punctuation">.</span><span class="token function">setChannelList</span><span class="token punctuation">(</span>channelList<span class="token punctuation">)</span><span class="token punctuation">;</span>        resultBean<span class="token punctuation">.</span><span class="token function">setActList</span><span class="token punctuation">(</span>actList<span class="token punctuation">)</span><span class="token punctuation">;</span>        resultBean<span class="token punctuation">.</span><span class="token function">setVideoBanner</span><span class="token punctuation">(</span>videoBanner<span class="token punctuation">)</span><span class="token punctuation">;</span>        resultBean<span class="token punctuation">.</span><span class="token function">setVideo</span><span class="token punctuation">(</span>videoList<span class="token punctuation">)</span><span class="token punctuation">;</span>        resultBean<span class="token punctuation">.</span><span class="token function">setListChannel</span><span class="token punctuation">(</span>listChannel<span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token keyword">return</span> resultBean<span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>最后,我们定义一个<code>HomeController</code>类，</p><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@RestController</span><span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span><span class="token string">"api/v1/pub/home"</span><span class="token punctuation">)</span><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">HomeController</span> <span class="token punctuation">&#123;</span>    <span class="token annotation punctuation">@Autowired</span>    <span class="token keyword">private</span> <span class="token class-name">DataBeanAggregateQueryFacade</span> dataBeanAggregateQueryFacade<span class="token punctuation">;</span>    <span class="token comment">/**     * 获取首页数据     * @return 首页数据     * @throws InterruptedException 异常     * @throws InvocationTargetException 异常     * @throws IllegalAccessException 异常     */</span>    <span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span><span class="token string">"/getData"</span><span class="token punctuation">)</span>    <span class="token keyword">public</span> <span class="token class-name">ResultBean</span> <span class="token function">test</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">InterruptedException</span><span class="token punctuation">,</span> <span class="token class-name">InvocationTargetException</span><span class="token punctuation">,</span> <span class="token class-name">IllegalAccessException</span> <span class="token punctuation">&#123;</span>        <span class="token keyword">return</span> dataBeanAggregateQueryFacade<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"HomeData"</span><span class="token punctuation">,</span><span class="token class-name">Collections</span><span class="token punctuation">.</span><span class="token function">singletonMap</span><span class="token punctuation">(</span><span class="token string">""</span><span class="token punctuation">,</span><span class="token string">""</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token class-name">ResultBean</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><blockquote><p>因为这些数据是直接请求的,不需要传参,所以在<code>Collections.singletonMap(&quot;&quot;,&quot;&quot;)</code>里没有传参,如果有参数话的填写对应参数,比如：需要video_id 才能请求到这些数据话,那么只需要改成<code>Collections.singletonMap(&quot;video_id&quot;,videoId)即可</code></p></blockquote><p>这时候我们启动项目</p><p><img src="/images/pasted_2.png"></p><p>发现如上图所示代表数据聚合成功</p><blockquote><p>如果在其他方法上也添加了<code>@DataProvider(id = &quot;name&quot;)</code>的话，而你没有在使用它,那么启动项目的时候会报错，所以不需要数据聚合的方法上不需要添加该注解</p></blockquote>]]></content>
-      
-      
+<search>
+  <entry>
+    <title>Git使用教程</title>
+    <url>/2022/01028579.html</url>
+    <content><![CDATA[<h1 id="Git使用教程"><a href="#Git使用教程" class="headerlink" title="Git使用教程"></a>Git使用教程</h1><h2 id="1-如何把本地的项目上传到GitHub上"><a href="#1-如何把本地的项目上传到GitHub上" class="headerlink" title="1.如何把本地的项目上传到GitHub上"></a>1.如何把本地的项目上传到GitHub上</h2><p>1.打开Git Bash进入到要上传的项目的目录下</p>
+<p>2.配置用户名和邮箱</p>
+<pre class="line-numbers language-bas" data-language="bas"><code class="language-bas">git config --global user.name &quot;Your username&quot;
+git config --global user.email &quot;Your email&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>3.在GitHub上设置本地的ssh公钥</p>
+<p>（1）在本地生成ssh公钥私钥</p>
+<pre class="line-numbers language-bas" data-language="bas"><code class="language-bas">ssh-keygen<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>生成的.ssh文件默认在C:\Users\ASUS\.ssh (ASUS是我电脑的名字)</p>
+<p>在.ssh文件下有id_rsa.pub文件,把里面的内容添加到你的GigHub的设置里</p>
+<p>4.在你的GitHub上新建一个仓库,复制仓库的ssh地址</p>
+<p>5.把你创建好的仓库克隆到你的项目文件夹下</p>
+<pre class="line-numbers language-bas" data-language="bas"><code class="language-bas">git clone git@github.com:myxym-love&#x2F;javaweb.git<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p> (<a href="mailto:&#103;&#105;&#x74;&#x40;&#x67;&#x69;&#x74;&#104;&#x75;&#x62;&#x2e;&#x63;&#x6f;&#109;">&#103;&#105;&#x74;&#x40;&#x67;&#x69;&#x74;&#104;&#x75;&#x62;&#x2e;&#x63;&#x6f;&#109;</a>:myxym-love/javaweb.git)换成你自己仓库地址</p>
+<p>6.把你项目的下的所有文件以及文件夹(除了你拉取的仓库文件夹)复制到你拉取的仓库文件夹里</p>
+<p>7.进去到你拉取的仓库文件夹里</p>
+<pre class="line-numbers language-bas" data-language="bas"><code class="language-bas">git add . (.表示所有文件)
+git commit -m &quot;描述&quot;
+git push -u origin master (第一次psuh要加-u)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+]]></content>
       <categories>
-          
-          <category> springboot </category>
-          
+        <category>技巧经验</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> springboot </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>高数错题日记整理01</title>
-      <link href="/2022/041730615.html"/>
-      <url>/2022/041730615.html</url>
-      
-        <content type="html"><![CDATA[<p>$$<br>\lim_{n\rightarrow\infty}{\frac{(\sqrt1+\sqrt2+\dot\ \dot\ \dot\ +\sqrt{n})(1+\frac{1}{\sqrt{2}}+ \dot\ \dot\ \dot\ \frac{1}{\sqrt{n}})}{(n+1)(n+2)}}<br>$$</p><p>$$<br>x^{y^z}=(1+{\rm e}^x)^{-2xy^w}<br>$$</p>]]></content>
-      
-      
+      <tags>
+        <tag>Git</tag>
+        <tag>攻略</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/2022/010216107.html</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo new <span class="token string">"My New Post"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo server<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo generate<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo deploy<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>Redis学习笔记</title>
+    <url>/2022/041630038.html</url>
+    <content><![CDATA[<h2 id="Linux下安装Redis6-X"><a href="#Linux下安装Redis6-X" class="headerlink" title="Linux下安装Redis6.X"></a>Linux下安装Redis6.X</h2><p>注意：安装Redis6.X版本需要gcc9.X以上版本</p>
+<p>1.安装gcc安装包的镜像源</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">yum <span class="token function">install</span> centos-release-scl<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+
+<p>2.安装gcc9和g++9</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">yum <span class="token function">install</span> devtoolset-9<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+
+<p>3.上传redis6.x到Centos7服务器上，使用RailDrive连接服务器进行上传</p>
+<p>cd /usr/local目录下新建一个software文件夹,之后把所有得软件上传到software文件夹下，方便管理</p>
+<p>4.解压redis</p>
+<p>tar -zxvf redis-6.2.5.tar.gz</p>
+<p>5.进入redis-6.2.5目录下，执行以下命令</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">make</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>6.redis的默认安装路径 /usr/local/bin</p>
+<p>7.在/usr/local/bin目录下新建一个mconfig目录,把redis配置文件redis.conf拷贝一份到此目录下，以后就使用mconfig下的配置文件启动</p>
+<p>8.redis默认不是后台启动的</p>
+<p>9.vim redis.conf进行编辑，修改配置 </p>
+<p>damonize no no改为yes</p>
+<p>10.启动redis服务，通过指定的配置文件启动，在/usr/local/bin目录下执行</p>
+<pre class="line-numbers language-none"><code class="language-none">redis-server mconfig&#x2F;redis.conf<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<pre class="line-numbers language-none"><code class="language-none">reids-cli -p 6379<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>11.关闭redis服务shutdown</p>
+<h2 id="Redis基础知识"><a href="#Redis基础知识" class="headerlink" title="Redis基础知识"></a>Redis基础知识</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token number">127.0</span>.0.1:637<span class="token operator"><span class="token file-descriptor important">9</span>></span> <span class="token keyword">select</span> <span class="token number">1</span> <span class="token comment">#切换数据库</span>
+OK
+<span class="token number">127.0</span>.0.1:6379<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">></span> DBSIZE <span class="token comment">#查看数据库的大小</span>
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">0</span>
+<span class="token number">127.0</span>.0.1:6379<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">></span> <span class="token builtin class-name">set</span> name myxym
+OK
+<span class="token number">127.0</span>.0.1:6379<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">></span> DBSIZE
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">1</span>
+<span class="token number">127.0</span>.0.1:6379<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">></span> <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token number">127.0</span>.0.1:637<span class="token operator"><span class="token file-descriptor important">9</span>></span> <span class="token keyword">select</span> <span class="token number">1</span>
+OK
+<span class="token number">127.0</span>.0.1:6379<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">></span> DBSIZE
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">0</span>
+<span class="token number">127.0</span>.0.1:6379<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">></span> <span class="token builtin class-name">set</span> name myxym
+OK
+<span class="token number">127.0</span>.0.1:6379<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">></span> DBSIZE
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">1</span>
+<span class="token number">127.0</span>.0.1:6379<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">></span> FLUSHDB  <span class="token comment">#清除当前数据库</span>
+OK
+<span class="token number">127.0</span>.0.1:6379<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">></span> DBSIZE
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">0</span>
+<span class="token number">127.0</span>.0.1:6379<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">></span> <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>FLUSHALL 清楚所有数据库数据</p>
+<h2 id="五大数据类型"><a href="#五大数据类型" class="headerlink" title="五大数据类型"></a>五大数据类型</h2><h3 id="1-Redis-key"><a href="#1-Redis-key" class="headerlink" title="1.Redis-key"></a>1.Redis-key</h3><p>​    </p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token number">127.0</span>.0.1:637<span class="token operator"><span class="token file-descriptor important">9</span>></span> <span class="token builtin class-name">set</span> name myxym
+OK
+<span class="token number">127.0</span>.0.1:637<span class="token operator"><span class="token file-descriptor important">9</span>></span> get name
+<span class="token string">"myxym"</span>
+<span class="token number">127.0</span>.0.1:637<span class="token operator"><span class="token file-descriptor important">9</span>></span> EXPIRE name <span class="token number">60</span> <span class="token comment">#设置过期时间</span>
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">1</span>
+<span class="token number">127.0</span>.0.1:637<span class="token operator"><span class="token file-descriptor important">9</span>></span> ttl name  <span class="token comment">#查看过期倒计时</span>
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">58</span>
+<span class="token number">127.0</span>.0.1:637<span class="token operator"><span class="token file-descriptor important">9</span>></span> ttl name
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">57</span>
+<span class="token number">127.0</span>.0.1:637<span class="token operator"><span class="token file-descriptor important">9</span>></span> ttl name
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">54</span>
+<span class="token number">127.0</span>.0.1:637<span class="token operator"><span class="token file-descriptor important">9</span>></span> ttl anem
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> -2
+<span class="token number">127.0</span>.0.1:637<span class="token operator"><span class="token file-descriptor important">9</span>></span> ttl name
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">35</span>
+<span class="token number">127.0</span>.0.1:637<span class="token operator"><span class="token file-descriptor important">9</span>></span> get name
+<span class="token string">"myxym"</span>
+<span class="token number">127.0</span>.0.1:637<span class="token operator"><span class="token file-descriptor important">9</span>></span> move name <span class="token number">1</span> <span class="token comment">#从当前数据库移除key</span>
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">0</span>
+<span class="token number">127.0</span>.0.1:637<span class="token operator"><span class="token file-descriptor important">9</span>></span> get name
+<span class="token string">"myxym"</span>
+<span class="token number">127.0</span>.0.1:637<span class="token operator"><span class="token file-descriptor important">9</span>></span> keys *
+<span class="token number">1</span><span class="token punctuation">)</span> <span class="token string">"name"</span>
+<span class="token number">127.0</span>.0.1:637<span class="token operator"><span class="token file-descriptor important">9</span>></span> tt lname
+<span class="token punctuation">(</span>error<span class="token punctuation">)</span> ERR unknown <span class="token builtin class-name">command</span> <span class="token variable"><span class="token variable">`</span>tt<span class="token variable">`</span></span>, with args beginning with: <span class="token variable"><span class="token variable">`</span>lname<span class="token variable">`</span></span>, 
+<span class="token number">127.0</span>.0.1:637<span class="token operator"><span class="token file-descriptor important">9</span>></span> ttl name
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">2</span>
+<span class="token number">127.0</span>.0.1:637<span class="token operator"><span class="token file-descriptor important">9</span>></span> ttl name
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> -2
+<span class="token number">127.0</span>.0.1:637<span class="token operator"><span class="token file-descriptor important">9</span>></span> get name
+<span class="token punctuation">(</span>nil<span class="token punctuation">)</span>
+<span class="token number">127.0</span>.0.1:637<span class="token operator"><span class="token file-descriptor important">9</span>></span> <span class="token builtin class-name">set</span> name myxym
+OK
+<span class="token number">127.0</span>.0.1:637<span class="token operator"><span class="token file-descriptor important">9</span>></span> ttl name
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> -1
+<span class="token number">127.0</span>.0.1:637<span class="token operator"><span class="token file-descriptor important">9</span>></span> ttl name
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> -1
+<span class="token number">127.0</span>.0.1:637<span class="token operator"><span class="token file-descriptor important">9</span>></span> get name
+<span class="token string">"myxym"</span>
+<span class="token number">127.0</span>.0.1:637<span class="token operator"><span class="token file-descriptor important">9</span>></span> move name <span class="token number">1</span>
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">0</span>
+<span class="token number">127.0</span>.0.1:637<span class="token operator"><span class="token file-descriptor important">9</span>></span> <span class="token builtin class-name">type</span> name <span class="token comment">#查看当前key的类型</span>
+string
+<span class="token number">127.0</span>.0.1:637<span class="token operator"><span class="token file-descriptor important">9</span>></span> 
+
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+
+
+<h3 id="2-String"><a href="#2-String" class="headerlink" title="2.String"></a>2.String</h3>]]></content>
       <categories>
-          
-          <category> 高数错题 </category>
-          
+        <category>技巧经验</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> 高数 </tag>
-            
-            <tag> 错题 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>Redis学习笔记</title>
-      <link href="/2022/041630038.html"/>
-      <url>/2022/041630038.html</url>
-      
-        <content type="html"><![CDATA[<h2 id="Linux下安装Redis6-X"><a href="#Linux下安装Redis6-X" class="headerlink" title="Linux下安装Redis6.X"></a>Linux下安装Redis6.X</h2><p>注意：安装Redis6.X版本需要gcc9.X以上版本</p><p>1.安装gcc安装包的镜像源</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">yum <span class="token function">install</span> centos-release-scl<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>2.安装gcc9和g++9</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">yum <span class="token function">install</span> devtoolset-9<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>3.上传redis6.x到Centos7服务器上，使用RailDrive连接服务器进行上传</p><p>cd /usr/local目录下新建一个software文件夹,之后把所有得软件上传到software文件夹下，方便管理</p><p>4.解压redis</p><p>tar -zxvf redis-6.2.5.tar.gz</p><p>5.进入redis-6.2.5目录下，执行以下命令</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">make</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>6.redis的默认安装路径 /usr/local/bin</p><p>7.在/usr/local/bin目录下新建一个mconfig目录,把redis配置文件redis.conf拷贝一份到此目录下，以后就使用mconfig下的配置文件启动</p><p>8.redis默认不是后台启动的</p><p>9.vim redis.conf进行编辑，修改配置 </p><p>damonize no no改为yes</p><p>10.启动redis服务，通过指定的配置文件启动，在/usr/local/bin目录下执行</p><pre class="line-numbers language-none"><code class="language-none">redis-server mconfig&#x2F;redis.conf<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><pre class="line-numbers language-none"><code class="language-none">reids-cli -p 6379<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>11.关闭redis服务shutdown</p><h2 id="Redis基础知识"><a href="#Redis基础知识" class="headerlink" title="Redis基础知识"></a>Redis基础知识</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token number">127.0</span>.0.1:637<span class="token operator"><span class="token file-descriptor important">9</span>></span> <span class="token keyword">select</span> <span class="token number">1</span> <span class="token comment">#切换数据库</span>OK<span class="token number">127.0</span>.0.1:6379<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">></span> DBSIZE <span class="token comment">#查看数据库的大小</span><span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">0</span><span class="token number">127.0</span>.0.1:6379<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">></span> <span class="token builtin class-name">set</span> name myxymOK<span class="token number">127.0</span>.0.1:6379<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">></span> DBSIZE<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">1</span><span class="token number">127.0</span>.0.1:6379<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">></span> <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token number">127.0</span>.0.1:637<span class="token operator"><span class="token file-descriptor important">9</span>></span> <span class="token keyword">select</span> <span class="token number">1</span>OK<span class="token number">127.0</span>.0.1:6379<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">></span> DBSIZE<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">0</span><span class="token number">127.0</span>.0.1:6379<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">></span> <span class="token builtin class-name">set</span> name myxymOK<span class="token number">127.0</span>.0.1:6379<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">></span> DBSIZE<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">1</span><span class="token number">127.0</span>.0.1:6379<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">></span> FLUSHDB  <span class="token comment">#清除当前数据库</span>OK<span class="token number">127.0</span>.0.1:6379<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">></span> DBSIZE<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">0</span><span class="token number">127.0</span>.0.1:6379<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">></span> <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>FLUSHALL 清楚所有数据库数据</p><h2 id="五大数据类型"><a href="#五大数据类型" class="headerlink" title="五大数据类型"></a>五大数据类型</h2><h3 id="1-Redis-key"><a href="#1-Redis-key" class="headerlink" title="1.Redis-key"></a>1.Redis-key</h3><p>​    </p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token number">127.0</span>.0.1:637<span class="token operator"><span class="token file-descriptor important">9</span>></span> <span class="token builtin class-name">set</span> name myxymOK<span class="token number">127.0</span>.0.1:637<span class="token operator"><span class="token file-descriptor important">9</span>></span> get name<span class="token string">"myxym"</span><span class="token number">127.0</span>.0.1:637<span class="token operator"><span class="token file-descriptor important">9</span>></span> EXPIRE name <span class="token number">60</span> <span class="token comment">#设置过期时间</span><span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">1</span><span class="token number">127.0</span>.0.1:637<span class="token operator"><span class="token file-descriptor important">9</span>></span> ttl name  <span class="token comment">#查看过期倒计时</span><span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">58</span><span class="token number">127.0</span>.0.1:637<span class="token operator"><span class="token file-descriptor important">9</span>></span> ttl name<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">57</span><span class="token number">127.0</span>.0.1:637<span class="token operator"><span class="token file-descriptor important">9</span>></span> ttl name<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">54</span><span class="token number">127.0</span>.0.1:637<span class="token operator"><span class="token file-descriptor important">9</span>></span> ttl anem<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> -2<span class="token number">127.0</span>.0.1:637<span class="token operator"><span class="token file-descriptor important">9</span>></span> ttl name<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">35</span><span class="token number">127.0</span>.0.1:637<span class="token operator"><span class="token file-descriptor important">9</span>></span> get name<span class="token string">"myxym"</span><span class="token number">127.0</span>.0.1:637<span class="token operator"><span class="token file-descriptor important">9</span>></span> move name <span class="token number">1</span> <span class="token comment">#从当前数据库移除key</span><span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">0</span><span class="token number">127.0</span>.0.1:637<span class="token operator"><span class="token file-descriptor important">9</span>></span> get name<span class="token string">"myxym"</span><span class="token number">127.0</span>.0.1:637<span class="token operator"><span class="token file-descriptor important">9</span>></span> keys *<span class="token number">1</span><span class="token punctuation">)</span> <span class="token string">"name"</span><span class="token number">127.0</span>.0.1:637<span class="token operator"><span class="token file-descriptor important">9</span>></span> tt lname<span class="token punctuation">(</span>error<span class="token punctuation">)</span> ERR unknown <span class="token builtin class-name">command</span> <span class="token variable"><span class="token variable">`</span>tt<span class="token variable">`</span></span>, with args beginning with: <span class="token variable"><span class="token variable">`</span>lname<span class="token variable">`</span></span>, <span class="token number">127.0</span>.0.1:637<span class="token operator"><span class="token file-descriptor important">9</span>></span> ttl name<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">2</span><span class="token number">127.0</span>.0.1:637<span class="token operator"><span class="token file-descriptor important">9</span>></span> ttl name<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> -2<span class="token number">127.0</span>.0.1:637<span class="token operator"><span class="token file-descriptor important">9</span>></span> get name<span class="token punctuation">(</span>nil<span class="token punctuation">)</span><span class="token number">127.0</span>.0.1:637<span class="token operator"><span class="token file-descriptor important">9</span>></span> <span class="token builtin class-name">set</span> name myxymOK<span class="token number">127.0</span>.0.1:637<span class="token operator"><span class="token file-descriptor important">9</span>></span> ttl name<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> -1<span class="token number">127.0</span>.0.1:637<span class="token operator"><span class="token file-descriptor important">9</span>></span> ttl name<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> -1<span class="token number">127.0</span>.0.1:637<span class="token operator"><span class="token file-descriptor important">9</span>></span> get name<span class="token string">"myxym"</span><span class="token number">127.0</span>.0.1:637<span class="token operator"><span class="token file-descriptor important">9</span>></span> move name <span class="token number">1</span><span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">0</span><span class="token number">127.0</span>.0.1:637<span class="token operator"><span class="token file-descriptor important">9</span>></span> <span class="token builtin class-name">type</span> name <span class="token comment">#查看当前key的类型</span>string<span class="token number">127.0</span>.0.1:637<span class="token operator"><span class="token file-descriptor important">9</span>></span> <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h3 id="2-String"><a href="#2-String" class="headerlink" title="2.String"></a>2.String</h3>]]></content>
-      
-      
+      <tags>
+        <tag>redis</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>云服务器之间实现免密登录</title>
+    <url>/2022/010230399.html</url>
+    <content><![CDATA[<h1 id="云服务器之间实现免密登录"><a href="#云服务器之间实现免密登录" class="headerlink" title="云服务器之间实现免密登录"></a>云服务器之间实现免密登录</h1><h4 id="1-安装ssh"><a href="#1-安装ssh" class="headerlink" title="1. 安装ssh"></a>1. 安装ssh</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">yum <span class="token function">install</span> -y <span class="token function">ssh</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>注：每台服务器都要安装ssh</p>
+<h4 id="2-在每台服务器上生成公钥"><a href="#2-在每台服务器上生成公钥" class="headerlink" title="2.在每台服务器上生成公钥"></a>2.在每台服务器上生成公钥</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">ssh-keygen<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h4 id="3-服务器ip映射"><a href="#3-服务器ip映射" class="headerlink" title="3.服务器ip映射"></a>3.服务器ip映射</h4><p>使用命令</p>
+<pre class="line-numbers language-ba" data-language="ba"><code class="language-ba">vim &#x2F;etc&#x2F;hosts<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>添加ip映射,例如47.100.227.19 master 有几台服务器要实现互相免密就添加几个映射</p>
+<h4 id="4-公钥互相拷贝到其他服务器"><a href="#4-公钥互相拷贝到其他服务器" class="headerlink" title="4.公钥互相拷贝到其他服务器"></a>4.公钥互相拷贝到其他服务器</h4><p>1.在master服务器上执行</p>
+<pre class="line-numbers language-bas" data-language="bas"><code class="language-bas">ssh-copy-id master
+ssh-copy-id slave1
+ssh-copy-id slave2<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>2.在slave1上执行</p>
+<pre class="line-numbers language-ba" data-language="ba"><code class="language-ba">ssh-copy-id master
+ssh-copy-id slave1
+ssh-copy-id slave2<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>23.在slave上执行</p>
+<pre class="line-numbers language-bas" data-language="bas"><code class="language-bas">ssh-copy-id master
+ssh-copy-id slave1
+ssh-copy-id slave2<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>注：拷贝的时候是需要输入密码,这也是最后一次输入密码,之后就可以实现免密登录了</p>
+<h1 id="2-Windows与云服务器之间实现免密登录"><a href="#2-Windows与云服务器之间实现免密登录" class="headerlink" title="2.Windows与云服务器之间实现免密登录"></a>2.Windows与云服务器之间实现免密登录</h1><h4 id="1-在Windows主机安装openSSH"><a href="#1-在Windows主机安装openSSH" class="headerlink" title="1.在Windows主机安装openSSH"></a>1.在Windows主机安装openSSH</h4><p><img src="/images/pasted-1.png"><br>出现如图所以表示安装成功</p>
+<h4 id="2-生成公钥"><a href="#2-生成公钥" class="headerlink" title="2.生成公钥"></a>2.生成公钥</h4><pre class="line-numbers language-ba" data-language="ba"><code class="language-ba">ssh-keygen<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>生成的默认文件路径是C:\Users\ASUS.ssh</p>
+<p>把Windows中的id.rsa.pub的内容追加到云服务器下.ssh/authorized_keys中</p>
+<p>至此就可以实现免密登录了</p>
+]]></content>
       <categories>
-          
-          <category> 技巧经验 </category>
-          
+        <category>技巧经验</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> redis </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>Git使用教程</title>
-      <link href="/2022/01028579.html"/>
-      <url>/2022/01028579.html</url>
-      
-        <content type="html"><![CDATA[<h1 id="Git使用教程"><a href="#Git使用教程" class="headerlink" title="Git使用教程"></a>Git使用教程</h1><h2 id="1-如何把本地的项目上传到GitHub上"><a href="#1-如何把本地的项目上传到GitHub上" class="headerlink" title="1.如何把本地的项目上传到GitHub上"></a>1.如何把本地的项目上传到GitHub上</h2><p>1.打开Git Bash进入到要上传的项目的目录下</p><p>2.配置用户名和邮箱</p><pre class="line-numbers language-bas" data-language="bas"><code class="language-bas">git config --global user.name &quot;Your username&quot;git config --global user.email &quot;Your email&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><p>3.在GitHub上设置本地的ssh公钥</p><p>（1）在本地生成ssh公钥私钥</p><pre class="line-numbers language-bas" data-language="bas"><code class="language-bas">ssh-keygen<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>生成的.ssh文件默认在C:\Users\ASUS\.ssh (ASUS是我电脑的名字)</p><p>在.ssh文件下有id_rsa.pub文件,把里面的内容添加到你的GigHub的设置里</p><p>4.在你的GitHub上新建一个仓库,复制仓库的ssh地址</p><p>5.把你创建好的仓库克隆到你的项目文件夹下</p><pre class="line-numbers language-bas" data-language="bas"><code class="language-bas">git clone git@github.com:myxym-love&#x2F;javaweb.git<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p> (<a href="mailto:&#x67;&#x69;&#x74;&#64;&#103;&#105;&#116;&#x68;&#x75;&#98;&#46;&#x63;&#x6f;&#x6d;">&#x67;&#x69;&#x74;&#64;&#103;&#105;&#116;&#x68;&#x75;&#98;&#46;&#x63;&#x6f;&#x6d;</a>:myxym-love/javaweb.git)换成你自己仓库地址</p><p>6.把你项目的下的所有文件以及文件夹(除了你拉取的仓库文件夹)复制到你拉取的仓库文件夹里</p><p>7.进去到你拉取的仓库文件夹里</p><pre class="line-numbers language-bas" data-language="bas"><code class="language-bas">git add . (.表示所有文件)git commit -m &quot;描述&quot;git push -u origin master (第一次psuh要加-u)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>]]></content>
-      
-      
+      <tags>
+        <tag>服务器</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>springboot聚合数据</title>
+    <url>/2022/050323444.html</url>
+    <content><![CDATA[<div align='center'><font size='70'>springboot聚合接口数据</font></div>
+
+<p>1.<strong>背景</strong></p>
+<p>最近在写<code>Android</code> 大作业,做一个教育类的<code>APP</code>,后端是用的<code>springboot</code>来开发的，由<code>springboot</code>返回<code>json</code>数据接口,<code>Android</code>使用<code>OKHttpUtils</code>来请求后端的数据接口,在开发首页的时候,一共有四组不同的数据,也就意味着我要请求四个不同的接口来获取数据。这显然是有点多余,并且有很多重复的代码，这时候我就在想,后端能不能把这四组数据一起返回给我呢?果不其然,找到了<code>spring-boot-data-aggregator-starter</code>可以实现我的需求。</p>
+<p>2.<strong>实现</strong></p>
+<p><code>spring-boot-data-aggregator-starter</code>已经发布到了<code>maven</code>中央仓库,所以只需要在<code>pom.xml</code>文件引入该依赖即可。</p>
+<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>io.github.lvyahui8<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>spring-boot-data-aggregator-starter<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>1.1.3<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>在<code> application.properties</code>文件中声明注解的扫描路径</p>
+<pre class="line-numbers language-properties" data-language="properties"><code class="language-properties"><span class="token attr-name">io.github.lvyahui8.spring.base-packages</span><span class="token punctuation">=</span><span class="token attr-value">com.example.shoppingmall_end</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>上述的包名只需要换成你项目的包名即可</p>
+<p>我所用到的三个类分别是</p>
+<ul>
+<li><code>Video</code></li>
+<li><code>VideoBanner</code></li>
+<li><code>Channel</code></li>
+</ul>
+<p>然后定了一<code>ResultBeana</code>类,属性分别是上面三个类的List集合</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ResultBean</span> <span class="token punctuation">&#123;</span>
+
+    <span class="token keyword">private</span> <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Video</span><span class="token punctuation">></span></span> video<span class="token punctuation">;</span>
+
+    <span class="token keyword">private</span> <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">VideoBanner</span><span class="token punctuation">></span></span> videoBanner<span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Channel</span><span class="token punctuation">></span></span> <span class="token function">getListChannel</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> listChannel<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setListChannel</span><span class="token punctuation">(</span><span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Channel</span><span class="token punctuation">></span></span> listChannel<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>listChannel <span class="token operator">=</span> listChannel<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">private</span> <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Channel</span><span class="token punctuation">></span></span> channelList<span class="token punctuation">;</span>
+
+    <span class="token keyword">private</span> <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">VideoBanner</span><span class="token punctuation">></span></span> actList<span class="token punctuation">;</span>
+
+    <span class="token keyword">private</span> <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Channel</span><span class="token punctuation">></span></span> listChannel<span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Video</span><span class="token punctuation">></span></span> <span class="token function">getVideo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> video<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setVideo</span><span class="token punctuation">(</span><span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Video</span><span class="token punctuation">></span></span> video<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>video <span class="token operator">=</span> video<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">public</span> <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">VideoBanner</span><span class="token punctuation">></span></span> <span class="token function">getVideoBanner</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> videoBanner<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setVideoBanner</span><span class="token punctuation">(</span><span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">VideoBanner</span><span class="token punctuation">></span></span> videoBanner<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>videoBanner <span class="token operator">=</span> videoBanner<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">public</span> <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Channel</span><span class="token punctuation">></span></span> <span class="token function">getChannelList</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> channelList<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setChannelList</span><span class="token punctuation">(</span><span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Channel</span><span class="token punctuation">></span></span> channelList<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>channelList <span class="token operator">=</span> channelList<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">public</span> <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">VideoBanner</span><span class="token punctuation">></span></span> <span class="token function">getActList</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> actList<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setActList</span><span class="token punctuation">(</span><span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">VideoBanner</span><span class="token punctuation">></span></span> actList<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>actList <span class="token operator">=</span> actList<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>接着我们需要在<code>ServiceImpl</code>需要聚合的方法上加上注解<code>@DataProvider(id = &quot;name&quot;)</code>,比如:</p>
+<p>在<code>VideoServiceImpl</code> 里的方法中</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@DataProvider</span><span class="token punctuation">(</span>id <span class="token operator">=</span> <span class="token string">"videoList"</span><span class="token punctuation">)</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Video</span><span class="token punctuation">></span></span> <span class="token function">listVideo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+
+        <span class="token keyword">try</span> <span class="token punctuation">&#123;</span>
+
+            <span class="token class-name">Object</span> cacheVideoList <span class="token operator">=</span> baseCache<span class="token punctuation">.</span><span class="token function">getTenMinutesCache</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token class-name">CacheKeyManager</span><span class="token punctuation">.</span>INDEX_VIDEO_LIST<span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-></span> <span class="token punctuation">&#123;</span>
+
+                <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Video</span><span class="token punctuation">></span></span> videoList <span class="token operator">=</span> videoMapper<span class="token punctuation">.</span><span class="token function">listVideo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"从数据库拿视频列表数据"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">return</span> videoList<span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>cacheVideoList <span class="token keyword">instanceof</span> <span class="token class-name">List</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Video</span><span class="token punctuation">></span></span> videoList <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Video</span><span class="token punctuation">></span></span><span class="token punctuation">)</span> cacheVideoList<span class="token punctuation">;</span>
+                <span class="token keyword">return</span> videoList<span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span>
+
+        <span class="token punctuation">&#125;</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">Exception</span> e<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            e<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+
+        <span class="token keyword">return</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+<span class="token annotation punctuation">@DataProvider</span><span class="token punctuation">(</span>id <span class="token operator">=</span> <span class="token string">"banner"</span><span class="token punctuation">)</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">VideoBanner</span><span class="token punctuation">></span></span> <span class="token function">listBanner</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+
+        <span class="token keyword">try</span> <span class="token punctuation">&#123;</span>
+
+            <span class="token class-name">Object</span> cacheBanner <span class="token operator">=</span> baseCache<span class="token punctuation">.</span><span class="token function">getTenMinutesCache</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token class-name">CacheKeyManager</span><span class="token punctuation">.</span>INDEX_BANNER_KEY<span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-></span> <span class="token punctuation">&#123;</span>
+                <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">VideoBanner</span><span class="token punctuation">></span></span> bannerList <span class="token operator">=</span> videoMapper<span class="token punctuation">.</span><span class="token function">listBanner</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"从数据库里拿轮播图数据"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">return</span> bannerList<span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>cacheBanner <span class="token keyword">instanceof</span> <span class="token class-name">List</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">VideoBanner</span><span class="token punctuation">></span></span> bannerList <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">VideoBanner</span><span class="token punctuation">></span></span><span class="token punctuation">)</span> cacheBanner<span class="token punctuation">;</span>
+                <span class="token keyword">return</span> bannerList<span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span>
+
+        <span class="token punctuation">&#125;</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">Exception</span> e<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            e<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+
+        <span class="token keyword">return</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+<span class="token annotation punctuation">@DataProvider</span><span class="token punctuation">(</span>id <span class="token operator">=</span> <span class="token string">"actList"</span><span class="token punctuation">)</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">VideoBanner</span><span class="token punctuation">></span></span> <span class="token function">getActList</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> videoMapper<span class="token punctuation">.</span><span class="token function">getActList</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>以及在<code>ChannelServiceImpl</code>的中方法中</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@DataProvider</span><span class="token punctuation">(</span>id <span class="token operator">=</span> <span class="token string">"channelList"</span><span class="token punctuation">)</span>
+   <span class="token annotation punctuation">@Override</span>
+   <span class="token keyword">public</span> <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Channel</span><span class="token punctuation">></span></span> <span class="token function">getChannelList</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+       <span class="token keyword">return</span> channelMapper<span class="token punctuation">.</span><span class="token function">getChannelList</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="token punctuation">&#125;</span>
+
+   <span class="token annotation punctuation">@DataProvider</span><span class="token punctuation">(</span>id <span class="token operator">=</span> <span class="token string">"listChannel"</span><span class="token punctuation">)</span>
+   <span class="token annotation punctuation">@Override</span>
+   <span class="token keyword">public</span> <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Channel</span><span class="token punctuation">></span></span> <span class="token function">listChannel</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+       <span class="token keyword">return</span> channelMapper<span class="token punctuation">.</span><span class="token function">listChannel</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><code>@DataProvider(id = &quot;name&quot;)表示是数据提供者</code></p>
+<p>接着我们需要定义一个<code>HomeAggregate</code>类,类名随便取</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Component</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">HomeAggregate</span> <span class="token punctuation">&#123;</span>
+    <span class="token annotation punctuation">@DataProvider</span><span class="token punctuation">(</span>id <span class="token operator">=</span> <span class="token string">"HomeData"</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token class-name">ResultBean</span> <span class="token function">homeData</span><span class="token punctuation">(</span><span class="token annotation punctuation">@DataConsumer</span><span class="token punctuation">(</span>id <span class="token operator">=</span> <span class="token string">"banner"</span><span class="token punctuation">)</span> <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">VideoBanner</span><span class="token punctuation">></span></span> videoBanner<span class="token punctuation">,</span>
+                               <span class="token annotation punctuation">@DataConsumer</span><span class="token punctuation">(</span>id <span class="token operator">=</span> <span class="token string">"videoList"</span><span class="token punctuation">)</span> <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Video</span><span class="token punctuation">></span></span> videoList<span class="token punctuation">,</span>
+                               <span class="token annotation punctuation">@DataConsumer</span><span class="token punctuation">(</span>id <span class="token operator">=</span> <span class="token string">"channelList"</span><span class="token punctuation">)</span> <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Channel</span><span class="token punctuation">></span></span> channelList<span class="token punctuation">,</span>
+                               <span class="token annotation punctuation">@DataConsumer</span><span class="token punctuation">(</span>id <span class="token operator">=</span> <span class="token string">"actList"</span><span class="token punctuation">)</span> <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">VideoBanner</span><span class="token punctuation">></span></span> actList<span class="token punctuation">,</span>
+                               <span class="token annotation punctuation">@DataConsumer</span><span class="token punctuation">(</span>id <span class="token operator">=</span> <span class="token string">"listChannel"</span><span class="token punctuation">)</span> <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Channel</span><span class="token punctuation">></span></span> listChannel<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+
+        <span class="token class-name">ResultBean</span> resultBean <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ResultBean</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        resultBean<span class="token punctuation">.</span><span class="token function">setChannelList</span><span class="token punctuation">(</span>channelList<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        resultBean<span class="token punctuation">.</span><span class="token function">setActList</span><span class="token punctuation">(</span>actList<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        resultBean<span class="token punctuation">.</span><span class="token function">setVideoBanner</span><span class="token punctuation">(</span>videoBanner<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        resultBean<span class="token punctuation">.</span><span class="token function">setVideo</span><span class="token punctuation">(</span>videoList<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        resultBean<span class="token punctuation">.</span><span class="token function">setListChannel</span><span class="token punctuation">(</span>listChannel<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> resultBean<span class="token punctuation">;</span>
+
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>最后,我们定义一个<code>HomeController</code>类，</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@RestController</span>
+<span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span><span class="token string">"api/v1/pub/home"</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">HomeController</span> <span class="token punctuation">&#123;</span>
+
+    <span class="token annotation punctuation">@Autowired</span>
+    <span class="token keyword">private</span> <span class="token class-name">DataBeanAggregateQueryFacade</span> dataBeanAggregateQueryFacade<span class="token punctuation">;</span>
+
+    <span class="token comment">/**
+     * 获取首页数据
+     * @return 首页数据
+     * @throws InterruptedException 异常
+     * @throws InvocationTargetException 异常
+     * @throws IllegalAccessException 异常
+     */</span>
+    <span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span><span class="token string">"/getData"</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token class-name">ResultBean</span> <span class="token function">test</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">InterruptedException</span><span class="token punctuation">,</span> <span class="token class-name">InvocationTargetException</span><span class="token punctuation">,</span> <span class="token class-name">IllegalAccessException</span> <span class="token punctuation">&#123;</span>
+
+        <span class="token keyword">return</span> dataBeanAggregateQueryFacade<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"HomeData"</span><span class="token punctuation">,</span><span class="token class-name">Collections</span><span class="token punctuation">.</span><span class="token function">singletonMap</span><span class="token punctuation">(</span><span class="token string">""</span><span class="token punctuation">,</span><span class="token string">""</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token class-name">ResultBean</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<blockquote>
+<p>因为这些数据是直接请求的,不需要传参,所以在<code>Collections.singletonMap(&quot;&quot;,&quot;&quot;)</code>里没有传参,如果有参数话的填写对应参数,比如：需要video_id 才能请求到这些数据话,那么只需要改成<code>Collections.singletonMap(&quot;video_id&quot;,videoId)即可</code></p>
+</blockquote>
+<p>这时候我们启动项目</p>
+<p><img src="/images/pasted_2.png"></p>
+<p>发现如上图所示代表数据聚合成功</p>
+<blockquote>
+<p>如果在其他方法上也添加了<code>@DataProvider(id = &quot;name&quot;)</code>的话，而你没有在使用它,那么启动项目的时候会报错，所以不需要数据聚合的方法上不需要添加该注解</p>
+</blockquote>
+]]></content>
       <categories>
-          
-          <category> 技巧经验 </category>
-          
+        <category>springboot</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> Git </tag>
-            
-            <tag> 攻略 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>云服务器之间实现免密登录</title>
-      <link href="/2022/010230399.html"/>
-      <url>/2022/010230399.html</url>
-      
-        <content type="html"><![CDATA[<h1 id="云服务器之间实现免密登录"><a href="#云服务器之间实现免密登录" class="headerlink" title="云服务器之间实现免密登录"></a>云服务器之间实现免密登录</h1><h4 id="1-安装ssh"><a href="#1-安装ssh" class="headerlink" title="1. 安装ssh"></a>1. 安装ssh</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">yum <span class="token function">install</span> -y <span class="token function">ssh</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>注：每台服务器都要安装ssh</p><h4 id="2-在每台服务器上生成公钥"><a href="#2-在每台服务器上生成公钥" class="headerlink" title="2.在每台服务器上生成公钥"></a>2.在每台服务器上生成公钥</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">ssh-keygen<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><h4 id="3-服务器ip映射"><a href="#3-服务器ip映射" class="headerlink" title="3.服务器ip映射"></a>3.服务器ip映射</h4><p>使用命令</p><pre class="line-numbers language-ba" data-language="ba"><code class="language-ba">vim &#x2F;etc&#x2F;hosts<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>添加ip映射,例如47.100.227.19 master 有几台服务器要实现互相免密就添加几个映射</p><h4 id="4-公钥互相拷贝到其他服务器"><a href="#4-公钥互相拷贝到其他服务器" class="headerlink" title="4.公钥互相拷贝到其他服务器"></a>4.公钥互相拷贝到其他服务器</h4><p>1.在master服务器上执行</p><pre class="line-numbers language-bas" data-language="bas"><code class="language-bas">ssh-copy-id masterssh-copy-id slave1ssh-copy-id slave2<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><p>2.在slave1上执行</p><pre class="line-numbers language-ba" data-language="ba"><code class="language-ba">ssh-copy-id masterssh-copy-id slave1ssh-copy-id slave2<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><p>23.在slave上执行</p><pre class="line-numbers language-bas" data-language="bas"><code class="language-bas">ssh-copy-id masterssh-copy-id slave1ssh-copy-id slave2<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><p>注：拷贝的时候是需要输入密码,这也是最后一次输入密码,之后就可以实现免密登录了</p><h1 id="2-Windows与云服务器之间实现免密登录"><a href="#2-Windows与云服务器之间实现免密登录" class="headerlink" title="2.Windows与云服务器之间实现免密登录"></a>2.Windows与云服务器之间实现免密登录</h1><h4 id="1-在Windows主机安装openSSH"><a href="#1-在Windows主机安装openSSH" class="headerlink" title="1.在Windows主机安装openSSH"></a>1.在Windows主机安装openSSH</h4><p><img src="/images/pasted-1.png"><br>出现如图所以表示安装成功</p><h4 id="2-生成公钥"><a href="#2-生成公钥" class="headerlink" title="2.生成公钥"></a>2.生成公钥</h4><pre class="line-numbers language-ba" data-language="ba"><code class="language-ba">ssh-keygen<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>生成的默认文件路径是C:\Users\ASUS.ssh</p><p>把Windows中的id.rsa.pub的内容追加到云服务器下.ssh/authorized_keys中</p><p>至此就可以实现免密登录了</p>]]></content>
-      
-      
+      <tags>
+        <tag>springboot</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>高数错题日记整理01</title>
+    <url>/2022/041730615.html</url>
+    <content><![CDATA[<p>$$<br>\lim_{n\rightarrow\infty}{\frac{(\sqrt1+\sqrt2+\dot\ \dot\ \dot\ +\sqrt{n})(1+\frac{1}{\sqrt{2}}+ \dot\ \dot\ \dot\ \frac{1}{\sqrt{n}})}{(n+1)(n+2)}}<br>$$</p>
+<p>$$<br>x^{y^z}=(1+{\rm e}^x)^{-2xy^w}<br>$$</p>
+]]></content>
       <categories>
-          
-          <category> 技巧经验 </category>
-          
+        <category>高数错题</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> 服务器 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>Hello World</title>
-      <link href="/2022/010216107.html"/>
-      <url>/2022/010216107.html</url>
-      
-        <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo new <span class="token string">"My New Post"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo server<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo generate<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo deploy<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
-      
-      
-      
-    </entry>
-    
-    
-  
-  
+      <tags>
+        <tag>高数</tag>
+        <tag>错题</tag>
+      </tags>
+  </entry>
 </search>
