@@ -2155,8 +2155,8 @@ p.search-result-summary{
     /* 深色模式按钮设置 */
     #sma {
         background: #000;
-        width: 38px;
-        height: 38px;
+        width: 48px;
+        height: 48px;
         display: block;
         position: fixed;
         border-radius: 50%;
