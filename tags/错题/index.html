@@ -37,7 +37,6 @@
 
 
 <body>
-
     <header class="navbar-fixed">
     <nav id="headNav" class="bg-color nav-transparent">
         <div id="navContainer" class="nav-wrapper container">
@@ -499,19 +498,10 @@
                 </a>
                 
                 
-                <a href="/tags/springboot/" title="springboot: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="springboot" style="background-color: #E8F8F5;">springboot
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
                 <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" title="服务器: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="服务器" style="background-color: #FEF9E7;">服务器
+                            data-tagname="服务器" style="background-color: #E8F8F5;">服务器
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -520,7 +510,7 @@
                 <a href="/tags/%E9%AB%98%E6%95%B0/" title="高数: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="高数" style="background-color: #F8F9F9;">高数
+                            data-tagname="高数" style="background-color: #FEF9E7;">高数
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -529,7 +519,16 @@
                 <a href="/tags/%E9%94%99%E9%A2%98/" title="错题: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-active "
-                            data-tagname="错题" style="background-color: #82E0AA;">错题
+                            data-tagname="错题" style="background-color: #F8F9F9;">错题
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/springboot/" title="springboot: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="springboot" style="background-color: #82E0AA;">springboot
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -896,34 +895,6 @@ $(function () {
     <a onclick="switchNightMode()" id="sma">
         <i class="fa fa-moon-o" id="nightMode" aria-hidden="true"></i>
     </a>
-
-<script>
-  function switchNightMode() {
-    $('<div class="Cuteen_DarkSky"><div class="Cuteen_DarkPlanet"></div></div>').appendTo($('body')),
-      setTimeout(function () {
-        $('body').hasClass('DarkMode') 
-        ? ($('body').removeClass('DarkMode'), localStorage.setItem('isDark', '0'), $('#sum-moon-icon').removeClass("fa-sun").addClass('fa-moon')) 
-        : ($('body').addClass('DarkMode'), localStorage.setItem('isDark', '1'), $('#sum-moon-icon').addClass("fa-sun").removeClass('fa-moon')),
-          
-        setTimeout(function () {
-          $('.Cuteen_DarkSky').fadeOut(1e3, function () {
-            $(this).remove()
-          })
-        }, 2e3)
-      })
-  }
-</script>
-
-<script>
-
-    if (localStorage.getItem('isDark') === '1') {
-        document.body.classList.add('DarkMode');
-        $('#sum-moon-icon').addClass("fa-sun").removeClass('fa-moon')
-    } else {
-        document.body.classList.remove('DarkMode');
-        $('#sum-moon-icon').removeClass("fa-sun").addClass('fa-moon')
-    }
-</script>
 
 
     <script src="/libs/materialize/materialize.min.js"></script>

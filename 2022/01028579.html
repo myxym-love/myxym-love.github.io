@@ -40,7 +40,6 @@ git config --global user.name &amp;quot;Your username&amp;quot;
 
 
 <body>
-
     <header class="navbar-fixed">
     <nav id="headNav" class="bg-color nav-transparent">
         <div id="navContainer" class="nav-wrapper container">
@@ -629,7 +628,7 @@ git config --global user.email &quot;Your email&quot;<span aria-hidden="true" cl
 <p>5.把你创建好的仓库克隆到你的项目文件夹下</p>
 <pre class="line-numbers language-bas" data-language="bas"><code class="language-bas">git clone git@github.com:myxym-love&#x2F;javaweb.git<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p> (<a href="mailto:&#x67;&#105;&#x74;&#x40;&#x67;&#x69;&#x74;&#104;&#117;&#x62;&#46;&#x63;&#111;&#x6d;">&#x67;&#105;&#x74;&#x40;&#x67;&#x69;&#x74;&#104;&#117;&#x62;&#46;&#x63;&#111;&#x6d;</a>:myxym-love/javaweb.git)换成你自己仓库地址</p>
+<p> (<a href="mailto:&#x67;&#105;&#x74;&#64;&#103;&#x69;&#116;&#x68;&#117;&#98;&#x2e;&#x63;&#111;&#x6d;">&#x67;&#105;&#x74;&#64;&#103;&#x69;&#116;&#x68;&#117;&#98;&#x2e;&#x63;&#111;&#x6d;</a>:myxym-love/javaweb.git)换成你自己仓库地址</p>
 <p>6.把你项目的下的所有文件以及文件夹(除了你拉取的仓库文件夹)复制到你拉取的仓库文件夹里</p>
 <p>7.进去到你拉取的仓库文件夹里</p>
 <pre class="line-numbers language-bas" data-language="bas"><code class="language-bas">git add . (.表示所有文件)
@@ -1691,34 +1690,6 @@ $(function () {
     <a onclick="switchNightMode()" id="sma">
         <i class="fa fa-moon-o" id="nightMode" aria-hidden="true"></i>
     </a>
-
-<script>
-  function switchNightMode() {
-    $('<div class="Cuteen_DarkSky"><div class="Cuteen_DarkPlanet"></div></div>').appendTo($('body')),
-      setTimeout(function () {
-        $('body').hasClass('DarkMode') 
-        ? ($('body').removeClass('DarkMode'), localStorage.setItem('isDark', '0'), $('#sum-moon-icon').removeClass("fa-sun").addClass('fa-moon')) 
-        : ($('body').addClass('DarkMode'), localStorage.setItem('isDark', '1'), $('#sum-moon-icon').addClass("fa-sun").removeClass('fa-moon')),
-          
-        setTimeout(function () {
-          $('.Cuteen_DarkSky').fadeOut(1e3, function () {
-            $(this).remove()
-          })
-        }, 2e3)
-      })
-  }
-</script>
-
-<script>
-
-    if (localStorage.getItem('isDark') === '1') {
-        document.body.classList.add('DarkMode');
-        $('#sum-moon-icon').addClass("fa-sun").removeClass('fa-moon')
-    } else {
-        document.body.classList.remove('DarkMode');
-        $('#sum-moon-icon').removeClass("fa-sun").addClass('fa-moon')
-    }
-</script>
 
 
     <script src="/libs/materialize/materialize.min.js"></script>
