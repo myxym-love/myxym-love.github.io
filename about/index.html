@@ -621,7 +621,7 @@
         xAxis: [
             {
                 type: 'category',
-                data: ["Git","攻略","redis","高数","错题","服务器"]
+                data: ["Git","攻略","redis","服务器","高数","错题"]
             }
         ],
         yAxis: [
@@ -822,6 +822,12 @@
             
             
             
+            <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/">
+                <span class="chip center-align waves-effect waves-light chip-default">服务器</span>
+            </a>
+            
+            
+            
             <a href="/tags/%E9%AB%98%E6%95%B0/">
                 <span class="chip center-align waves-effect waves-light chip-default">高数</span>
             </a>
@@ -830,12 +836,6 @@
             
             <a href="/tags/%E9%94%99%E9%A2%98/">
                 <span class="chip center-align waves-effect waves-light chip-default">错题</span>
-            </a>
-            
-            
-            
-            <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/">
-                <span class="chip center-align waves-effect waves-light chip-default">服务器</span>
             </a>
             
             
@@ -948,7 +948,7 @@
                    type="playlist"
                    id="503838841"
                    fixed='true'
-                   autoplay='false'
+                   autoplay='true'
                    theme='#42b983'
                    loop='all'
                    order='random'
@@ -1261,36 +1261,11 @@ $(function () {
     
 
     
-        
-        <script type="text/javascript">
-            // 只在桌面版网页启用特效
-            var windowWidth = $(window).width();
-            if (windowWidth > 768) {
-                document.write('<script type="text/javascript" src="/libs/others/sakura.js"><\/script>');
-            }
-        </script>
-    
 
     <!-- 雪花特效 -->
-     
-        <script type="text/javascript">
-            // 只在桌面版网页启用特效
-            var windowWidth = $(window).width();
-            if (windowWidth > 768) {
-                document.write('<script type="text/javascript" src="/libs/others/snow.js"><\/script>');
-            }
-        </script>
     
 
     <!-- 鼠标星星特效 -->
-     
-        <script type="text/javascript">
-            // 只在桌面版网页启用特效
-            var windowWidth = $(window).width();
-            if (windowWidth > 768) {
-                document.write('<script type="text/javascript" src="/libs/others/star.js"><\/script>');
-            }
-        </script>
     
 
      
@@ -1333,9 +1308,11 @@ $(function () {
     
 
     
-
     
-    <script type="text/javascript" src="/libs/background/ribbon-dynamic.js" async="async"></script>
+    <script type="text/javascript" size="150" alpha='0.6'
+        zIndex="-1" src="/libs/background/ribbon-refresh.min.js" async="async"></script>
+    
+
     
 
     
