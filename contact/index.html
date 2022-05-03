@@ -816,6 +816,7 @@ $(function () {
   <div id="stars3"></div>  
 </div>
 
+
 <script>
   function switchNightMode() {
     $('<div class="Cuteen_DarkSky"><div class="Cuteen_DarkPlanet"></div></div>').appendTo($('body')),
@@ -834,8 +835,9 @@ $(function () {
 </script>
 
 
-
+/* 模式判断 */
 <script>
+    /* 模式判断 */
     if (localStorage.getItem('isDark') === '1') {
         document.body.classList.add('DarkMode');
         $('#sum-moon-icon').addClass("fa-sun").removeClass('fa-moon')

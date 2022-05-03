@@ -1,8 +1,5 @@
 $(function () {
 	
-	/**
-	*定时开启黑夜主题
-	*/
 	//黑夜模式提醒开启功能
 setTimeout(function () {
     if ((new Date().getHours() >= 19 || new Date().getHours() < 7) && !$('body').hasClass('DarkMode')) {
