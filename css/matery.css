@@ -553,7 +553,8 @@ header .go-back i {
 .bg-cover:after {
     -webkit-animation: rainbow 60s infinite;
     animation: rainbow 60s infinite;
-}*/
+}
+*/
 
 .bg-cover:before,
 .bg-cover:after {
@@ -2149,7 +2150,9 @@ p.search-result-summary{
 
 
 
- /* 深色模式按钮设置 */
+
+
+    /* 深色模式按钮设置 */
     #sma {
         background: #000;
         width: 38px;
@@ -2244,6 +2247,8 @@ p.search-result-summary{
     body.dark img, body.dark strong {
         filter: brightness(.7);
     }
+
+
 
 
 
