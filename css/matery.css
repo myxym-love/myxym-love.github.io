@@ -2168,20 +2168,20 @@ p.search-result-summary{
         cursor: pointer;
     }
 
-    #sma .fa-moon-o {
+    #sma .fa-moon {
         position: absolute;
         right: 8px;
         bottom: 8px;
         font-size: 1.48rem!important;
     }
-    #sma .fa-lightbulb-o  {
+    #sma .fa-sun  {
         position: absolute;
-        right: 13px;
+        right: 8px;
         bottom: 8px;
         font-size: 1.5rem!important;
     }
 
-    .fa-moon-o:before {
+    .fa-moon:before {
         content: "\f186";
     }
     .fa-comments:before {
@@ -2196,8 +2196,8 @@ p.search-result-summary{
     body.dark .row .text,
     body.dark article .article-content .summary,
     body.dark .card .card-image .card-title,
-    body.dark .fa-moon-o:before,
-    body.dark .fa-lightbulb-o:before,
+    body.dark .fa-moon:before,
+    body.dark .fa-sun:before,
     body.dark article .article-tags .chip,
     body.dark .chip-container .tag-title,
     body.dark div.jqcloud a,

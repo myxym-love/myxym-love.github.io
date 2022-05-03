@@ -1,7 +1,4 @@
 $(function () {
-	
-	
-	
     /**
      * 添加文章卡片hover效果.
      */
@@ -180,12 +177,12 @@ function switchNightMode() {
         if(body.classList.contains('dark')){
         document.body.classList.remove('dark');
         localStorage.setItem('dark','0');
-        $('#nightMode').removeClass("fa-lightbulb-o").addClass("fa-moon-o");
+        $('#nightMode').removeClass("fa-moon").addClass("fa-sun");
         return;
         } else {
         document.body.classList.add('dark');
         localStorage.setItem('dark','1');
-        $('#nightMode').removeClass("fa-moon-o").addClass("fa-lightbulb-o");
+        $('#nightMode').removeClass("fa-sun").addClass("fa-moon");
         return;
         }
     }
