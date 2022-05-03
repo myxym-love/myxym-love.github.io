@@ -472,19 +472,10 @@
             <div class="tag-chips">
                 
                 
-                <a href="/tags/redis/" title="redis: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="redis" style="background-color: #F9EBEA;">redis
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
                 <a href="/tags/Git/" title="Git: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="Git" style="background-color: #F5EEF8;">Git
+                            data-tagname="Git" style="background-color: #F9EBEA;">Git
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -493,16 +484,16 @@
                 <a href="/tags/%E6%94%BB%E7%95%A5/" title="攻略: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="攻略" style="background-color: #D5F5E3;">攻略
+                            data-tagname="攻略" style="background-color: #F5EEF8;">攻略
                         <span class="tag-length">1</span>
                     </span>
                 </a>
                 
                 
-                <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" title="服务器: 1">
+                <a href="/tags/redis/" title="redis: 1">
                     <span class="chip center-align waves-effect waves-light
-                             chip-active "
-                            data-tagname="服务器" style="background-color: #E8F8F5;">服务器
+                             chip-default "
+                            data-tagname="redis" style="background-color: #D5F5E3;">redis
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -511,7 +502,16 @@
                 <a href="/tags/springboot/" title="springboot: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="springboot" style="background-color: #FEF9E7;">springboot
+                            data-tagname="springboot" style="background-color: #E8F8F5;">springboot
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" title="服务器: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-active "
+                            data-tagname="服务器" style="background-color: #FEF9E7;">服务器
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -882,12 +882,20 @@ $(function () {
 </div>
 
 
-
-<div class="sum-moon-box">
-  <a class="btn-floating btn-large waves-effect waves-light" οnclick="switchNightMode()" title="切换主题" >
-    <i id="sum-moon-icon" class="fas fa-sun" style="width:48px; height:48px; font-size: 28px;"></i>
-  </a>
-</div>
+<script>
+        if (localStorage.getItem('dark') === '1') {
+        document.body.classList.add('dark');
+        }
+        else if (new Date().getHours() >= 22 || new Date().getHours() < 7) {
+        document.body.classList.add('dark');
+        } 
+        else if (matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+        }
+    </script>
+    <a onclick="switchNightMode()" id="sma">
+        <i class="fa fa-moon-o" id="nightMode" aria-hidden="true"></i>
+    </a>
 
 <script>
   function switchNightMode() {

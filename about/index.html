@@ -729,7 +729,7 @@
         xAxis: [
             {
                 type: 'category',
-                data: ["redis","Git","攻略","服务器","springboot","高数","错题"]
+                data: ["Git","攻略","redis","springboot","服务器","高数","错题"]
             }
         ],
         yAxis: [
@@ -912,12 +912,6 @@
         <div class="tag-chips center-align">
             
             
-            <a href="/tags/redis/">
-                <span class="chip center-align waves-effect waves-light chip-default">redis</span>
-            </a>
-            
-            
-            
             <a href="/tags/Git/">
                 <span class="chip center-align waves-effect waves-light chip-default">Git</span>
             </a>
@@ -930,14 +924,20 @@
             
             
             
-            <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/">
-                <span class="chip center-align waves-effect waves-light chip-default">服务器</span>
+            <a href="/tags/redis/">
+                <span class="chip center-align waves-effect waves-light chip-default">redis</span>
             </a>
             
             
             
             <a href="/tags/springboot/">
                 <span class="chip center-align waves-effect waves-light chip-default">springboot</span>
+            </a>
+            
+            
+            
+            <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/">
+                <span class="chip center-align waves-effect waves-light chip-default">服务器</span>
             </a>
             
             
@@ -1321,12 +1321,20 @@ $(function () {
 </div>
 
 
-
-<div class="sum-moon-box">
-  <a class="btn-floating btn-large waves-effect waves-light" οnclick="switchNightMode()" title="切换主题" >
-    <i id="sum-moon-icon" class="fas fa-sun" style="width:48px; height:48px; font-size: 28px;"></i>
-  </a>
-</div>
+<script>
+        if (localStorage.getItem('dark') === '1') {
+        document.body.classList.add('dark');
+        }
+        else if (new Date().getHours() >= 22 || new Date().getHours() < 7) {
+        document.body.classList.add('dark');
+        } 
+        else if (matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+        }
+    </script>
+    <a onclick="switchNightMode()" id="sma">
+        <i class="fa fa-moon-o" id="nightMode" aria-hidden="true"></i>
+    </a>
 
 <script>
   function switchNightMode() {
