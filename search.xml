@@ -18,7 +18,7 @@ git config --global user.email &quot;Your email&quot;<span aria-hidden="true" cl
 <p>5.把你创建好的仓库克隆到你的项目文件夹下</p>
 <pre class="line-numbers language-bas" data-language="bas"><code class="language-bas">git clone git@github.com:myxym-love&#x2F;javaweb.git<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p> (<a href="mailto:&#x67;&#105;&#116;&#x40;&#103;&#105;&#x74;&#104;&#x75;&#x62;&#46;&#x63;&#x6f;&#x6d;">&#x67;&#105;&#116;&#x40;&#103;&#105;&#x74;&#104;&#x75;&#x62;&#46;&#x63;&#x6f;&#x6d;</a>:myxym-love/javaweb.git)换成你自己仓库地址</p>
+<p> (<a href="mailto:&#x67;&#105;&#116;&#64;&#x67;&#x69;&#x74;&#x68;&#117;&#98;&#46;&#x63;&#x6f;&#109;">&#x67;&#105;&#116;&#64;&#x67;&#x69;&#x74;&#x68;&#117;&#98;&#46;&#x63;&#x6f;&#109;</a>:myxym-love/javaweb.git)换成你自己仓库地址</p>
 <p>6.把你项目的下的所有文件以及文件夹(除了你拉取的仓库文件夹)复制到你拉取的仓库文件夹里</p>
 <p>7.进去到你拉取的仓库文件夹里</p>
 <pre class="line-numbers language-bas" data-language="bas"><code class="language-bas">git add . (.表示所有文件)
@@ -33,6 +33,24 @@ git push -u origin master (第一次psuh要加-u)<span aria-hidden="true" class=
         <tag>Git</tag>
         <tag>攻略</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/2022/010216107.html</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo new <span class="token string">"My New Post"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo server<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo generate<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo deploy<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
   </entry>
   <entry>
     <title>Redis学习笔记</title>
@@ -155,6 +173,20 @@ string
       </tags>
   </entry>
   <entry>
+    <title>高数错题日记整理01</title>
+    <url>/2022/041730615.html</url>
+    <content><![CDATA[<p>$$<br>\lim_{n\rightarrow\infty}{\frac{(\sqrt1+\sqrt2+\dot\ \dot\ \dot\ +\sqrt{n})(1+\frac{1}{\sqrt{2}}+ \dot\ \dot\ \dot\ \frac{1}{\sqrt{n}})}{(n+1)(n+2)}}<br>$$</p>
+<p>$$<br>x^{y^z}=(1+{\rm e}^x)^{-2xy^w}<br>$$</p>
+]]></content>
+      <categories>
+        <category>高数错题</category>
+      </categories>
+      <tags>
+        <tag>高数</tag>
+        <tag>错题</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>云服务器之间实现免密登录</title>
     <url>/2022/010230399.html</url>
     <content><![CDATA[<h1 id="云服务器之间实现免密登录"><a href="#云服务器之间实现免密登录" class="headerlink" title="云服务器之间实现免密登录"></a>云服务器之间实现免密登录</h1><h4 id="1-安装ssh"><a href="#1-安装ssh" class="headerlink" title="1. 安装ssh"></a>1. 安装ssh</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">yum <span class="token function">install</span> -y <span class="token function">ssh</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
@@ -194,38 +226,6 @@ ssh-copy-id slave2<span aria-hidden="true" class="line-numbers-rows"><span></spa
       </categories>
       <tags>
         <tag>服务器</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hello World</title>
-    <url>/2022/010216107.html</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo new <span class="token string">"My New Post"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo server<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo generate<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo deploy<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-]]></content>
-  </entry>
-  <entry>
-    <title>高数错题日记整理01</title>
-    <url>/2022/041730615.html</url>
-    <content><![CDATA[<p>$$<br>\lim_{n\rightarrow\infty}{\frac{(\sqrt1+\sqrt2+\dot\ \dot\ \dot\ +\sqrt{n})(1+\frac{1}{\sqrt{2}}+ \dot\ \dot\ \dot\ \frac{1}{\sqrt{n}})}{(n+1)(n+2)}}<br>$$</p>
-<p>$$<br>x^{y^z}=(1+{\rm e}^x)^{-2xy^w}<br>$$</p>
-]]></content>
-      <categories>
-        <category>高数错题</category>
-      </categories>
-      <tags>
-        <tag>高数</tag>
-        <tag>错题</tag>
       </tags>
   </entry>
 </search>
