@@ -729,7 +729,7 @@
         xAxis: [
             {
                 type: 'category',
-                data: ["Git","攻略","redis","springboot","高数","错题","服务器"]
+                data: ["Git","攻略","redis","服务器","springboot","高数","错题"]
             }
         ],
         yAxis: [
@@ -930,6 +930,12 @@
             
             
             
+            <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/">
+                <span class="chip center-align waves-effect waves-light chip-default">服务器</span>
+            </a>
+            
+            
+            
             <a href="/tags/springboot/">
                 <span class="chip center-align waves-effect waves-light chip-default">springboot</span>
             </a>
@@ -944,12 +950,6 @@
             
             <a href="/tags/%E9%94%99%E9%A2%98/">
                 <span class="chip center-align waves-effect waves-light chip-default">错题</span>
-            </a>
-            
-            
-            
-            <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/">
-                <span class="chip center-align waves-effect waves-light chip-default">服务器</span>
             </a>
             
             
@@ -1322,6 +1322,39 @@ $(function () {
 
 
 
+<div class="sum-moon-box">
+  <a class="btn-floating btn-large waves-effect waves-light" οnclick="switchNightMode()" title="切换主题" >
+    <i id="sum-moon-icon" class="fas fa-sun" style="width:48px; height:48px; font-size: 28px;"></i>
+  </a>
+</div>
+
+<script>
+  function switchNightMode() {
+    $('<div class="Cuteen_DarkSky"><div class="Cuteen_DarkPlanet"></div></div>').appendTo($('body')),
+      setTimeout(function () {
+        $('body').hasClass('DarkMode') 
+        ? ($('body').removeClass('DarkMode'), localStorage.setItem('isDark', '0'), $('#sum-moon-icon').removeClass("fa-sun").addClass('fa-moon')) 
+        : ($('body').addClass('DarkMode'), localStorage.setItem('isDark', '1'), $('#sum-moon-icon').addClass("fa-sun").removeClass('fa-moon')),
+          
+        setTimeout(function () {
+          $('.Cuteen_DarkSky').fadeOut(1e3, function () {
+            $(this).remove()
+          })
+        }, 2e3)
+      })
+  }
+</script>
+
+<script>
+    /* 模式判断 */
+    if (localStorage.getItem('isDark') === '1') {
+        document.body.classList.add('DarkMode');
+        $('#sum-moon-icon').addClass("fa-sun").removeClass('fa-moon')
+    } else {
+        document.body.classList.remove('DarkMode');
+        $('#sum-moon-icon').removeleClass("fa-sun").addClass('fa-moon')
+    }
+</script>
 
 
     <script src="/libs/materialize/materialize.min.js"></script>
