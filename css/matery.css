@@ -2168,16 +2168,16 @@ p.search-result-summary{
         cursor: pointer;
     }
 
-    #sma .fa-moon {
+   #sma .fa-moon {
         position: absolute;
-        right: 8px;
-        bottom: 8px;
-        font-size: 1.48rem!important;
+        right: 13px;
+        bottom: 13x;
+        font-size: 1.5rem!important;
     }
     #sma .fa-sun  {
         position: absolute;
-        right: 8px;
-        bottom: 8px;
+        right: 13px;
+        bottom: 13px;
         font-size: 1.5rem!important;
     }
 
