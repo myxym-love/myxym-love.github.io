@@ -18,7 +18,7 @@ git config --global user.email &quot;Your email&quot;<span aria-hidden="true" cl
 <p>5.把你创建好的仓库克隆到你的项目文件夹下</p>
 <pre class="line-numbers language-bas" data-language="bas"><code class="language-bas">git clone git@github.com:myxym-love&#x2F;javaweb.git<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p> (<a href="mailto:&#x67;&#105;&#116;&#x40;&#103;&#105;&#116;&#104;&#x75;&#98;&#46;&#99;&#x6f;&#109;">&#x67;&#105;&#116;&#x40;&#103;&#105;&#116;&#104;&#x75;&#98;&#46;&#99;&#x6f;&#109;</a>:myxym-love/javaweb.git)换成你自己仓库地址</p>
+<p> (<a href="mailto:&#103;&#105;&#x74;&#x40;&#103;&#105;&#x74;&#104;&#x75;&#x62;&#46;&#x63;&#x6f;&#109;">&#103;&#105;&#x74;&#x40;&#103;&#105;&#x74;&#104;&#x75;&#x62;&#46;&#x63;&#x6f;&#109;</a>:myxym-love/javaweb.git)换成你自己仓库地址</p>
 <p>6.把你项目的下的所有文件以及文件夹(除了你拉取的仓库文件夹)复制到你拉取的仓库文件夹里</p>
 <p>7.进去到你拉取的仓库文件夹里</p>
 <pre class="line-numbers language-bas" data-language="bas"><code class="language-bas">git add . (.表示所有文件)
@@ -365,20 +365,6 @@ string
       </tags>
   </entry>
   <entry>
-    <title>高数错题日记整理01</title>
-    <url>/2022/041730615.html</url>
-    <content><![CDATA[<p>$$<br>\lim_{n\rightarrow\infty}{\frac{(\sqrt1+\sqrt2+\dot\ \dot\ \dot\ +\sqrt{n})(1+\frac{1}{\sqrt{2}}+ \dot\ \dot\ \dot\ \frac{1}{\sqrt{n}})}{(n+1)(n+2)}}<br>$$</p>
-<p>$$<br>x^{y^z}=(1+{\rm e}^x)^{-2xy^w}<br>$$</p>
-]]></content>
-      <categories>
-        <category>高数错题</category>
-      </categories>
-      <tags>
-        <tag>高数</tag>
-        <tag>错题</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>云服务器之间实现免密登录</title>
     <url>/2022/010230399.html</url>
     <content><![CDATA[<h1 id="云服务器之间实现免密登录"><a href="#云服务器之间实现免密登录" class="headerlink" title="云服务器之间实现免密登录"></a>云服务器之间实现免密登录</h1><h4 id="1-安装ssh"><a href="#1-安装ssh" class="headerlink" title="1. 安装ssh"></a>1. 安装ssh</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">yum <span class="token function">install</span> -y <span class="token function">ssh</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
@@ -418,6 +404,20 @@ ssh-copy-id slave2<span aria-hidden="true" class="line-numbers-rows"><span></spa
       </categories>
       <tags>
         <tag>服务器</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>高数错题日记整理01</title>
+    <url>/2022/041730615.html</url>
+    <content><![CDATA[<p>$$<br>\lim_{n\rightarrow\infty}{\frac{(\sqrt1+\sqrt2+\dot\ \dot\ \dot\ +\sqrt{n})(1+\frac{1}{\sqrt{2}}+ \dot\ \dot\ \dot\ \frac{1}{\sqrt{n}})}{(n+1)(n+2)}}<br>$$</p>
+<p>$$<br>x^{y^z}=(1+{\rm e}^x)^{-2xy^w}<br>$$</p>
+]]></content>
+      <categories>
+        <category>高数错题</category>
+      </categories>
+      <tags>
+        <tag>高数</tag>
+        <tag>错题</tag>
       </tags>
   </entry>
 </search>
