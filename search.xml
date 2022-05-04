@@ -18,7 +18,7 @@ git config --global user.email &quot;Your email&quot;<span aria-hidden="true" cl
 <p>5.把你创建好的仓库克隆到你的项目文件夹下</p>
 <pre class="line-numbers language-bas" data-language="bas"><code class="language-bas">git clone git@github.com:myxym-love&#x2F;javaweb.git<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p> (<a href="mailto:&#x67;&#x69;&#116;&#64;&#103;&#105;&#116;&#104;&#117;&#x62;&#x2e;&#x63;&#111;&#109;">&#x67;&#x69;&#116;&#64;&#103;&#105;&#116;&#104;&#117;&#x62;&#x2e;&#x63;&#111;&#109;</a>:myxym-love/javaweb.git)换成你自己仓库地址</p>
+<p> (<a href="mailto:&#103;&#105;&#x74;&#64;&#103;&#x69;&#x74;&#104;&#117;&#98;&#46;&#99;&#x6f;&#x6d;">&#103;&#105;&#x74;&#64;&#103;&#x69;&#x74;&#104;&#117;&#98;&#46;&#99;&#x6f;&#x6d;</a>:myxym-love/javaweb.git)换成你自己仓库地址</p>
 <p>6.把你项目的下的所有文件以及文件夹(除了你拉取的仓库文件夹)复制到你拉取的仓库文件夹里</p>
 <p>7.进去到你拉取的仓库文件夹里</p>
 <pre class="line-numbers language-bas" data-language="bas"><code class="language-bas">git add . (.表示所有文件)
@@ -32,112 +32,6 @@ git push -u origin master (第一次psuh要加-u)<span aria-hidden="true" class=
       <tags>
         <tag>Git</tag>
         <tag>攻略</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>hexo matery主题评论推送</title>
-    <url>/2022/050461765.html</url>
-    <content><![CDATA[<div align='center'><font size='70'>Hexo Matery主题评论推送功能</font></div>
-
-<h2 id="1-前言"><a href="#1-前言" class="headerlink" title="1.前言"></a>1.前言</h2><p>这一节内容讲的是如何在<code>matery</code>主题下实现评论推送功能，当别人评论我们的文章的是时候，我们可以第一时间看到内容。我所用的评论系统是<code>LeanCloud</code>d的支持<code>Vlain</code>评论。</p>
-<h2 id="2-环境准备"><a href="#2-环境准备" class="headerlink" title="2.环境准备"></a>2.环境准备</h2><p>有哪些推送平台呢？</p>
-<ul>
-<li><code>coolPush</code>QQ机器人</li>
-<li><code>Valine-Admin</code>邮件提醒</li>
-<li><code>Server酱</code>(可以支持很多消息通道，推荐使用)</li>
-</ul>
-<p>我选用的是<a href="https://sct.ftqq.com/">Server酱</a>,英文名<code>ServerChan</code>，是一款手机和服务器、智能设备之间的通信软件。</p>
-<p>微信扫码登录官网，会自动给你生成<code>SendKey</code>，如下图所示</p>
-<p><img src="/images/pasted_%603.png"></p>
-<p>接下来,我们可以使用在线发送工具，来测试一下</p>
-<p><img src="/images/pasted_4.png"></p>
-<p>API调用实例</p>
-<p>最简单的调用方式，直接在浏览器中输入以下 URL：</p>
-<pre class="line-numbers language-apl" data-language="apl"><code class="language-apl">https<span class="token dfn builtin">:</span><span class="token monadic-operator operator">/</span><span class="token monadic-operator operator">/</span>sctapi<span class="token dyadic-operator operator">.</span>ftqq<span class="token dyadic-operator operator">.</span>com<span class="token monadic-operator operator">/</span><span class="token function">*</span><span class="token function">*</span><span class="token function">*</span><span class="token function">*</span><span class="token function">*</span><span class="token function">*</span><span class="token function">*</span><span class="token function">*</span><span class="token function">*</span><span class="token function">*</span><span class="token function">*</span><span class="token function">*</span><span class="token function">*</span><span class="token function">*</span><span class="token function">*</span><span class="token function">*</span><span class="token dyadic-operator operator">.</span>send<span class="token function">?</span>title<span class="token function">=</span>messagetitle<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>这时候你选择的消息通道会给你发送一个标题为<code>messagetitle</code>的内容</p>
-<p>如果你要发送中文，记得要把参数编码，比如通过 urlencode 函数。这样发送只有标题，如果需要内容，可以这样：</p>
-<pre class="line-numbers language-apl" data-language="apl"><code class="language-apl">https<span class="token dfn builtin">:</span><span class="token monadic-operator operator">/</span><span class="token monadic-operator operator">/</span>sctapi<span class="token dyadic-operator operator">.</span>ftqq<span class="token dyadic-operator operator">.</span>com<span class="token monadic-operator operator">/</span><span class="token function">*</span><span class="token function">*</span><span class="token function">*</span><span class="token function">*</span><span class="token function">*</span><span class="token function">*</span><span class="token function">*</span><span class="token function">*</span><span class="token function">*</span><span class="token function">*</span><span class="token function">*</span><span class="token function">*</span><span class="token function">*</span><span class="token function">*</span><span class="token function">*</span><span class="token function">*</span><span class="token dyadic-operator operator">.</span>send<span class="token function">?</span>title<span class="token function">=</span>messagetitle<span class="token monadic-operator operator">&amp;</span>desp<span class="token function">=</span>messagecontent<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>但是需要注意，GET 请求是有长度限制的，所以还是建议大家使用 POST 请求来发送。</p>
-<h2 id="3-Server酱API详解"><a href="#3-Server酱API详解" class="headerlink" title="3.Server酱API详解"></a>3.Server酱API详解</h2><p>向以下 URL 发送一个 HTTP 请求，并传递参数即可。</p>
-<pre class="line-numbers language-apl" data-language="apl"><code class="language-apl">https<span class="token dfn builtin">:</span><span class="token monadic-operator operator">/</span><span class="token monadic-operator operator">/</span>sctapi<span class="token dyadic-operator operator">.</span>ftqq<span class="token dyadic-operator operator">.</span>com<span class="token monadic-operator operator">/</span><span class="token function">*</span><span class="token function">*</span><span class="token function">*</span><span class="token function">*</span><span class="token function">*</span><span class="token function">*</span><span class="token function">*</span><span class="token function">*</span><span class="token function">*</span><span class="token function">*</span><span class="token function">*</span><span class="token function">*</span><span class="token function">*</span><span class="token function">*</span><span class="token function">*</span><span class="token function">*</span><span class="token dyadic-operator operator">.</span>send<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>参数说明如下：</p>
-<ul>
-<li><p>title: 消息标题，必填。最大长度为 32 。</p>
-</li>
-<li><p>desp: 消息内容，选填。支持 <a href="https://rexxars.github.io/react-markdown/">Markdown语法</a> ，最大长度为 32KB ,消息卡片截取前 30 显示。</p>
-</li>
-<li><p>channel: 动态指定本次推送使用的消息通道，选填。如不指定，则使用网站上的消息通道页面设置的通道。支持最多两个通道，多个通道值用竖线|隔开。比如，同时发送服务号和企业微信应用消息通道，则使用 9|66 。通道对应的值如下：</p>
-<ul>
-<li>方糖服务号=9</li>
-<li>Android=98</li>
-<li>Bark iOS=8</li>
-<li>企业微信群机器人=1</li>
-<li>钉钉群机器人=2</li>
-<li>飞书群机器人=3</li>
-<li>测试号=0</li>
-<li>自定义=88</li>
-<li>PushDeer=18</li>
-<li>企业微信应用消息=66</li>
-</ul>
-</li>
-<li><p>openid: 消息抄送的openid，选填。只支持测试号和企业微信应用消息通道。测试号的 openid 从测试号页面获得 ，多个 openid 用 , 隔开。企业微信应用消息通道的openid 参数，内容为接收人在企业微信中的 UID（可在消息通道页面配置好该通道后通过链接查看） , 多个人请 | 隔开，即可发给特定人/多个人。不填则发送给通道配置页面的接收人。</p>
-</li>
-</ul>
-<h2 id="4-修改metary主题对应文件代码"><a href="#4-修改metary主题对应文件代码" class="headerlink" title="4.修改metary主题对应文件代码"></a>4.修改metary主题对应文件代码</h2><p>找到主题文件夹下<code>themes\hexo-theme-matery\layout\_partial</code>的<code>Valine.ejs</code>文件，照理说最后一个<code>script</code>标签会起作用的，但是我的没有起效果,我就把最后一个<code>script</code>的内容复制到了上一个<code>script</code>里面去，然后把最后一个<code>script</code>标签删除。要修改的代码是</p>
-<pre class="line-numbers language-ej" data-language="ej"><code class="language-ej">var pushLink &#x3D;&quot;https:&#x2F;&#x2F;sctapi.ftqq.com&#x2F;*****************.send&quot;;
-    var siteName &#x3D; &quot;&lt;%- config.title %&gt;&#39;s Blog&quot;;
-    var valineButton&#x3D;document.getElementsByClassName(&quot;vsubmit vbtn&quot;)[0];
-    var title &#x3D; siteName + &quot;上又有新评论啦~!\n&quot;;
-  
-    function send_valine() &#123;
-      &#x2F;&#x2F;获取元素信息
-      var pagename &#x3D; document.title;
-      var pageurl &#x3D; document.URL;
-      var pushtime &#x3D; new Date();
-      var vnick &#x3D; document.getElementsByClassName(&quot;vnick vinput&quot;)[0].value;
-      var vmail &#x3D; document.getElementsByClassName(&quot;vmail vinput&quot;)[0].value;
-      var vlink &#x3D; document.getElementsByClassName(&quot;vlink vinput&quot;)[0].value;
-      var veditor &#x3D; document.getElementsByClassName(&quot;veditor vinput&quot;)[0].value;
-      content &#x3D;
-        title +
-        &quot;\n\n昵称：&quot; + vnick +
-        &quot;\n\n邮箱：&quot; + vmail +
-        &quot;\n\n网站地址：&quot; + vlink +
-        &quot;\n\n文章标题：&quot; + pagename +
-        &quot;\n\n评论内容：\n\n&quot; + veditor +
-        &quot;\n\n文章链接：&quot; + pageurl +
-        &quot;\n\n评论时间：&quot; + pushtime.toLocaleString() + &quot;\n&quot;;
-      var httpRequest &#x3D; new XMLHttpRequest(); &#x2F;&#x2F;第一步：创建需要的对象
-      httpRequest.open(&quot;POST&quot;, pushLink, true); &#x2F;&#x2F;第二步：打开连接
-      httpRequest.setRequestHeader(
-        &quot;Content-type&quot;,
-        &quot;application&#x2F;x-www-form-urlencoded&quot;
-      ); &#x2F;&#x2F;设置请求头 注：post方式必须设置请求头（在建立连接后设置请求头）
-      httpRequest.send(&quot;title&#x3D;&quot; + pagename + &quot;&amp;desp&#x3D;&quot; + content); &#x2F;&#x2F;发送请求 
-    &#125;
-  
-    document.body.addEventListener(&#39;click&#39;, function(e) &#123;
-    if(e.target.className.indexOf(&#39;vsubmit&#39;) &#x3D;&#x3D;&#x3D; -1) &#123;
-      return;
-    &#125;
-    send_valine();
-  &#125;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h2 id="5-选择消息通道"><a href="#5-选择消息通道" class="headerlink" title="5.选择消息通道"></a>5.选择消息通道</h2><p>我选择的消息通道是<a href="http://www.pushdeer.com/">PushDeer</a>，进入到官网，下载你对应手机系统的<code>APP</code>，使用微信登录，会自动给你生成<code>PushDeer pushkey</code>,然后在<code>Serverj酱</code>官网上选择<code>PushDeer</code>消息通道，并输入<code>PushDeer pushkey</code>，然后保存即可。</p>
-<h2 id="6-效果测试"><a href="#6-效果测试" class="headerlink" title="6.效果测试"></a>6.效果测试</h2><p>评论是支持<code>Markdown</code>语法的，发送的内容最终也会被解析成<code>Markdown</code>语法</p>
-<blockquote>
-<p>两个换行符才能实现换行！！！！！！！！</p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>技巧经验</category>
-      </categories>
-      <tags>
-        <tag>hexo</tag>
-        <tag>matery</tag>
       </tags>
   </entry>
   <entry>
@@ -258,6 +152,112 @@ string
       </categories>
       <tags>
         <tag>redis</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>hexo matery主题评论推送</title>
+    <url>/2022/050461765.html</url>
+    <content><![CDATA[<div align='center'><font size='70'>Hexo Matery主题评论推送功能</font></div>
+
+<h2 id="1-前言"><a href="#1-前言" class="headerlink" title="1.前言"></a>1.前言</h2><p>这一节内容讲的是如何在<code>matery</code>主题下实现评论推送功能，当别人评论我们的文章的是时候，我们可以第一时间看到内容。我所用的评论系统是<code>LeanCloud</code>d的支持<code>Vlain</code>评论。</p>
+<h2 id="2-环境准备"><a href="#2-环境准备" class="headerlink" title="2.环境准备"></a>2.环境准备</h2><p>有哪些推送平台呢？</p>
+<ul>
+<li><code>coolPush</code>QQ机器人</li>
+<li><code>Valine-Admin</code>邮件提醒</li>
+<li><code>Server酱</code>(可以支持很多消息通道，推荐使用)</li>
+</ul>
+<p>我选用的是<a href="https://sct.ftqq.com/">Server酱</a>,英文名<code>ServerChan</code>，是一款手机和服务器、智能设备之间的通信软件。</p>
+<p>微信扫码登录官网，会自动给你生成<code>SendKey</code>，如下图所示</p>
+<p><img src="/images/pasted_3.png"></p>
+<p>接下来,我们可以使用在线发送工具，来测试一下</p>
+<p><img src="/images/pasted_4.png"></p>
+<p>API调用实例</p>
+<p>最简单的调用方式，直接在浏览器中输入以下 URL：</p>
+<pre class="line-numbers language-apl" data-language="apl"><code class="language-apl">https<span class="token dfn builtin">:</span><span class="token monadic-operator operator">/</span><span class="token monadic-operator operator">/</span>sctapi<span class="token dyadic-operator operator">.</span>ftqq<span class="token dyadic-operator operator">.</span>com<span class="token monadic-operator operator">/</span><span class="token function">*</span><span class="token function">*</span><span class="token function">*</span><span class="token function">*</span><span class="token function">*</span><span class="token function">*</span><span class="token function">*</span><span class="token function">*</span><span class="token function">*</span><span class="token function">*</span><span class="token function">*</span><span class="token function">*</span><span class="token function">*</span><span class="token function">*</span><span class="token function">*</span><span class="token function">*</span><span class="token dyadic-operator operator">.</span>send<span class="token function">?</span>title<span class="token function">=</span>messagetitle<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>这时候你选择的消息通道会给你发送一个标题为<code>messagetitle</code>的内容</p>
+<p>如果你要发送中文，记得要把参数编码，比如通过 urlencode 函数。这样发送只有标题，如果需要内容，可以这样：</p>
+<pre class="line-numbers language-apl" data-language="apl"><code class="language-apl">https<span class="token dfn builtin">:</span><span class="token monadic-operator operator">/</span><span class="token monadic-operator operator">/</span>sctapi<span class="token dyadic-operator operator">.</span>ftqq<span class="token dyadic-operator operator">.</span>com<span class="token monadic-operator operator">/</span><span class="token function">*</span><span class="token function">*</span><span class="token function">*</span><span class="token function">*</span><span class="token function">*</span><span class="token function">*</span><span class="token function">*</span><span class="token function">*</span><span class="token function">*</span><span class="token function">*</span><span class="token function">*</span><span class="token function">*</span><span class="token function">*</span><span class="token function">*</span><span class="token function">*</span><span class="token function">*</span><span class="token dyadic-operator operator">.</span>send<span class="token function">?</span>title<span class="token function">=</span>messagetitle<span class="token monadic-operator operator">&amp;</span>desp<span class="token function">=</span>messagecontent<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>但是需要注意，GET 请求是有长度限制的，所以还是建议大家使用 POST 请求来发送。</p>
+<h2 id="3-Server酱API详解"><a href="#3-Server酱API详解" class="headerlink" title="3.Server酱API详解"></a>3.Server酱API详解</h2><p>向以下 URL 发送一个 HTTP 请求，并传递参数即可。</p>
+<pre class="line-numbers language-apl" data-language="apl"><code class="language-apl">https<span class="token dfn builtin">:</span><span class="token monadic-operator operator">/</span><span class="token monadic-operator operator">/</span>sctapi<span class="token dyadic-operator operator">.</span>ftqq<span class="token dyadic-operator operator">.</span>com<span class="token monadic-operator operator">/</span><span class="token function">*</span><span class="token function">*</span><span class="token function">*</span><span class="token function">*</span><span class="token function">*</span><span class="token function">*</span><span class="token function">*</span><span class="token function">*</span><span class="token function">*</span><span class="token function">*</span><span class="token function">*</span><span class="token function">*</span><span class="token function">*</span><span class="token function">*</span><span class="token function">*</span><span class="token function">*</span><span class="token dyadic-operator operator">.</span>send<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>参数说明如下：</p>
+<ul>
+<li><p>title: 消息标题，必填。最大长度为 32 。</p>
+</li>
+<li><p>desp: 消息内容，选填。支持 <a href="https://rexxars.github.io/react-markdown/">Markdown语法</a> ，最大长度为 32KB ,消息卡片截取前 30 显示。</p>
+</li>
+<li><p>channel: 动态指定本次推送使用的消息通道，选填。如不指定，则使用网站上的消息通道页面设置的通道。支持最多两个通道，多个通道值用竖线|隔开。比如，同时发送服务号和企业微信应用消息通道，则使用 9|66 。通道对应的值如下：</p>
+<ul>
+<li>方糖服务号=9</li>
+<li>Android=98</li>
+<li>Bark iOS=8</li>
+<li>企业微信群机器人=1</li>
+<li>钉钉群机器人=2</li>
+<li>飞书群机器人=3</li>
+<li>测试号=0</li>
+<li>自定义=88</li>
+<li>PushDeer=18</li>
+<li>企业微信应用消息=66</li>
+</ul>
+</li>
+<li><p>openid: 消息抄送的openid，选填。只支持测试号和企业微信应用消息通道。测试号的 openid 从测试号页面获得 ，多个 openid 用 , 隔开。企业微信应用消息通道的openid 参数，内容为接收人在企业微信中的 UID（可在消息通道页面配置好该通道后通过链接查看） , 多个人请 | 隔开，即可发给特定人/多个人。不填则发送给通道配置页面的接收人。</p>
+</li>
+</ul>
+<h2 id="4-修改metary主题对应文件代码"><a href="#4-修改metary主题对应文件代码" class="headerlink" title="4.修改metary主题对应文件代码"></a>4.修改metary主题对应文件代码</h2><p>找到主题文件夹下<code>themes\hexo-theme-matery\layout\_partial</code>的<code>Valine.ejs</code>文件，照理说最后一个<code>script</code>标签会起作用的，但是我的没有起效果,我就把最后一个<code>script</code>的内容复制到了上一个<code>script</code>里面去，然后把最后一个<code>script</code>标签删除。要修改的代码是</p>
+<pre class="line-numbers language-ej" data-language="ej"><code class="language-ej">var pushLink &#x3D;&quot;https:&#x2F;&#x2F;sctapi.ftqq.com&#x2F;*****************.send&quot;;
+    var siteName &#x3D; &quot;&lt;%- config.title %&gt;&#39;s Blog&quot;;
+    var valineButton&#x3D;document.getElementsByClassName(&quot;vsubmit vbtn&quot;)[0];
+    var title &#x3D; siteName + &quot;上又有新评论啦~!\n&quot;;
+  
+    function send_valine() &#123;
+      &#x2F;&#x2F;获取元素信息
+      var pagename &#x3D; document.title;
+      var pageurl &#x3D; document.URL;
+      var pushtime &#x3D; new Date();
+      var vnick &#x3D; document.getElementsByClassName(&quot;vnick vinput&quot;)[0].value;
+      var vmail &#x3D; document.getElementsByClassName(&quot;vmail vinput&quot;)[0].value;
+      var vlink &#x3D; document.getElementsByClassName(&quot;vlink vinput&quot;)[0].value;
+      var veditor &#x3D; document.getElementsByClassName(&quot;veditor vinput&quot;)[0].value;
+      content &#x3D;
+        title +
+        &quot;\n\n昵称：&quot; + vnick +
+        &quot;\n\n邮箱：&quot; + vmail +
+        &quot;\n\n网站地址：&quot; + vlink +
+        &quot;\n\n文章标题：&quot; + pagename +
+        &quot;\n\n评论内容：\n\n&quot; + veditor +
+        &quot;\n\n文章链接：&quot; + pageurl +
+        &quot;\n\n评论时间：&quot; + pushtime.toLocaleString() + &quot;\n&quot;;
+      var httpRequest &#x3D; new XMLHttpRequest(); &#x2F;&#x2F;第一步：创建需要的对象
+      httpRequest.open(&quot;POST&quot;, pushLink, true); &#x2F;&#x2F;第二步：打开连接
+      httpRequest.setRequestHeader(
+        &quot;Content-type&quot;,
+        &quot;application&#x2F;x-www-form-urlencoded&quot;
+      ); &#x2F;&#x2F;设置请求头 注：post方式必须设置请求头（在建立连接后设置请求头）
+      httpRequest.send(&quot;title&#x3D;&quot; + pagename + &quot;&amp;desp&#x3D;&quot; + content); &#x2F;&#x2F;发送请求 
+    &#125;
+  
+    document.body.addEventListener(&#39;click&#39;, function(e) &#123;
+    if(e.target.className.indexOf(&#39;vsubmit&#39;) &#x3D;&#x3D;&#x3D; -1) &#123;
+      return;
+    &#125;
+    send_valine();
+  &#125;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="5-选择消息通道"><a href="#5-选择消息通道" class="headerlink" title="5.选择消息通道"></a>5.选择消息通道</h2><p>我选择的消息通道是<a href="http://www.pushdeer.com/">PushDeer</a>，进入到官网，下载你对应手机系统的<code>APP</code>，使用微信登录，会自动给你生成<code>PushDeer pushkey</code>,然后在<code>Serverj酱</code>官网上选择<code>PushDeer</code>消息通道，并输入<code>PushDeer pushkey</code>，然后保存即可。</p>
+<h2 id="6-效果测试"><a href="#6-效果测试" class="headerlink" title="6.效果测试"></a>6.效果测试</h2><p>评论是支持<code>Markdown</code>语法的，发送的内容最终也会被解析成<code>Markdown</code>语法</p>
+<blockquote>
+<p>两个换行符才能实现换行！！！！！！！！</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>技巧经验</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+        <tag>matery</tag>
       </tags>
   </entry>
   <entry>
