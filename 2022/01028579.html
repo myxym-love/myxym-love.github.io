@@ -629,7 +629,7 @@ git config --global user.email &quot;Your email&quot;<span aria-hidden="true" cl
 <p>5.把你创建好的仓库克隆到你的项目文件夹下</p>
 <pre class="line-numbers language-bas" data-language="bas"><code class="language-bas">git clone git@github.com:myxym-love&#x2F;javaweb.git<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p> (<a href="mailto:&#103;&#105;&#x74;&#64;&#103;&#x69;&#x74;&#104;&#117;&#98;&#46;&#99;&#x6f;&#x6d;">&#103;&#105;&#x74;&#64;&#103;&#x69;&#x74;&#104;&#117;&#98;&#46;&#99;&#x6f;&#x6d;</a>:myxym-love/javaweb.git)换成你自己仓库地址</p>
+<p> (<a href="mailto:&#x67;&#x69;&#x74;&#64;&#x67;&#105;&#116;&#x68;&#x75;&#x62;&#x2e;&#99;&#111;&#109;">&#x67;&#x69;&#x74;&#64;&#x67;&#105;&#116;&#x68;&#x75;&#x62;&#x2e;&#99;&#111;&#109;</a>:myxym-love/javaweb.git)换成你自己仓库地址</p>
 <p>6.把你项目的下的所有文件以及文件夹(除了你拉取的仓库文件夹)复制到你拉取的仓库文件夹里</p>
 <p>7.进去到你拉取的仓库文件夹里</p>
 <pre class="line-numbers language-bas" data-language="bas"><code class="language-bas">git add . (.表示所有文件)
@@ -1163,7 +1163,7 @@ git push -u origin master (第一次psuh要加-u)<span aria-hidden="true" class=
 	var pushLink ="https://sctapi.ftqq.com/SCT144577TLljkBJwQeQZoSn6b4otKfg6h.send";
     var siteName = "myxym-love's Blog";
     var valineButton=document.getElementsByClassName("vsubmit vbtn")[0];
-    var title = siteName + "上又有新评论啦~!\n";
+    var title = siteName + "上又有新评论啦~!";
   
     function send_valine() {
       //获取元素信息
@@ -1180,16 +1180,16 @@ git push -u origin master (第一次psuh要加-u)<span aria-hidden="true" class=
         "\n\n邮箱：" + vmail +
         "\n\n网站地址：" + vlink +
         "\n\n文章标题：" + pagename +
-        "\n\n评论内容：\n\n" + veditor +
-        "\n\n文章链接：" + pageurl +
-        "\n\n评论时间：" + pushtime.toLocaleString() + "\n\n";
+        "\n\n评论时间：" + pushtime.toLocaleString() + 
+        "\n\n文章链接：" + pageurl + 
+        "\n\n评论内容：\n\n " + veditor;
       var httpRequest = new XMLHttpRequest(); //第一步：创建需要的对象
       httpRequest.open("POST", pushLink, true); //第二步：打开连接
       httpRequest.setRequestHeader(
         "Content-type",
         "application/x-www-form-urlencoded"
       ); //设置请求头 注：post方式必须设置请求头（在建立连接后设置请求头）
-      httpRequest.send("title=" + pagename + "&desp=" + content); //发送请求 
+      httpRequest.send("title=" + pagename + "&desp=" + content ); //发送请求 
     }
   
     document.body.addEventListener('click', function(e) {
