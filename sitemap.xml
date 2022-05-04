@@ -2,9 +2,18 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://myxym-love.github.io/2022/050461765.html</loc>
+    
+    <lastmod>2022-05-04</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://myxym-love.github.io/2022/050323444.html</loc>
     
-    <lastmod>2022-05-03</lastmod>
+    <lastmod>2022-05-04</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -138,7 +147,14 @@
   </url>
   
   <url>
-    <loc>https://myxym-love.github.io/tags/springboot/</loc>
+    <loc>https://myxym-love.github.io/tags/hexo/</loc>
+    <lastmod>2022-05-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://myxym-love.github.io/tags/matery/</loc>
     <lastmod>2022-05-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -158,6 +174,13 @@
     <priority>0.2</priority>
   </url>
   
+  <url>
+    <loc>https://myxym-love.github.io/tags/springboot/</loc>
+    <lastmod>2022-05-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
 
   
   <url>
@@ -168,14 +191,14 @@
   </url>
   
   <url>
-    <loc>https://myxym-love.github.io/categories/springboot/</loc>
+    <loc>https://myxym-love.github.io/categories/%E9%AB%98%E6%95%B0%E9%94%99%E9%A2%98/</loc>
     <lastmod>2022-05-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://myxym-love.github.io/categories/%E9%AB%98%E6%95%B0%E9%94%99%E9%A2%98/</loc>
+    <loc>https://myxym-love.github.io/categories/springboot/</loc>
     <lastmod>2022-05-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
