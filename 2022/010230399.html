@@ -1188,7 +1188,7 @@ ssh-copy-id slave2<span aria-hidden="true" class="line-numbers-rows"><span></spa
         "\n\n文章标题：" + pagename +
         "\n\n评论内容：\n\n" + veditor +
         "\n\n文章链接：" + pageurl +
-        "\n\n评论时间：" + pushtime.toLocaleString() + "\n";
+        "\n\n评论时间：" + pushtime.toLocaleString();
       var httpRequest = new XMLHttpRequest(); //第一步：创建需要的对象
       httpRequest.open("POST", pushLink, true); //第二步：打开连接
       httpRequest.setRequestHeader(
