@@ -629,7 +629,7 @@ git config --global user.email &quot;Your email&quot;<span aria-hidden="true" cl
 <p>5.把你创建好的仓库克隆到你的项目文件夹下</p>
 <pre class="line-numbers language-bas" data-language="bas"><code class="language-bas">git clone git@github.com:myxym-love&#x2F;javaweb.git<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p> (<a href="mailto:&#x67;&#105;&#x74;&#x40;&#x67;&#x69;&#116;&#104;&#117;&#98;&#46;&#x63;&#x6f;&#x6d;">&#x67;&#105;&#x74;&#x40;&#x67;&#x69;&#116;&#104;&#117;&#98;&#46;&#x63;&#x6f;&#x6d;</a>:myxym-love/javaweb.git)换成你自己仓库地址</p>
+<p> (<a href="mailto:&#x67;&#x69;&#116;&#64;&#103;&#105;&#116;&#104;&#117;&#x62;&#x2e;&#x63;&#111;&#109;">&#x67;&#x69;&#116;&#64;&#103;&#105;&#116;&#104;&#117;&#x62;&#x2e;&#x63;&#111;&#109;</a>:myxym-love/javaweb.git)换成你自己仓库地址</p>
 <p>6.把你项目的下的所有文件以及文件夹(除了你拉取的仓库文件夹)复制到你拉取的仓库文件夹里</p>
 <p>7.进去到你拉取的仓库文件夹里</p>
 <pre class="line-numbers language-bas" data-language="bas"><code class="language-bas">git add . (.表示所有文件)
@@ -1182,7 +1182,7 @@ git push -u origin master (第一次psuh要加-u)<span aria-hidden="true" class=
         "\n\n文章标题：" + pagename +
         "\n\n评论内容：\n\n" + veditor +
         "\n\n文章链接：" + pageurl +
-        "\n\n评论时间：" + pushtime.toLocaleString();
+        "\n\n评论时间：" + pushtime.toLocaleString() + "\n\n";
       var httpRequest = new XMLHttpRequest(); //第一步：创建需要的对象
       httpRequest.open("POST", pushLink, true); //第二步：打开连接
       httpRequest.setRequestHeader(
