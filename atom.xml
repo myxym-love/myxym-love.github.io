@@ -3,11 +3,11 @@
   <title>myxym-love</title>
   
   <subtitle>专注技巧</subtitle>
-  <link href="https://myxym-love.github.io/atom.xml" rel="self"/>
+  <link href="https://myxym-love.gitee.io/blog/atom.xml" rel="self"/>
   
-  <link href="https://myxym-love.github.io/"/>
+  <link href="https://myxym-love.gitee.io/blog/"/>
   <updated>2022-05-04T11:07:19.514Z</updated>
-  <id>https://myxym-love.github.io/</id>
+  <id>https://myxym-love.gitee.io/blog/</id>
   
   <author>
     <name>Mao Yu</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>hexo matery主题评论推送</title>
-    <link href="https://myxym-love.github.io/2022/050461765.html"/>
-    <id>https://myxym-love.github.io/2022/050461765.html</id>
+    <link href="https://myxym-love.gitee.io/blog/2022/050461765.html"/>
+    <id>https://myxym-love.gitee.io/blog/2022/050461765.html</id>
     <published>2022-05-04T07:31:42.000Z</published>
     <updated>2022-05-04T11:07:19.514Z</updated>
     
@@ -35,19 +35,19 @@
     
     
     
-    <category term="技巧经验" scheme="https://myxym-love.github.io/categories/%E6%8A%80%E5%B7%A7%E7%BB%8F%E9%AA%8C/"/>
+    <category term="技巧经验" scheme="https://myxym-love.gitee.io/blog/categories/%E6%8A%80%E5%B7%A7%E7%BB%8F%E9%AA%8C/"/>
     
     
-    <category term="hexo" scheme="https://myxym-love.github.io/tags/hexo/"/>
+    <category term="hexo" scheme="https://myxym-love.gitee.io/blog/tags/hexo/"/>
     
-    <category term="matery" scheme="https://myxym-love.github.io/tags/matery/"/>
+    <category term="matery" scheme="https://myxym-love.gitee.io/blog/tags/matery/"/>
     
   </entry>
   
   <entry>
     <title>springboot聚合数据</title>
-    <link href="https://myxym-love.github.io/2022/050323444.html"/>
-    <id>https://myxym-love.github.io/2022/050323444.html</id>
+    <link href="https://myxym-love.gitee.io/blog/2022/050323444.html"/>
+    <id>https://myxym-love.gitee.io/blog/2022/050323444.html</id>
     <published>2022-05-03T06:08:48.000Z</published>
     <updated>2022-05-04T07:50:30.109Z</updated>
     
@@ -64,17 +64,17 @@
     
     
     
-    <category term="springboot" scheme="https://myxym-love.github.io/categories/springboot/"/>
+    <category term="springboot" scheme="https://myxym-love.gitee.io/blog/categories/springboot/"/>
     
     
-    <category term="springboot" scheme="https://myxym-love.github.io/tags/springboot/"/>
+    <category term="springboot" scheme="https://myxym-love.gitee.io/blog/tags/springboot/"/>
     
   </entry>
   
   <entry>
     <title>高数错题日记整理01</title>
-    <link href="https://myxym-love.github.io/2022/041730615.html"/>
-    <id>https://myxym-love.github.io/2022/041730615.html</id>
+    <link href="https://myxym-love.gitee.io/blog/2022/041730615.html"/>
+    <id>https://myxym-love.gitee.io/blog/2022/041730615.html</id>
     <published>2022-04-17T08:19:00.000Z</published>
     <updated>2022-05-02T11:25:31.184Z</updated>
     
@@ -88,19 +88,19 @@
     
     
     
-    <category term="高数错题" scheme="https://myxym-love.github.io/categories/%E9%AB%98%E6%95%B0%E9%94%99%E9%A2%98/"/>
+    <category term="高数错题" scheme="https://myxym-love.gitee.io/blog/categories/%E9%AB%98%E6%95%B0%E9%94%99%E9%A2%98/"/>
     
     
-    <category term="高数" scheme="https://myxym-love.github.io/tags/%E9%AB%98%E6%95%B0/"/>
+    <category term="高数" scheme="https://myxym-love.gitee.io/blog/tags/%E9%AB%98%E6%95%B0/"/>
     
-    <category term="错题" scheme="https://myxym-love.github.io/tags/%E9%94%99%E9%A2%98/"/>
+    <category term="错题" scheme="https://myxym-love.gitee.io/blog/tags/%E9%94%99%E9%A2%98/"/>
     
   </entry>
   
   <entry>
     <title>Redis学习笔记</title>
-    <link href="https://myxym-love.github.io/2022/041630038.html"/>
-    <id>https://myxym-love.github.io/2022/041630038.html</id>
+    <link href="https://myxym-love.gitee.io/blog/2022/041630038.html"/>
+    <id>https://myxym-love.gitee.io/blog/2022/041630038.html</id>
     <published>2022-04-16T10:11:00.000Z</published>
     <updated>2022-05-02T11:25:31.177Z</updated>
     
@@ -114,21 +114,21 @@
     
     
     
-    <category term="技巧经验" scheme="https://myxym-love.github.io/categories/%E6%8A%80%E5%B7%A7%E7%BB%8F%E9%AA%8C/"/>
+    <category term="技巧经验" scheme="https://myxym-love.gitee.io/blog/categories/%E6%8A%80%E5%B7%A7%E7%BB%8F%E9%AA%8C/"/>
     
     
-    <category term="redis" scheme="https://myxym-love.github.io/tags/redis/"/>
+    <category term="redis" scheme="https://myxym-love.gitee.io/blog/tags/redis/"/>
     
   </entry>
   
   <entry>
     <title>Git使用教程</title>
-    <link href="https://myxym-love.github.io/2022/01028579.html"/>
-    <id>https://myxym-love.github.io/2022/01028579.html</id>
+    <link href="https://myxym-love.gitee.io/blog/2022/01028579.html"/>
+    <id>https://myxym-love.gitee.io/blog/2022/01028579.html</id>
     <published>2022-01-02T03:55:45.439Z</published>
     <updated>2022-05-02T11:25:31.173Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="Git使用教程"><a href="#Git使用教程" class="headerlink" title="Git使用教程"></a>Git使用教程</h1><h2 id="1-如何把本地的项目上传到GitHub上"><a href="#1-如何把本地的项目上传到GitHub上" class="headerlink" title="1.如何把本地的项目上传到GitHub上"></a>1.如何把本地的项目上传到GitHub上</h2><p>1.打开Git Bash进入到要上传的项目的目录下</p><p>2.配置用户名和邮箱</p><pre class="line-numbers language-bas" data-language="bas"><code class="language-bas">git config --global user.name &quot;Your username&quot;git config --global user.email &quot;Your email&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><p>3.在GitHub上设置本地的ssh公钥</p><p>（1）在本地生成ssh公钥私钥</p><pre class="line-numbers language-bas" data-language="bas"><code class="language-bas">ssh-keygen<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>生成的.ssh文件默认在C:\Users\ASUS\.ssh (ASUS是我电脑的名字)</p><p>在.ssh文件下有id_rsa.pub文件,把里面的内容添加到你的GigHub的设置里</p><p>4.在你的GitHub上新建一个仓库,复制仓库的ssh地址</p><p>5.把你创建好的仓库克隆到你的项目文件夹下</p><pre class="line-numbers language-bas" data-language="bas"><code class="language-bas">git clone git@github.com:myxym-love&#x2F;javaweb.git<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p> (<a href="mailto:&#x67;&#105;&#x74;&#64;&#103;&#105;&#x74;&#x68;&#x75;&#x62;&#x2e;&#x63;&#x6f;&#109;">&#x67;&#105;&#x74;&#64;&#103;&#105;&#x74;&#x68;&#x75;&#x62;&#x2e;&#x63;&#x6f;&#109;</a>:myxym-love/javaweb.git)换成你自己仓库地址</p><p>6.把你项目的下的所有文件以及文件夹(除了你拉取的仓库文件夹)复制到你拉取的仓库文件夹里</p><p>7.进去到你拉取的仓库文件夹里</p><pre class="line-numbers language-bas" data-language="bas"><code class="language-bas">git add . (.表示所有文件)git commit -m &quot;描述&quot;git push -u origin master (第一次psuh要加-u)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>]]></content>
+    <content type="html"><![CDATA[<h1 id="Git使用教程"><a href="#Git使用教程" class="headerlink" title="Git使用教程"></a>Git使用教程</h1><h2 id="1-如何把本地的项目上传到GitHub上"><a href="#1-如何把本地的项目上传到GitHub上" class="headerlink" title="1.如何把本地的项目上传到GitHub上"></a>1.如何把本地的项目上传到GitHub上</h2><p>1.打开Git Bash进入到要上传的项目的目录下</p><p>2.配置用户名和邮箱</p><pre class="line-numbers language-bas" data-language="bas"><code class="language-bas">git config --global user.name &quot;Your username&quot;git config --global user.email &quot;Your email&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><p>3.在GitHub上设置本地的ssh公钥</p><p>（1）在本地生成ssh公钥私钥</p><pre class="line-numbers language-bas" data-language="bas"><code class="language-bas">ssh-keygen<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>生成的.ssh文件默认在C:\Users\ASUS\.ssh (ASUS是我电脑的名字)</p><p>在.ssh文件下有id_rsa.pub文件,把里面的内容添加到你的GigHub的设置里</p><p>4.在你的GitHub上新建一个仓库,复制仓库的ssh地址</p><p>5.把你创建好的仓库克隆到你的项目文件夹下</p><pre class="line-numbers language-bas" data-language="bas"><code class="language-bas">git clone git@github.com:myxym-love&#x2F;javaweb.git<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p> (<a href="mailto:&#103;&#x69;&#116;&#x40;&#103;&#x69;&#x74;&#104;&#117;&#98;&#46;&#99;&#111;&#109;">&#103;&#x69;&#116;&#x40;&#103;&#x69;&#x74;&#104;&#117;&#98;&#46;&#99;&#111;&#109;</a>:myxym-love/javaweb.git)换成你自己仓库地址</p><p>6.把你项目的下的所有文件以及文件夹(除了你拉取的仓库文件夹)复制到你拉取的仓库文件夹里</p><p>7.进去到你拉取的仓库文件夹里</p><pre class="line-numbers language-bas" data-language="bas"><code class="language-bas">git add . (.表示所有文件)git commit -m &quot;描述&quot;git push -u origin master (第一次psuh要加-u)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>]]></content>
     
     
       
@@ -138,19 +138,19 @@
     
     
     
-    <category term="技巧经验" scheme="https://myxym-love.github.io/categories/%E6%8A%80%E5%B7%A7%E7%BB%8F%E9%AA%8C/"/>
+    <category term="技巧经验" scheme="https://myxym-love.gitee.io/blog/categories/%E6%8A%80%E5%B7%A7%E7%BB%8F%E9%AA%8C/"/>
     
     
-    <category term="Git" scheme="https://myxym-love.github.io/tags/Git/"/>
+    <category term="Git" scheme="https://myxym-love.gitee.io/blog/tags/Git/"/>
     
-    <category term="攻略" scheme="https://myxym-love.github.io/tags/%E6%94%BB%E7%95%A5/"/>
+    <category term="攻略" scheme="https://myxym-love.gitee.io/blog/tags/%E6%94%BB%E7%95%A5/"/>
     
   </entry>
   
   <entry>
     <title>云服务器之间实现免密登录</title>
-    <link href="https://myxym-love.github.io/2022/010230399.html"/>
-    <id>https://myxym-love.github.io/2022/010230399.html</id>
+    <link href="https://myxym-love.gitee.io/blog/2022/010230399.html"/>
+    <id>https://myxym-love.gitee.io/blog/2022/010230399.html</id>
     <published>2022-01-02T03:55:00.000Z</published>
     <updated>2022-05-02T11:25:31.182Z</updated>
     
@@ -164,10 +164,10 @@
     
     
     
-    <category term="技巧经验" scheme="https://myxym-love.github.io/categories/%E6%8A%80%E5%B7%A7%E7%BB%8F%E9%AA%8C/"/>
+    <category term="技巧经验" scheme="https://myxym-love.gitee.io/blog/categories/%E6%8A%80%E5%B7%A7%E7%BB%8F%E9%AA%8C/"/>
     
     
-    <category term="服务器" scheme="https://myxym-love.github.io/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+    <category term="服务器" scheme="https://myxym-love.gitee.io/blog/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
     
   </entry>
   
