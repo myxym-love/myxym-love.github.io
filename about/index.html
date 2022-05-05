@@ -727,7 +727,7 @@
                 type: 'pie',
                 radius: '50%',
                 color: ['#6772e5', '#ff9e0f', '#fa755a', '#3ecf8e', '#82d3f4', '#ab47bc', '#525f7f', '#f51c47', '#26A69A'],
-                data: [{"name":"技巧经验","value":4},{"name":"高数错题","value":1},{"name":"springboot","value":1}],
+                data: [{"name":"技巧经验","value":4},{"name":"springboot","value":1},{"name":"高数错题","value":1}],
                 itemStyle: {
                     emphasis: {
                         shadowBlur: 10,
@@ -751,7 +751,7 @@
         xAxis: [
             {
                 type: 'category',
-                data: ["Git","攻略","redis","hexo","matery","高数","错题","服务器","springboot"]
+                data: ["redis","Git","攻略","hexo","matery","springboot","高数","错题","服务器"]
             }
         ],
         yAxis: [
@@ -934,6 +934,12 @@
         <div class="tag-chips center-align">
             
             
+            <a href="/tags/redis/">
+                <span class="chip center-align waves-effect waves-light chip-default">redis</span>
+            </a>
+            
+            
+            
             <a href="/tags/Git/">
                 <span class="chip center-align waves-effect waves-light chip-default">Git</span>
             </a>
@@ -946,12 +952,6 @@
             
             
             
-            <a href="/tags/redis/">
-                <span class="chip center-align waves-effect waves-light chip-default">redis</span>
-            </a>
-            
-            
-            
             <a href="/tags/hexo/">
                 <span class="chip center-align waves-effect waves-light chip-default">hexo</span>
             </a>
@@ -960,6 +960,12 @@
             
             <a href="/tags/matery/">
                 <span class="chip center-align waves-effect waves-light chip-default">matery</span>
+            </a>
+            
+            
+            
+            <a href="/tags/springboot/">
+                <span class="chip center-align waves-effect waves-light chip-default">springboot</span>
             </a>
             
             
@@ -978,12 +984,6 @@
             
             <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/">
                 <span class="chip center-align waves-effect waves-light chip-default">服务器</span>
-            </a>
-            
-            
-            
-            <a href="/tags/springboot/">
-                <span class="chip center-align waves-effect waves-light chip-default">springboot</span>
             </a>
             
             
@@ -1355,7 +1355,7 @@ $(function () {
 </div>
 
 
-<script>
+    <!-- <script>
         if (localStorage.getItem('dark') === '0') {
         document.body.classList.remove('dark');
         }
@@ -1368,11 +1368,16 @@ $(function () {
     </script>
     <a onclick="switchNightMode()" id="sma">
         <i class="fa fa-moon" id="nightMode" aria-hidden="true"></i>
-    </a>
-
+    </a> -->
+    <script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+<script>
+  function addDarkmodeWidget() {
+    new Darkmode().showWidget();
+  }
+  window.addEventListener('load', addDarkmodeWidget);
+</script>
 
 	
-	</script>
     <script src="/libs/materialize/materialize.min.js"></script>
     <script src="/libs/masonry/masonry.pkgd.min.js"></script>
     <script src="/libs/aos/aos.js"></script>
