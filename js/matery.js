@@ -176,12 +176,12 @@ function switchNightMode() {
         var body = document.body;
         if(body.classList.contains('dark')){
         document.body.classList.remove('dark');
-        localStorage.setItem('dark','0');
+        localStorage.setItem('dark','1');
         $('#nightMode').removeClass("fa-moon").addClass("fa-sun");
         return;
         } else {
         document.body.classList.add('dark');
-        localStorage.setItem('dark','1');
+        localStorage.setItem('dark','0');
         $('#nightMode').removeClass("fa-sun").addClass("fa-moon");
         return;
         }
