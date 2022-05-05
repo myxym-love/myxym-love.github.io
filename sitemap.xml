@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://gitee.com/myxym-love/myxym-love.gitee.io/2022/050461765.html</loc>
+    <loc>https://gitee.com/myxym-love/2022/050461765.html</loc>
     
     <lastmod>2022-05-04</lastmod>
     
@@ -11,7 +11,7 @@
   </url>
   
   <url>
-    <loc>https://gitee.com/myxym-love/myxym-love.gitee.io/2022/050323444.html</loc>
+    <loc>https://gitee.com/myxym-love/2022/050323444.html</loc>
     
     <lastmod>2022-05-04</lastmod>
     
@@ -20,7 +20,7 @@
   </url>
   
   <url>
-    <loc>https://gitee.com/myxym-love/myxym-love.gitee.io/bb/index.html</loc>
+    <loc>https://gitee.com/myxym-love/bb/index.html</loc>
     
     <lastmod>2022-05-02</lastmod>
     
@@ -29,7 +29,7 @@
   </url>
   
   <url>
-    <loc>https://gitee.com/myxym-love/myxym-love.gitee.io/2022/041730615.html</loc>
+    <loc>https://gitee.com/myxym-love/2022/041730615.html</loc>
     
     <lastmod>2022-05-02</lastmod>
     
@@ -38,7 +38,7 @@
   </url>
   
   <url>
-    <loc>https://gitee.com/myxym-love/myxym-love.gitee.io/2022/010230399.html</loc>
+    <loc>https://gitee.com/myxym-love/2022/010230399.html</loc>
     
     <lastmod>2022-05-02</lastmod>
     
@@ -47,7 +47,7 @@
   </url>
   
   <url>
-    <loc>https://gitee.com/myxym-love/myxym-love.gitee.io/2022/041630038.html</loc>
+    <loc>https://gitee.com/myxym-love/2022/041630038.html</loc>
     
     <lastmod>2022-05-02</lastmod>
     
@@ -56,7 +56,7 @@
   </url>
   
   <url>
-    <loc>https://gitee.com/myxym-love/myxym-love.gitee.io/2022/01028579.html</loc>
+    <loc>https://gitee.com/myxym-love/2022/01028579.html</loc>
     
     <lastmod>2022-05-02</lastmod>
     
@@ -65,7 +65,7 @@
   </url>
   
   <url>
-    <loc>https://gitee.com/myxym-love/myxym-love.gitee.io/contact/index.html</loc>
+    <loc>https://gitee.com/myxym-love/contact/index.html</loc>
     
     <lastmod>2022-05-02</lastmod>
     
@@ -74,7 +74,7 @@
   </url>
   
   <url>
-    <loc>https://gitee.com/myxym-love/myxym-love.gitee.io/tags/index.html</loc>
+    <loc>https://gitee.com/myxym-love/tags/index.html</loc>
     
     <lastmod>2022-05-02</lastmod>
     
@@ -83,7 +83,7 @@
   </url>
   
   <url>
-    <loc>https://gitee.com/myxym-love/myxym-love.gitee.io/friends/index.html</loc>
+    <loc>https://gitee.com/myxym-love/friends/index.html</loc>
     
     <lastmod>2022-05-02</lastmod>
     
@@ -92,7 +92,7 @@
   </url>
   
   <url>
-    <loc>https://gitee.com/myxym-love/myxym-love.gitee.io/about/index.html</loc>
+    <loc>https://gitee.com/myxym-love/about/index.html</loc>
     
     <lastmod>2022-05-02</lastmod>
     
@@ -101,7 +101,7 @@
   </url>
   
   <url>
-    <loc>https://gitee.com/myxym-love/myxym-love.gitee.io/categories/index.html</loc>
+    <loc>https://gitee.com/myxym-love/categories/index.html</loc>
     
     <lastmod>2022-05-02</lastmod>
     
@@ -111,7 +111,7 @@
   
 
   <url>
-    <loc>https://gitee.com/myxym-love/myxym-love.gitee.io</loc>
+    <loc>https://gitee.com/myxym-love</loc>
     <lastmod>2022-05-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
@@ -119,63 +119,63 @@
 
   
   <url>
-    <loc>https://gitee.com/myxym-love/myxym-love.gitee.io/tags/Git/</loc>
+    <loc>https://gitee.com/myxym-love/tags/Git/</loc>
     <lastmod>2022-05-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://gitee.com/myxym-love/myxym-love.gitee.io/tags/%E6%94%BB%E7%95%A5/</loc>
+    <loc>https://gitee.com/myxym-love/tags/%E6%94%BB%E7%95%A5/</loc>
     <lastmod>2022-05-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://gitee.com/myxym-love/myxym-love.gitee.io/tags/redis/</loc>
+    <loc>https://gitee.com/myxym-love/tags/redis/</loc>
     <lastmod>2022-05-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://gitee.com/myxym-love/myxym-love.gitee.io/tags/springboot/</loc>
+    <loc>https://gitee.com/myxym-love/tags/hexo/</loc>
     <lastmod>2022-05-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://gitee.com/myxym-love/myxym-love.gitee.io/tags/hexo/</loc>
+    <loc>https://gitee.com/myxym-love/tags/matery/</loc>
     <lastmod>2022-05-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://gitee.com/myxym-love/myxym-love.gitee.io/tags/matery/</loc>
+    <loc>https://gitee.com/myxym-love/tags/springboot/</loc>
     <lastmod>2022-05-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://gitee.com/myxym-love/myxym-love.gitee.io/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/</loc>
+    <loc>https://gitee.com/myxym-love/tags/%E9%AB%98%E6%95%B0/</loc>
     <lastmod>2022-05-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://gitee.com/myxym-love/myxym-love.gitee.io/tags/%E9%AB%98%E6%95%B0/</loc>
+    <loc>https://gitee.com/myxym-love/tags/%E9%94%99%E9%A2%98/</loc>
     <lastmod>2022-05-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://gitee.com/myxym-love/myxym-love.gitee.io/tags/%E9%94%99%E9%A2%98/</loc>
+    <loc>https://gitee.com/myxym-love/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/</loc>
     <lastmod>2022-05-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -184,21 +184,21 @@
 
   
   <url>
-    <loc>https://gitee.com/myxym-love/myxym-love.gitee.io/categories/%E6%8A%80%E5%B7%A7%E7%BB%8F%E9%AA%8C/</loc>
+    <loc>https://gitee.com/myxym-love/categories/%E6%8A%80%E5%B7%A7%E7%BB%8F%E9%AA%8C/</loc>
     <lastmod>2022-05-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://gitee.com/myxym-love/myxym-love.gitee.io/categories/springboot/</loc>
+    <loc>https://gitee.com/myxym-love/categories/springboot/</loc>
     <lastmod>2022-05-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://gitee.com/myxym-love/myxym-love.gitee.io/categories/%E9%AB%98%E6%95%B0%E9%94%99%E9%A2%98/</loc>
+    <loc>https://gitee.com/myxym-love/categories/%E9%AB%98%E6%95%B0%E9%94%99%E9%A2%98/</loc>
     <lastmod>2022-05-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
