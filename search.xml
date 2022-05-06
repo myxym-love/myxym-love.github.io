@@ -1,6 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Git使用教程</title>
+    <url>/2022/01028579.html</url>
+    <content><![CDATA[<h1 id="Git使用教程"><a href="#Git使用教程" class="headerlink" title="Git使用教程"></a>Git使用教程</h1><h2 id="1-如何把本地的项目上传到GitHub上"><a href="#1-如何把本地的项目上传到GitHub上" class="headerlink" title="1.如何把本地的项目上传到GitHub上"></a>1.如何把本地的项目上传到GitHub上</h2><p>1.打开Git Bash进入到要上传的项目的目录下</p>
+<p>2.配置用户名和邮箱</p>
+<pre class="line-numbers language-bas" data-language="bas"><code class="language-bas">git config --global user.name &quot;Your username&quot;
+git config --global user.email &quot;Your email&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>3.在GitHub上设置本地的ssh公钥</p>
+<p>（1）在本地生成ssh公钥私钥</p>
+<pre class="line-numbers language-bas" data-language="bas"><code class="language-bas">ssh-keygen<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>生成的.ssh文件默认在C:\Users\ASUS\.ssh (ASUS是我电脑的名字)</p>
+<p>在.ssh文件下有id_rsa.pub文件,把里面的内容添加到你的GigHub的设置里</p>
+<p>4.在你的GitHub上新建一个仓库,复制仓库的ssh地址</p>
+<p>5.把你创建好的仓库克隆到你的项目文件夹下</p>
+<pre class="line-numbers language-bas" data-language="bas"><code class="language-bas">git clone git@github.com:myxym-love&#x2F;javaweb.git<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p> (<a href="mailto:&#103;&#105;&#x74;&#x40;&#103;&#x69;&#x74;&#x68;&#117;&#98;&#46;&#99;&#111;&#109;">&#103;&#105;&#x74;&#x40;&#103;&#x69;&#x74;&#x68;&#117;&#98;&#46;&#99;&#111;&#109;</a>:myxym-love/javaweb.git)换成你自己仓库地址</p>
+<p>6.把你项目的下的所有文件以及文件夹(除了你拉取的仓库文件夹)复制到你拉取的仓库文件夹里</p>
+<p>7.进去到你拉取的仓库文件夹里</p>
+<pre class="line-numbers language-bas" data-language="bas"><code class="language-bas">git add . (.表示所有文件)
+git commit -m &quot;描述&quot;
+git push -u origin master (第一次psuh要加-u)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+]]></content>
+      <categories>
+        <category>技巧经验</category>
+      </categories>
+      <tags>
+        <tag>Git</tag>
+        <tag>攻略</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Redis学习笔记</title>
     <url>/2022/041630038.html</url>
     <content><![CDATA[<h2 id="Linux下安装Redis6-X"><a href="#Linux下安装Redis6-X" class="headerlink" title="Linux下安装Redis6.X"></a>Linux下安装Redis6.X</h2><p>注意：安装Redis6.X版本需要gcc9.X以上版本</p>
@@ -227,150 +261,6 @@ string
       <tags>
         <tag>hexo</tag>
         <tag>matery</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Git使用教程</title>
-    <url>/2022/01028579.html</url>
-    <content><![CDATA[<h1 id="Git使用教程"><a href="#Git使用教程" class="headerlink" title="Git使用教程"></a>Git使用教程</h1><h2 id="1-如何把本地的项目上传到GitHub上"><a href="#1-如何把本地的项目上传到GitHub上" class="headerlink" title="1.如何把本地的项目上传到GitHub上"></a>1.如何把本地的项目上传到GitHub上</h2><p>1.打开Git Bash进入到要上传的项目的目录下</p>
-<p>2.配置用户名和邮箱</p>
-<pre class="line-numbers language-bas" data-language="bas"><code class="language-bas">git config --global user.name &quot;Your username&quot;
-git config --global user.email &quot;Your email&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-
-<p>3.在GitHub上设置本地的ssh公钥</p>
-<p>（1）在本地生成ssh公钥私钥</p>
-<pre class="line-numbers language-bas" data-language="bas"><code class="language-bas">ssh-keygen<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>生成的.ssh文件默认在C:\Users\ASUS\.ssh (ASUS是我电脑的名字)</p>
-<p>在.ssh文件下有id_rsa.pub文件,把里面的内容添加到你的GigHub的设置里</p>
-<p>4.在你的GitHub上新建一个仓库,复制仓库的ssh地址</p>
-<p>5.把你创建好的仓库克隆到你的项目文件夹下</p>
-<pre class="line-numbers language-bas" data-language="bas"><code class="language-bas">git clone git@github.com:myxym-love&#x2F;javaweb.git<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p> (<a href="mailto:&#x67;&#x69;&#116;&#x40;&#x67;&#x69;&#x74;&#x68;&#x75;&#98;&#x2e;&#x63;&#111;&#x6d;">&#x67;&#x69;&#116;&#x40;&#x67;&#x69;&#x74;&#x68;&#x75;&#98;&#x2e;&#x63;&#111;&#x6d;</a>:myxym-love/javaweb.git)换成你自己仓库地址</p>
-<p>6.把你项目的下的所有文件以及文件夹(除了你拉取的仓库文件夹)复制到你拉取的仓库文件夹里</p>
-<p>7.进去到你拉取的仓库文件夹里</p>
-<pre class="line-numbers language-bas" data-language="bas"><code class="language-bas">git add . (.表示所有文件)
-git commit -m &quot;描述&quot;
-git push -u origin master (第一次psuh要加-u)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-
-]]></content>
-      <categories>
-        <category>技巧经验</category>
-      </categories>
-      <tags>
-        <tag>Git</tag>
-        <tag>攻略</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>将hexo静态博客资源部署到阿里云服务器</title>
-    <url>/2022/050642307.html</url>
-    <content><![CDATA[<div align='center'><font size='70'>将hexo静态博客资源部署到阿里云服务器</font></div>
-
-<h2 id="1-WHY？"><a href="#1-WHY？" class="headerlink" title="1.WHY？"></a>1.WHY？</h2><p>大多数人使用<code>hexo</code>搭建个人博客，基本 都是部署在<code>Github Page</code>或者<code>Gitee Page</code>上的,相较于<code>Github Page</code>,部署在<code>Gitee Page</code>上的人应该会更多点。因为<code>Github Page</code>毕竟是国外的<code>Github</code>网站提供给每一个加入<code>GitHub</code>的一个静态服务器,国内用户访问起来的体验感实在是太差了。而<code>Gitee Page</code>是国内<code>Gitee</code>提供的，国内用户访问起来想对于来说体验感好一点。但还有没有其他方式部署我们的个人博客呢？当然有！只要你有一台属于自己的云服务器，那么也可以将个人博客部署在云服务器上。云服务器的购买途径有很多，在这里，我推荐使用阿里云服务器或者腾讯云服务器。</p>
-<h2 id="2-HOW？"><a href="#2-HOW？" class="headerlink" title="2.HOW？"></a>2.HOW？</h2><h3 id="1-本地的准备"><a href="#1-本地的准备" class="headerlink" title="1.本地的准备"></a>1.本地的准备</h3><p>为了能够是使本地的项目与远程的<code>git</code>联系起来， 需要在本地电脑上生成密钥，使用如下命令在<code>cmd</code>终端中输入</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">ssh-keygen<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>一路按回车就行，生成的公钥和私钥默认的路径是你用户下.<code>ssh</code>文件夹下,例如我的路径<code>C:\Users\ASUS\.ssh</code>，<code>id_rsa</code>是私钥,<code>id_rsa.pub</code>是公钥，我们需要用到公钥里的内容，下面的内容会提到。</p>
-<h3 id="2-云服务器的准备"><a href="#2-云服务器的准备" class="headerlink" title="2.云服务器的准备"></a>2.云服务器的准备</h3><p>在云服务器上我们需要安装<code>git</code>:</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">yum <span class="token function">install</span> <span class="token function">git</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>安装好后，我们新建一个git用户：</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">adduser <span class="token function">git</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>添加<code>git</code>用户权限：</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">chmod</span> <span class="token number">740</span> /etc/sudoers<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>然后用<code>vim</code>编辑器打开文件编辑</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">vim</span> /etc/sudoers<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>找到如下位置，并添加</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">root   <span class="token assign-left variable">ALL</span><span class="token operator">=</span><span class="token punctuation">(</span>ALL<span class="token punctuation">)</span>     ALL <span class="token comment">#文件内的位置</span>
-<span class="token function">git</span>    <span class="token assign-left variable">ALL</span><span class="token operator">=</span><span class="token punctuation">(</span>ALL<span class="token punctuation">)</span>     ALL <span class="token comment">#添加的内容</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-
-<p>把权限更改回去</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">chmod</span> <span class="token number">400</span> /etc/sudoers<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>设置 <code>git</code> 账户密码：</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">passwd</span> <span class="token function">git</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<blockquote>
-<p><code>Linux</code>输入密码是不会显示，输入好了按回车就行。</p>
-</blockquote>
-<p>切换至<code>git</code>用户，创建 <code>~/.ssh</code> 文件夹和 <code>~/.ssh/authorized_keys</code> 文件，并赋予相应的权限</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">su</span> <span class="token function">git</span>
-<span class="token function">mkdir</span>  ~/.ssh
-<span class="token function">vim</span>  ~/.ssh/authorized_keys<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-
-<p>将我们在<code>win10</code>中生成的<code>id_rsa.pub</code>文件中的公钥复制到<code>authorized_keys</code>中。</p>
-<p>接着，输入一下命令，赋予权限：</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">chmod</span> <span class="token number">600</span> /home/git/.ssh/authorized_keys
-<span class="token function">chmod</span> <span class="token number">700</span> /home/git/.ssh<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-
-<p>打开我们本地<code>cmd</code>，输入：</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">ssh</span> git@master
-
-<span class="token comment">#master是你云服务器的ip</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-
-<blockquote>
-<p>小插曲：我这里的<code>master</code>是我在我本机配置了<code>ip</code>映射关系,master指向的是的云服务器公网<code>ip</code>，由于<code>ip</code>地址不好记，我就做了这个映射关系，只需要再<code>C:\Windows\System32\drivers\etc</code>文件夹下的<code>hosts</code>文件内添加一条记录即可。</p>
-</blockquote>
-<p>以上配置完成后,我们使用<code>ssh git@master</code>登录云服务器的<code>git</code>用户就不需要输入密码了。不然每次修改博客内容,再推送到云服务器上都要输入密码。</p>
-<h3 id="3-配置Git-Hooks"><a href="#3-配置Git-Hooks" class="headerlink" title="3.配置Git Hooks"></a>3.配置Git Hooks</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">su</span> <span class="token comment">#返回服务端命令行切换到 root 账户</span>
-
-<span class="token function">mkdir</span> /var/repo <span class="token comment">#mkdir /var/repo</span>
-<span class="token function">chown</span> -R git:git /var/repo
-<span class="token function">chmod</span> -R <span class="token number">755</span> /var/repo <span class="token comment">#赋予权限</span>
-
-<span class="token function">mkdir</span> /var/hexo
-<span class="token function">chown</span> -R git:git /var/hexo
-<span class="token function">chmod</span> -R <span class="token number">755</span> /var/hexo <span class="token comment">#接下来创建 hexo 目录作为网站根目录，并赋予权限</span>
-
-<span class="token builtin class-name">cd</span> /var/repo
-<span class="token function">git</span> init --bare hexo.git 接下来创建一个空白的 <span class="token function">git</span> 仓库<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p>在 <code>/var/repo/hexo.git</code> 下，有一个自动生成的 hooks 文件夹。我们需要在里边新建一个新的钩子文件 <code>post-receive</code></p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">vim</span> /var/repo/hexo.git/hooks/post-receive<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>在该文件里面输入以下内容然后保存退出：</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token shebang important">#!/bin/bash</span>
-<span class="token function">git</span> --work-tree<span class="token operator">=</span>/var/hexo --git-dir<span class="token operator">=</span>/var/repo/hexo.git checkout -f
-
-<span class="token function">chown</span> -R git:git /var/repo/hexo.git/hooks/post-receive
-<span class="token function">chmod</span> +x /var/repo/hexo.git/hooks/post-receive <span class="token comment">#修改权限</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p>到这里 <code>git</code>仓库和钩子 已经搭建完毕了。</p>
-<h2 id="3-nginx安装与配置修改"><a href="#3-nginx安装与配置修改" class="headerlink" title="3.nginx安装与配置修改"></a>3.nginx安装与配置修改</h2><p>我们首先需要安装<code>nginx</code>服务器（默认路径<code>/etc/nginx/</code>）</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">yum <span class="token function">install</span> -y nginx<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>然后我们再去编辑<code>/etc/nginx/</code>下的<code>nginx.conf</code>文件</p>
-<p><img src="/images/pasted_8.png"></p>
-<h2 id="4-推送hexo静态资源"><a href="#4-推送hexo静态资源" class="headerlink" title="4.推送hexo静态资源"></a>4.推送hexo静态资源</h2><p>在本地<code>hexo</code>根目录下的<code>_config.yml</code>文件内修改推送仓库地址：</p>
-<pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token key atrule">deploy</span><span class="token punctuation">:</span>
-  <span class="token key atrule">type</span><span class="token punctuation">:</span> git <span class="token comment">#推送方式</span>
-  <span class="token comment">#repo: git@github.com:myxym-love/myxym-love.github.io.git</span>
-  <span class="token comment">#repo: git@gitee.com:myxym-love/myxym-love.git</span>
-  <span class="token key atrule">repo</span><span class="token punctuation">:</span> git@47.100.227.19<span class="token punctuation">:</span>/var/repo/hexo.git <span class="token comment">#云服务器上的git仓库地址</span>
-  <span class="token key atrule">branch</span><span class="token punctuation">:</span> master <span class="token comment">#推送到哪一个分支</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p>推送：</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">hexo clean <span class="token operator">&amp;&amp;</span> hexo g <span class="token operator">&amp;&amp;</span> hexo d
-<span class="token comment">#hexo clean清除静态资源文件,每次都执行一下，以免有缓存</span>
-<span class="token comment">#hexo g生成静态资源文件</span>
-<span class="token comment">#hexo d推送到远程仓库</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h2 id="5-启动nginx"><a href="#5-启动nginx" class="headerlink" title="5.启动nginx"></a>5.启动nginx</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">systemctl start nginx <span class="token comment">#启动nginx</span>
-systemctl <span class="token builtin class-name">enable</span> nginx <span class="token comment">#开启启动ngnix</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-
-<p>启动成功后，访问你的域名或者<code>ip</code>地址就能看到内容啦。</p>
-]]></content>
-      <categories>
-        <category>技巧经验</category>
-      </categories>
-      <tags>
-        <tag>hexo</tag>
-        <tag>云服务器</tag>
       </tags>
   </entry>
   <entry>
@@ -623,6 +513,116 @@ ssh-copy-id slave2<span aria-hidden="true" class="line-numbers-rows"><span></spa
       </categories>
       <tags>
         <tag>服务器</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>将hexo静态博客资源部署到阿里云服务器</title>
+    <url>/2022/050642307.html</url>
+    <content><![CDATA[<div align='center'><font size='70'>将hexo静态博客资源部署到阿里云服务器</font></div>
+
+<h2 id="1-WHY？"><a href="#1-WHY？" class="headerlink" title="1.WHY？"></a>1.WHY？</h2><p>大多数人使用<code>hexo</code>搭建个人博客，基本 都是部署在<code>Github Page</code>或者<code>Gitee Page</code>上的,相较于<code>Github Page</code>,部署在<code>Gitee Page</code>上的人应该会更多点。因为<code>Github Page</code>毕竟是国外的<code>Github</code>网站提供给每一个加入<code>GitHub</code>的一个静态服务器,国内用户访问起来的体验感实在是太差了。而<code>Gitee Page</code>是国内<code>Gitee</code>提供的，国内用户访问起来想对于来说体验感好一点。但还有没有其他方式部署我们的个人博客呢？当然有！只要你有一台属于自己的云服务器，那么也可以将个人博客部署在云服务器上。云服务器的购买途径有很多，在这里，我推荐使用阿里云服务器或者腾讯云服务器。</p>
+<h2 id="2-HOW？"><a href="#2-HOW？" class="headerlink" title="2.HOW？"></a>2.HOW？</h2><h3 id="1-本地的准备"><a href="#1-本地的准备" class="headerlink" title="1.本地的准备"></a>1.本地的准备</h3><p>为了能够是使本地的项目与远程的<code>git</code>联系起来， 需要在本地电脑上生成密钥，使用如下命令在<code>cmd</code>终端中输入</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">ssh-keygen<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>一路按回车就行，生成的公钥和私钥默认的路径是你用户下.<code>ssh</code>文件夹下,例如我的路径<code>C:\Users\ASUS\.ssh</code>，<code>id_rsa</code>是私钥,<code>id_rsa.pub</code>是公钥，我们需要用到公钥里的内容，下面的内容会提到。</p>
+<h3 id="2-云服务器的准备"><a href="#2-云服务器的准备" class="headerlink" title="2.云服务器的准备"></a>2.云服务器的准备</h3><p>在云服务器上我们需要安装<code>git</code>:</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">yum <span class="token function">install</span> <span class="token function">git</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>安装好后，我们新建一个git用户：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">adduser <span class="token function">git</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>添加<code>git</code>用户权限：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">chmod</span> <span class="token number">740</span> /etc/sudoers<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>然后用<code>vim</code>编辑器打开文件编辑</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">vim</span> /etc/sudoers<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>找到如下位置，并添加</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">root   <span class="token assign-left variable">ALL</span><span class="token operator">=</span><span class="token punctuation">(</span>ALL<span class="token punctuation">)</span>     ALL <span class="token comment">#文件内的位置</span>
+<span class="token function">git</span>    <span class="token assign-left variable">ALL</span><span class="token operator">=</span><span class="token punctuation">(</span>ALL<span class="token punctuation">)</span>     ALL <span class="token comment">#添加的内容</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>把权限更改回去</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">chmod</span> <span class="token number">400</span> /etc/sudoers<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>设置 <code>git</code> 账户密码：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">passwd</span> <span class="token function">git</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<blockquote>
+<p><code>Linux</code>输入密码是不会显示，输入好了按回车就行。</p>
+</blockquote>
+<p>切换至<code>git</code>用户，创建 <code>~/.ssh</code> 文件夹和 <code>~/.ssh/authorized_keys</code> 文件，并赋予相应的权限</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">su</span> <span class="token function">git</span>
+<span class="token function">mkdir</span>  ~/.ssh
+<span class="token function">vim</span>  ~/.ssh/authorized_keys<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>将我们在<code>win10</code>中生成的<code>id_rsa.pub</code>文件中的公钥复制到<code>authorized_keys</code>中。</p>
+<p>接着，输入一下命令，赋予权限：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">chmod</span> <span class="token number">600</span> /home/git/.ssh/authorized_keys
+<span class="token function">chmod</span> <span class="token number">700</span> /home/git/.ssh<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>打开我们本地<code>cmd</code>，输入：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">ssh</span> git@master
+
+<span class="token comment">#master是你云服务器的ip</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<blockquote>
+<p>小插曲：我这里的<code>master</code>是我在我本机配置了<code>ip</code>映射关系,master指向的是的云服务器公网<code>ip</code>，由于<code>ip</code>地址不好记，我就做了这个映射关系，只需要再<code>C:\Windows\System32\drivers\etc</code>文件夹下的<code>hosts</code>文件内添加一条记录即可。</p>
+</blockquote>
+<p>以上配置完成后,我们使用<code>ssh git@master</code>登录云服务器的<code>git</code>用户就不需要输入密码了。不然每次修改博客内容,再推送到云服务器上都要输入密码。</p>
+<h3 id="3-配置Git-Hooks"><a href="#3-配置Git-Hooks" class="headerlink" title="3.配置Git Hooks"></a>3.配置Git Hooks</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">su</span> <span class="token comment">#返回服务端命令行切换到 root 账户</span>
+
+<span class="token function">mkdir</span> /var/repo <span class="token comment">#mkdir /var/repo</span>
+<span class="token function">chown</span> -R git:git /var/repo
+<span class="token function">chmod</span> -R <span class="token number">755</span> /var/repo <span class="token comment">#赋予权限</span>
+
+<span class="token function">mkdir</span> /var/hexo
+<span class="token function">chown</span> -R git:git /var/hexo
+<span class="token function">chmod</span> -R <span class="token number">755</span> /var/hexo <span class="token comment">#接下来创建 hexo 目录作为网站根目录，并赋予权限</span>
+
+<span class="token builtin class-name">cd</span> /var/repo
+<span class="token function">git</span> init --bare hexo.git 接下来创建一个空白的 <span class="token function">git</span> 仓库<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>在 <code>/var/repo/hexo.git</code> 下，有一个自动生成的 hooks 文件夹。我们需要在里边新建一个新的钩子文件 <code>post-receive</code></p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">vim</span> /var/repo/hexo.git/hooks/post-receive<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>在该文件里面输入以下内容然后保存退出：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token shebang important">#!/bin/bash</span>
+<span class="token function">git</span> --work-tree<span class="token operator">=</span>/var/hexo --git-dir<span class="token operator">=</span>/var/repo/hexo.git checkout -f
+
+<span class="token function">chown</span> -R git:git /var/repo/hexo.git/hooks/post-receive
+<span class="token function">chmod</span> +x /var/repo/hexo.git/hooks/post-receive <span class="token comment">#修改权限</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>到这里 <code>git</code>仓库和钩子 已经搭建完毕了。</p>
+<h2 id="3-nginx安装与配置修改"><a href="#3-nginx安装与配置修改" class="headerlink" title="3.nginx安装与配置修改"></a>3.nginx安装与配置修改</h2><p>我们首先需要安装<code>nginx</code>服务器（默认路径<code>/etc/nginx/</code>）</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">yum <span class="token function">install</span> -y nginx<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>然后我们再去编辑<code>/etc/nginx/</code>下的<code>nginx.conf</code>文件</p>
+<p><img src="/images/pasted_8.png"></p>
+<h2 id="4-推送hexo静态资源"><a href="#4-推送hexo静态资源" class="headerlink" title="4.推送hexo静态资源"></a>4.推送hexo静态资源</h2><p>在本地<code>hexo</code>根目录下的<code>_config.yml</code>文件内修改推送仓库地址：</p>
+<pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token key atrule">deploy</span><span class="token punctuation">:</span>
+  <span class="token key atrule">type</span><span class="token punctuation">:</span> git <span class="token comment">#推送方式</span>
+  <span class="token comment">#repo: git@github.com:myxym-love/myxym-love.github.io.git</span>
+  <span class="token comment">#repo: git@gitee.com:myxym-love/myxym-love.git</span>
+  <span class="token key atrule">repo</span><span class="token punctuation">:</span> git@47.100.227.19<span class="token punctuation">:</span>/var/repo/hexo.git <span class="token comment">#云服务器上的git仓库地址</span>
+  <span class="token key atrule">branch</span><span class="token punctuation">:</span> master <span class="token comment">#推送到哪一个分支</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>推送：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">hexo clean <span class="token operator">&amp;&amp;</span> hexo g <span class="token operator">&amp;&amp;</span> hexo d
+<span class="token comment">#hexo clean清除静态资源文件,每次都执行一下，以免有缓存</span>
+<span class="token comment">#hexo g生成静态资源文件</span>
+<span class="token comment">#hexo d推送到远程仓库</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="5-启动nginx"><a href="#5-启动nginx" class="headerlink" title="5.启动nginx"></a>5.启动nginx</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">systemctl start nginx <span class="token comment">#启动nginx</span>
+systemctl <span class="token builtin class-name">enable</span> nginx <span class="token comment">#开启启动ngnix</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>启动成功后，访问你的域名或者<code>ip</code>地址就能看到内容啦。</p>
+]]></content>
+      <categories>
+        <category>技巧经验</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+        <tag>云服务器</tag>
       </tags>
   </entry>
   <entry>
