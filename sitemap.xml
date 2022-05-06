@@ -119,13 +119,6 @@
 
   
   <url>
-    <loc>https://myxym-love.github.io/tags/redis/</loc>
-    <lastmod>2022-05-06</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://myxym-love.github.io/tags/Git/</loc>
     <lastmod>2022-05-06</lastmod>
     <changefreq>weekly</changefreq>
@@ -140,21 +133,21 @@
   </url>
   
   <url>
-    <loc>https://myxym-love.github.io/tags/hexo/</loc>
-    <lastmod>2022-05-06</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://myxym-love.github.io/tags/matery/</loc>
-    <lastmod>2022-05-06</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://myxym-love.github.io/tags/springboot/</loc>
+    <lastmod>2022-05-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://myxym-love.github.io/tags/redis/</loc>
+    <lastmod>2022-05-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://myxym-love.github.io/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/</loc>
     <lastmod>2022-05-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -175,7 +168,14 @@
   </url>
   
   <url>
-    <loc>https://myxym-love.github.io/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/</loc>
+    <loc>https://myxym-love.github.io/tags/hexo/</loc>
+    <lastmod>2022-05-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://myxym-love.github.io/tags/matery/</loc>
     <lastmod>2022-05-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
